@@ -1,7 +1,6 @@
 package com.example.hapadim.database;
 
-import java.util.List;
-
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -20,11 +19,11 @@ public class Places extends RealmObject {
     private String distance;
     private String urlVR;
     private String urlIMG;
-    private List<Badge> badges;
+    private RealmList<Badge> badges;
 
     //getter
 
-    public List<Badge> getBadges() {
+    public RealmList<Badge> getBadges() {
         return badges;
     }
 
@@ -86,7 +85,7 @@ public class Places extends RealmObject {
         this.urlIMG = urlIMG;
     }
 
-    public void setBadges(List<Badge> badges) {
+    public void setBadges(RealmList<Badge> badges) {
         this.badges = badges;
     }
 }
