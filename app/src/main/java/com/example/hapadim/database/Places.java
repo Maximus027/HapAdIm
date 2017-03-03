@@ -12,7 +12,7 @@ import static android.R.attr.id;
 
 public class Places extends RealmObject {
     @PrimaryKey
-    private int placeId;
+    private long placeId;
     private String category;
     private String placeName;
     private long stepNumber;
@@ -56,8 +56,8 @@ public class Places extends RealmObject {
     }
 
 
-    //setter
-    public void setPlaceId(int placeId) {
+   //setter
+    public void setPlaceId(long placeId) {
         this.placeId = placeId;
     }
 

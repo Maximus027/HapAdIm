@@ -9,13 +9,14 @@ import io.realm.annotations.PrimaryKey;
 public class Badge extends RealmObject {
 
     @PrimaryKey
-    private int badgeId;
+    private long badgeId;
+
     private String name;
     private int badgeImg;
     private String description;
 
     //getter
-    public int getBadgeId() {
+    public long getBadgeId() {
         return badgeId;
     }
 
@@ -33,7 +34,7 @@ public class Badge extends RealmObject {
 
 
     //setter
-    public void setBadgeId(int badgeId) {
+    public void setBadgeId(long badgeId) {
         this.badgeId = badgeId;
     }
 
