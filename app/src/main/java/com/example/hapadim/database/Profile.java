@@ -10,6 +10,7 @@ import io.realm.annotations.PrimaryKey;
 public class Profile extends RealmObject {
     @PrimaryKey
     private long userID;
+
     private String name;
     private int avatarImg;
     private int badges;
@@ -34,8 +35,6 @@ public class Profile extends RealmObject {
     }
 
     //setter
-
-
     public void setUserID(long userID) {
         this.userID = userID;
     }
