@@ -10,12 +10,13 @@ public class Badge extends RealmObject {
 
     @PrimaryKey
     private long badgeId;
-
     private String name;
     private int badgeImg;
     private String description;
+    private long belongPlaceID;
 
     //getter
+
     public long getBadgeId() {
         return badgeId;
     }
@@ -30,6 +31,10 @@ public class Badge extends RealmObject {
 
     public String getDescription() {
         return description;
+    }
+
+    public long getBelongPlaceID() {
+        return belongPlaceID;
     }
 
 
@@ -48,5 +53,9 @@ public class Badge extends RealmObject {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setBelongPlaceID(long belongPlaceID) {
+        this.belongPlaceID = belongPlaceID;
     }
 }

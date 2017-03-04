@@ -1,5 +1,6 @@
 package com.example.hapadim.database;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -10,10 +11,8 @@ import io.realm.annotations.PrimaryKey;
 public class Profile extends RealmObject {
     @PrimaryKey
     private long userID;
-
     private String name;
-    private int avatarImg;
-    private int badges;
+    private RealmList<Badge> badges;
 
     //getter
 
@@ -22,19 +21,16 @@ public class Profile extends RealmObject {
         return userID;
     }
 
-    public int getBadges() {
-        return badges;
-    }
-
     public String getName() {
         return name;
     }
 
-    public int getAvatarImg() {
-        return avatarImg;
+    public RealmList<Badge> getBadges() {
+        return badges;
     }
 
     //setter
+
     public void setUserID(long userID) {
         this.userID = userID;
     }
@@ -43,11 +39,7 @@ public class Profile extends RealmObject {
         this.name = name;
     }
 
-    public void setAvatarImg(int avatarImg) {
-        this.avatarImg = avatarImg;
-    }
-
-    public void setBadges(int badges) {
+    public void setBadges(RealmList<Badge> badges) {
         this.badges = badges;
     }
 }
