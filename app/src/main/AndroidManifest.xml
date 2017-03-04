@@ -17,9 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity  android:name=".SecondActivity"
-            android:label="@string/title_activity_welcome"
-            ></activity>
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/title_activity_welcome" />
+        <activity android:name=".ViewAllActivity"></activity>
     </application>
 
 </manifest>
