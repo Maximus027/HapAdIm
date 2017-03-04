@@ -8,15 +8,34 @@
     <string name="slide_1_title">HAPADIM</string>
     <string name="slide_1_desc">Push Yourself Beyond Your Limits to Accomplish Your Goals!</string>
 
-    <string name="slide_2_title">Movie Tickets</string>
-    <string name="slide_2_desc">Book movie tickets for your family and friends!</string>
+    <string name="slide_2_title">Travel</string>
+    <string name="slide_2_desc">While experiencing the strength of movement.</string>
 
-    <string name="slide_3_title">Great Discounts</string>
-    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+    <string name="slide_3_title">Tips</string>
+    <string name="slide_3_desc">No worries either , we are here to help you with advice throughout your journey !</string>
 
-    <string name="slide_4_title">World Travel</string>
-    <string name="slide_4_desc">Book tickets of any transportation and travel the world!</string>
+    <string name="slide_4_title">Virtual Reality</string>
+    <string name="slide_4_desc">Collect the badges and be rewarded by experiencing the BEAUTIFUL view from the top !</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
+    <string name="notiAchievementTitles">Achievement Unlocked !</string>
+    <string name="nativeNewYorker">Congratulations ! You\'ve conquered two of New York\'s most famous landmarks</string>
+    <string name="stateofmindbadge">Empire State of Mind Badge Acquired! Enjoy the 360 view available now!</string>
+    <string name="victoryStatue">You\'ve Completed the ENTIRE length of the Statue of Liberty,Come see the view !</string>
+    <string name="everest_Completion">Congratulations ! You\'ve completed Mt. Everest, Come see the view!</string>
+    <string name="everest1000">Congratulations ! You\'ve completed Mt. Everest, Come see the view!</string>
+    <string name="everest5000">You\'re well on your way to the top</string>
+    <string name="everest5000expanded">TIP: Come off the bus or train a stop early to get those extra steps</string>
+    <string name="everest10000">Congratulations ! You\'ve acquired the Everest Adventurer Badge !</string>
+    <string name="everest24000">Many haven\'t made it as far as you have, continue the ascent towards being a champion !</string>
+    <string name="everest24000expanded">You\'re</string>
+    <string name="everest30000">Congratulations ! You\'ve completed Mt. Everest, Come see the view!</string>
+    <string name="walkingtip1">Park your car further back at the store and get a few more steps !</string>
+    <string name="walkingtip2">Why not take the elevator and get those extra steps in !</string>
+    <string name="walkingtip3">I Dare you to walk to the nearest bathroom and back</string>
+
+
+
+
 </resources>

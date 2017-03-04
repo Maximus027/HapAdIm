@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/locationSlideImages"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:layout_marginLeft="@dimen/cardViewMargin"
+        android:layout_marginRight="@dimen/cardViewMargin"
+        android:layout_marginTop="@dimen/cardViewMargin"></android.support.v4.view.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/layoutDots"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dots_height"
+        android:layout_below="@id/locationSlideImages"
+        android:gravity="center"
+        android:orientation="horizontal"></LinearLayout>
+
+    <TextView
+        android:id="@+id/locationName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutDots"
+        android:layout_marginBottom="@dimen/cardViewMargin"
+        android:layout_marginTop="@dimen/cardViewMargin" />
+
+    <RelativeLayout
+        android:id="@+id/locationStartPageInfo"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/locationName"
+        android:layout_marginBottom="@dimen/cardViewMargin"
+        android:layout_marginLeft="@dimen/cardViewMargin"
+        android:layout_marginRight="@dimen/cardViewMargin"
+        android:layout_marginTop="@dimen/cardViewMargin">
+
+        <ImageView
+            android:id="@+id/catergoryIcon"
+            android:layout_width="@dimen/iconWidth"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/layouthing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/catergoryIcon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/numberOfSteps"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/difficulty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/locationFacts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/locationStartPageInfo"
+        android:layout_marginBottom="@dimen/cardViewMargin"
+        android:layout_marginTop="@dimen/cardViewMargin" />
+
+    <ImageView
+        android:id="@+id/VR_previewBox"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/locationFacts"
+        android:layout_marginLeft="@dimen/cardViewMargin"
+        android:layout_marginRight="@dimen/cardViewMargin" />
+
+</RelativeLayout>

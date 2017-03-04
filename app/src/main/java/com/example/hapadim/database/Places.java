@@ -56,7 +56,7 @@ public class Places extends RealmObject {
     }
 
 
-   //setter
+    //setter
     public void setPlaceId(int placeId) {
         this.placeId = placeId;
     }

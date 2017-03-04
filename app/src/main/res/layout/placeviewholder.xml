@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="170dp"
+    android:layout_marginLeft="@dimen/badgeMarginCardView"
+    android:layout_marginRight="@dimen/badgeMarginCardView"
+    android:layout_marginTop="@dimen/badgeMarginCardView">
+
+    <RelativeLayout
+        android:id="@+id/featuredCardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/locationImage"
+            android:layout_width="match_parent"
+            android:layout_height="110dp" />
+
+        <TextView
+            android:id="@+id/cardDivider"
+            android:layout_width="220dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/locationImage"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorBlack" />
+
+        <ImageView
+            android:id="@+id/catergoryIcon"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cardDivider"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="@dimen/cardViewMargin"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/mountainicon" />
+
+        <LinearLayout
+            android:id="@+id/textFeaturedLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cardDivider"
+            android:layout_marginLeft="@dimen/cardViewMargin"
+            android:layout_toRightOf="@id/catergoryIcon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/featuredLocationTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/featuredLocationStepAmount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
