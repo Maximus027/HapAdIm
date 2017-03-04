@@ -15,8 +15,6 @@ public class Profile extends RealmObject {
     private RealmList<Badge> badges;
 
     //getter
-
-
     public long getUserID() {
         return userID;
     }
@@ -30,7 +28,6 @@ public class Profile extends RealmObject {
     }
 
     //setter
-
     public void setUserID(long userID) {
         this.userID = userID;
     }

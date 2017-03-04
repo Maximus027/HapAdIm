@@ -20,11 +20,9 @@ public class DBOperations {
         return instance;
     }
 
-    //constructor
     DBOperations(){
 
     }
-
 
 
     //Insert record to PlacesDB

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         if (!isRealmInit()) {
 
             Realm.init(getApplicationContext());
-            //Run this code if model classes change (all data will be erased)
+
             RealmConfiguration config = new RealmConfiguration.Builder()
                     .deleteRealmIfMigrationNeeded()
                     .build();

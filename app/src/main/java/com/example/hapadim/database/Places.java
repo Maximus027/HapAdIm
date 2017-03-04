@@ -20,8 +20,6 @@ public class Places extends RealmObject {
     private RealmList<Badge> badges;
 
     //getter
-
-
     public long getPlaceId() {
         return placeId;
     }

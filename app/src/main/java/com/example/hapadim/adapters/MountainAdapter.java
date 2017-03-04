@@ -48,12 +48,7 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
 
     @Override
     public int getItemCount() {
-        return temp.size() - 1;
-    }
-
-
-    public class Holder extends RecyclerView.ViewHolder {
-        return temp.size();
+        return temp.size() ;
     }
 
 
