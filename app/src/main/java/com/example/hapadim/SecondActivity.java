@@ -26,7 +26,7 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.second_activity);
+        setContentView(R.layout.landingpage);
 
         mRvMountains = (RecyclerView) findViewById(R.id.rv_mountains);
         mRvMonuments = (RecyclerView) findViewById(R.id.rv_monuments);
