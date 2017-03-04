@@ -29,6 +29,7 @@ public class DBOperations {
 
     //Insert record to PlacesDB
     public void insertPlace(Realm realm, final int id, final String category, final String placeName, final long stepNumber, final String distance, final String urlVR, @Nullable final String urlIMG, @Nullable RealmList<Badge> badges){
+
         final Places p =  new Places();
         p.setPlaceId(id);
         p.setCategory(category);
@@ -37,14 +38,13 @@ public class DBOperations {
         p.setDistance(distance);
         p.setUrlVR(urlVR);
         p.setUrlIMG(urlIMG);
+        p.setBadges(badges);
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) {
-//                Badge[] badgesArray;
-//                badgesArray = (badges == null) ? null : (Badge[]) badges.toArray();
                 realm.insertOrUpdate(p);
-//                realm.createObjectFromJson(Places.class, "{category:"+category+", id:"+id+", placeName:"+placeName+", stepNumber:"+stepNumber+",distance:"+distance+", urlVR:"+urlVR+", urlIMG:"+urlIMG+"}");
+
             }
         });
     }
