@@ -1,6 +1,7 @@
 package com.example.hapadim.adapters;
 
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 import com.example.hapadim.R;
 
 import java.util.ArrayList;
-
 
 
 /**
@@ -47,11 +47,8 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
 
     @Override
     public int getItemCount() {
-        return temp.size()-1;
+        return temp.size() - 1;
     }
-
-
-
 
 
     public class Holder extends RecyclerView.ViewHolder {
@@ -62,8 +59,13 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
         public Holder(View itemView) {
             super(itemView);
 
-            mTvTest = (TextView)itemView.findViewById(R.id.tv_test);
-           // itemView.setOnClickListener(this);
+            mTvTest = (TextView) itemView.findViewById(R.id.tv_test);
+            mTvTest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent();
+                }
+            });
         }
 
 //        public void bind() {

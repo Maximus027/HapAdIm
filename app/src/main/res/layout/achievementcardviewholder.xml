@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginTop="@dimen/cardViewMargin"
+    android:elevation="5dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/achievementCardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/badgeIcon"
+            android:layout_width="@dimen/iconWidth"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/badgeMarginCardView" />
+
+        <TextView
+            android:id="@+id/cardDivider"
+            android:layout_width="1dp"
+            android:layout_height="65dp"
+            android:layout_toRightOf="@id/badgeIcon"
+            android:background="@color/colorBlack" />
+
+        <TextView
+            android:id="@+id/badgeDescription"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/badgeMarginCardView"
+            android:layout_toRightOf="@id/cardDivider" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
