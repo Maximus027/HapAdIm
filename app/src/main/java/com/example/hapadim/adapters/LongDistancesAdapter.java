@@ -18,11 +18,11 @@ import java.util.ArrayList;
  * Created by Nesada on 2/28/2017.
  */
 
-public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder> {
+public class LongDistancesAdapter extends RecyclerView.Adapter<LongDistancesAdapter.Holder> {
 
     ArrayList<Integer> temp;
 
-    public MountainAdapter() {
+    public LongDistancesAdapter() {
         notifyDataSetChanged();
     }
 
@@ -73,7 +73,6 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
         public void onClick(View view) {
             Intent viewAll = new Intent(view.getContext(), ViewAllActivity.class);
             view.getContext().startActivity(viewAll);
-
 
 
 
