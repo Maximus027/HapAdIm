@@ -18,11 +18,11 @@ import java.util.ArrayList;
  * Created by Nesada on 2/28/2017.
  */
 
-public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder> {
+public class LongDistancesAdapter extends RecyclerView.Adapter<LongDistancesAdapter.Holder> {
 
     ArrayList<Integer> temp;
 
-    public MountainAdapter() {
+    public LongDistancesAdapter() {
         notifyDataSetChanged();
     }
 
@@ -34,7 +34,7 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.landingpageviewholder, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_item, parent, false);
 
         return new Holder(view);
     }
@@ -48,11 +48,6 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
 
     @Override
     public int getItemCount() {
-        return temp.size() - 1;
-    }
-
-
-    public class Holder extends RecyclerView.ViewHolder {
         return temp.size();
     }
 
@@ -66,12 +61,6 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
             super(itemView);
 
             mTvTest = (TextView) itemView.findViewById(R.id.tv_test);
-            mTvTest.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                }
-            });
              itemView.setOnClickListener(this);
         }
 
@@ -84,7 +73,6 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
         public void onClick(View view) {
             Intent viewAll = new Intent(view.getContext(), ViewAllActivity.class);
             view.getContext().startActivity(viewAll);
-
 
 
 

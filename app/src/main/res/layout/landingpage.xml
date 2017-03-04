@@ -43,6 +43,25 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_monuments"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MOUNTAINS"
+                android:id="@+id/tv_mountains"
+                android:onClick="tvClick"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_mountains"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
