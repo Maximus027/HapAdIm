@@ -34,7 +34,7 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.landingpageviewholder, parent, false);
 
         return new Holder(view);
     }
