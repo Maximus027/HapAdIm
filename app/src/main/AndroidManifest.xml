@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SecondActivity"
+            android:name=".LandingPageActivity"
             android:label="@string/title_activity_welcome"></activity>
-            android:label="@string/title_activity_welcome" />
+
         <activity android:name=".ViewAllActivity"></activity>
     </application>
 
