@@ -20,15 +20,15 @@ public class DBOperations {
         return instance;
     }
 
-    DBOperations(){
+    DBOperations() {
 
     }
 
 
     //Insert record to PlacesDB
-    public void insertPlace(Realm realm, final int id, final String category, final String placeName, final long stepNumber, final String distance, final String urlVR, @Nullable final String urlIMG, @Nullable RealmList<Badge> badges){
+    public void insertPlace(Realm realm, final int id, final String category, final String placeName, final long stepNumber, final String distance, final String urlVR, @Nullable final String urlIMG, @Nullable RealmList<Badge> badges) {
 
-        final Places p =  new Places();
+        final Places p = new Places();
         p.setPlaceId(id);
         p.setCategory(category);
         p.setPlaceName(placeName);
@@ -42,7 +42,6 @@ public class DBOperations {
             @Override
             public void execute(Realm realm) {
                 realm.insertOrUpdate(p);
-
             }
         });
     }
