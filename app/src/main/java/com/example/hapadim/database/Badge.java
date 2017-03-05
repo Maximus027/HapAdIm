@@ -14,7 +14,6 @@ public class Badge extends RealmObject {
     private String description;
 
 
-    //getter
     public String getName() {
         return name;
     }
@@ -27,7 +26,7 @@ public class Badge extends RealmObject {
         return description;
     }
 
-    //setter
+
 
     public void setName(String name) {
         this.name = name;

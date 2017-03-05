@@ -19,7 +19,6 @@ public class Places extends RealmObject {
     private String urlIMG;
     private RealmList<Badge> badges;
 
-    //getter
     public long getPlaceId() {
         return placeId;
     }
@@ -53,7 +52,7 @@ public class Places extends RealmObject {
     }
 
 
-    //setter
+
 
     public void setPlaceId(long placeId) {
         this.placeId = placeId;
