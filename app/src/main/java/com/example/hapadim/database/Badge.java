@@ -9,15 +9,10 @@ import io.realm.annotations.PrimaryKey;
 public class Badge extends RealmObject {
 
     @PrimaryKey
-    private int badgeId;
     private String name;
     private int badgeImg;
     private String description;
 
-    //getter
-    public int getBadgeId() {
-        return badgeId;
-    }
 
     public String getName() {
         return name;
@@ -32,10 +27,6 @@ public class Badge extends RealmObject {
     }
 
 
-    //setter
-    public void setBadgeId(int badgeId) {
-        this.badgeId = badgeId;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -48,4 +39,5 @@ public class Badge extends RealmObject {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
