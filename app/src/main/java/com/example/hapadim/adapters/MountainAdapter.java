@@ -6,10 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hapadim.R;
 import com.example.hapadim.ViewAllActivity;
+import com.example.hapadim.models.Element;
 
 import java.util.ArrayList;
 
@@ -18,61 +20,103 @@ import java.util.ArrayList;
  * Created by Nesada on 2/28/2017.
  */
 
-public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder> {
+public class MountainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Integer> temp;
+    ArrayList<Element> temp;
 
     public MountainAdapter() {
         notifyDataSetChanged();
     }
 
-    public void giveAdapterValue(ArrayList<Integer> value) {
+    public void giveAdapterValue(ArrayList<Element> value) {
         this.temp = value;
         notifyDataSetChanged();
     }
 
     @Override
-    public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public int getItemViewType(int position) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.landingpageviewholder, parent, false);
-
-        return new Holder(view);
+        if (position < temp.size()) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        holder.mTvTest.setText(temp.get(position) + "");
+        if(viewType == 1){
+
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer_recyclerview, parent, false);
+
+            return new Footer(view);
+
+        }
+         else {
+
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.landingpageviewholder, parent, false);
+
+            return new Holder(view);
+        }
+
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        if (holder instanceof Holder){
+            Holder mHolder = (Holder) holder;
+            mHolder.mTvName.setText(temp.get(position).getName() + "");
+            mHolder.mTvElevation.setText(temp.get(position).getElevation()+ "");
+            mHolder.mImages.setImageResource(temp.get(position).getImages());
+
+        }
 
     }
 
     @Override
     public int getItemCount() {
-        return temp.size() - 1;
+        return temp.size() +1;
     }
 
 
-    public class Holder extends RecyclerView.ViewHolder {
-        return temp.size();
-    }
+    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView mTvName,mTvElevation;
+        ImageView mImages;
 
 
-    public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
-
-        TextView mTvTest;
-
-
-        public Holder(View itemView) {
+        private Holder(View itemView) {
             super(itemView);
 
-            mTvTest = (TextView) itemView.findViewById(R.id.tv_test);
-            mTvTest.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent();
-                }
-            });
-             itemView.setOnClickListener(this);
+            mTvName = (TextView) itemView.findViewById(R.id.tv_name);
+            mTvElevation= (TextView)itemView.findViewById(R.id.tv_elevation);
+            mImages = (ImageView)itemView.findViewById(R.id.images);
+
+
+            itemView.setOnClickListener(this);
+        }
+
+
+
+        @Override
+        public void onClick(View view) {
+
+
+
+        }
+    }
+    private class Footer extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+
+
+
+        private Footer(View itemView) {
+            super(itemView);
+
+
+            itemView.setOnClickListener(this);
         }
 
 //        public void bind() {
@@ -82,12 +126,10 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
 
         @Override
         public void onClick(View view) {
+
             Intent viewAll = new Intent(view.getContext(), ViewAllActivity.class);
+            viewAll.putExtra("id", "mountains");
             view.getContext().startActivity(viewAll);
-
-
-
-
         }
     }
 }
