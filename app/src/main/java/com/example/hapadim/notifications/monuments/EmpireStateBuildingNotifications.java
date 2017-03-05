@@ -1,4 +1,4 @@
-package com.example.hapadim.MonumentsNotifications;
+package com.example.hapadim.notifications.monuments;
 
 import android.support.v7.app.AppCompatActivity;
 

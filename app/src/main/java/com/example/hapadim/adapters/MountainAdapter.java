@@ -48,16 +48,10 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
 
     @Override
     public int getItemCount() {
-        return temp.size() - 1;
-    }
-
-
-    public class Holder extends RecyclerView.ViewHolder {
         return temp.size();
     }
 
-
-    public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView mTvTest;
 
@@ -72,20 +66,14 @@ public class MountainAdapter extends RecyclerView.Adapter<MountainAdapter.Holder
                     Intent intent = new Intent();
                 }
             });
-             itemView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
-
-//        public void bind() {
-//
-//        }
 
 
         @Override
         public void onClick(View view) {
             Intent viewAll = new Intent(view.getContext(), ViewAllActivity.class);
             view.getContext().startActivity(viewAll);
-
-
 
 
         }
