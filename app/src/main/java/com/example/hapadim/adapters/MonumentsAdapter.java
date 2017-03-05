@@ -32,11 +32,13 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public int getItemViewType(int position) {
 
+
         if (position < temp.size()) {
             return 0;
         } else {
             return 1;
         }
+
     }
 
     @Override

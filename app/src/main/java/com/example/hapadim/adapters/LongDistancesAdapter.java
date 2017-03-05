@@ -32,6 +32,7 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public int getItemViewType(int position) {
 
+
         if (position < temp.size()) {
             return 0;
         } else {
@@ -47,6 +48,7 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer_recyclerview, parent, false);
 
             return new Footer(view);
+
 
         }
         else {
