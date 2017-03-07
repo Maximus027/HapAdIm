@@ -35,6 +35,7 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     @Override
     public int getItemViewType(int position) {
+
         if (position < temp.size()) {
             return 0;
         } else {
@@ -49,7 +50,9 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
         if (viewType == 1) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer_recyclerview, parent, false);
             return new Footer(view);
+
         } else {
+
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.landingpageviewholder, parent, false);
             return new Holder(view);
         }
@@ -75,7 +78,7 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
 
-    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView mTvName, mTvElevation;
         ImageView mImages;
@@ -86,7 +89,7 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
             mTvName = (TextView) itemView.findViewById(R.id.tv_name);
             mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
-            mImages = (ImageView)itemView.findViewById(R.id.images);
+            mImages = (ImageView) itemView.findViewById(R.id.images);
             itemView.setOnClickListener(this);
         }
 

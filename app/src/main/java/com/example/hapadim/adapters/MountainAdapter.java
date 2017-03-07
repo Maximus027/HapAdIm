@@ -77,6 +77,7 @@ public class MountainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
+
         return temp.size() +1;
     }
 
@@ -89,12 +90,9 @@ public class MountainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         private Holder(View itemView) {
             super(itemView);
-
             mTvName = (TextView) itemView.findViewById(R.id.tv_name);
             mTvElevation= (TextView)itemView.findViewById(R.id.tv_elevation);
             mImages = (ImageView)itemView.findViewById(R.id.images);
-
-
             itemView.setOnClickListener(this);
         }
 

@@ -4,15 +4,13 @@ import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-import static android.R.attr.id;
-
 /**
  * Created by meltemyildirim on 3/2/17.
  */
 
 public class Places extends RealmObject {
     @PrimaryKey
-    private int placeId;
+    private long placeId;
     private String category;
     private String placeName;
     private long stepNumber;
@@ -21,14 +19,8 @@ public class Places extends RealmObject {
     private String urlIMG;
     private RealmList<Badge> badges;
 
-    //getter
-
-    public RealmList<Badge> getBadges() {
-        return badges;
-    }
-
-    public int getId() {
-        return id;
+    public long getPlaceId() {
+        return placeId;
     }
 
     public String getCategory() {
@@ -55,9 +47,14 @@ public class Places extends RealmObject {
         return urlIMG;
     }
 
+    public RealmList<Badge> getBadges() {
+        return badges;
+    }
 
-    //setter
-    public void setPlaceId(int placeId) {
+
+
+
+    public void setPlaceId(long placeId) {
         this.placeId = placeId;
     }
 

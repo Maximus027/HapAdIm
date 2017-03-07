@@ -35,6 +35,7 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemViewType(int position) {
+
         if (position < temp.size()) {
             return 0;
         } else {
@@ -75,7 +76,7 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
 
-    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView mTvName, mTvElevation;
         ImageView mImages;
@@ -86,7 +87,7 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             mTvName = (TextView) itemView.findViewById(R.id.tv_name);
             mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
-            mImages = (ImageView)itemView.findViewById(R.id.images);
+            mImages = (ImageView) itemView.findViewById(R.id.images);
             itemView.setOnClickListener(this);
         }
 
