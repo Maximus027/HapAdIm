@@ -1,13 +1,17 @@
 package com.example.hapadim.adapters;
 
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hapadim.R;
+import com.example.hapadim.ViewAllActivity;
+import com.example.hapadim.models.Element;
 
 import java.util.ArrayList;
 
@@ -18,43 +22,38 @@ import java.util.ArrayList;
 
 public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<Integer> temp;
+    private ArrayList<Element> temp;
 
     public LongDistancesAdapter() {
-        notifyDataSetChanged();
+
     }
 
-    public void giveAdapterValue(ArrayList<Integer> value) {
+    public void giveAdapterValue(ArrayList<Element> value) {
         this.temp = value;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemViewType(int position) {
-
         if (position < temp.size()) {
             return 0;
         } else {
             return 1;
         }
+
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        if(viewType == 1){
-
+        if (viewType == 1) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.footer_recyclerview, parent, false);
-
             return new Footer(view);
-
-        }
-        else {
-
+        } else {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.landingpageviewholder, parent, false);
-
             return new Holder(view);
         }
+
     }
 
     @Override
@@ -62,7 +61,10 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         if (holder instanceof Holder) {
             Holder mHolder = (Holder) holder;
-            mHolder.mTvTest.setText(temp.get(position) + "");
+
+            mHolder.mTvName.setText(temp.get(position).getName() + "");
+            mHolder.mTvElevation.setText(temp.get(position).getElevation() + "");
+            mHolder.mImages.setImageResource(temp.get(position).getImages());
         }
 
     }
@@ -75,39 +77,40 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView mTvTest;
+        TextView mTvName, mTvElevation;
+        ImageView mImages;
 
 
         private Holder(View itemView) {
             super(itemView);
 
-            mTvTest = (TextView) itemView.findViewById(R.id.tv_elevation);
-             itemView.setOnClickListener(this);
+            mTvName = (TextView) itemView.findViewById(R.id.tv_name);
+            mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
+            mImages = (ImageView)itemView.findViewById(R.id.images);
+            itemView.setOnClickListener(this);
         }
-
 
         @Override
         public void onClick(View view) {
 
+
         }
+
     }
 
-    private class Footer extends RecyclerView.ViewHolder implements View.OnClickListener{
-
-        TextView mTvTest;
-
+    private class Footer extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Footer(View itemView) {
             super(itemView);
 
-            mTvTest = (TextView) itemView.findViewById(R.id.tv_elevation);
             itemView.setOnClickListener(this);
         }
 
-
         @Override
         public void onClick(View view) {
-
+            Intent viewAll = new Intent(view.getContext(), ViewAllActivity.class);
+            viewAll.putExtra("id", "long distances");
+            view.getContext().startActivity(viewAll);
         }
     }
 }

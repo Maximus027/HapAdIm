@@ -1,7 +1,7 @@
 package com.example.hapadim.models;
 
 /**
- * Created by nesadakoca on 3/4/17.
+ * Created by Nesada Koca on 3/4/17.
  */
 
 public class Element {

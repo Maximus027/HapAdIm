@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="longDistancesNames">
+        <item>Atacama Crossing, Chile</item>
+        <item>Marathon of the Midnight Sun, Norway</item>
+        <item>Great Ethiopian Run, Ethiopia</item>
+        <item>Comrades Marathon, South Africa</item>
+        <item>Jungle Marathon, Brazil</item>
+        <item>Two Oceans Marathon, South Africa</item>
+        <item>Bagan Temple Marathon, Myanmar</item>
+        <item>Ice Marathon, Antarctica</item>
+        <item>Tenzing-Hillary Everest Marathon, Nepal</item>
+        <item>Fujisan Marathon, Japan</item>
+    </string-array>
+
+    <integer-array name="longDistancesLengths">
+        <item>8000</item>
+        <item>138336</item>
+        <item>32808</item>
+        <item>291994</item>
+        <item>411840</item>
+        <item>184800</item>
+        <item>138336</item>
+        <item>138336</item>
+        <item>137795</item>
+        <item>68640</item>
+    </integer-array>
+</resources>
