@@ -36,34 +36,4 @@
     <string name="walkingtip3">I Dare you to walk to the nearest bathroom and back</string>
 
 
-
-
-    <string-array name="mountains">
-        <item>Mount Everest</item>
-        <item>K2 (Mount Godwin Austen)</item>
-        <item>Kangchenjunga</item>
-        <item>Nanga Parbat</item>
-        <item>Lhotse</item>
-        <item>Makalu</item>
-        <item>Manaslu</item>
-        <item>Cho Oyu</item>
-        <item>Mount Kilimanjaro</item>
-        <item>Denali</item>
-    </string-array>
-
-    <integer-array name="mountainsElevation">
-        <item>29029</item>
-        <item>28251</item>
-        <item>28169</item>
-        <item>26660</item>
-        <item>27940</item>
-        <item>27825</item>
-        <item>26759</item>
-        <item>26906</item>
-        <item>19341</item>
-        <item>20310</item>
-    </integer-array>
-
-
-
 </resources>
