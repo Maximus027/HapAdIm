@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.hapadim.MountainsNotifications.NotificationBuilder;
 import com.example.hapadim.adapters.LongDistancesAdapter;
@@ -28,7 +27,13 @@ public class LandingPageActivity extends AppCompatActivity {
     private MountainAdapter mMountainAdapter;
     private MonumentsAdapter mMonumentsAdapter;
     private LongDistancesAdapter mLongDistancesAdapter;
-    private TextView mTvMountains;
+
+    private static final String MOUNTAINS = "mountains";
+    private static final String MONUMENTS = "monuments";
+    private static final String LONGDISTANCES = "long distances";
+    private static final String VIEWALL = "view all";
+    private static final String ID = "id";
+    private static final int SHOWITEM = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +45,6 @@ public class LandingPageActivity extends AppCompatActivity {
         mRvMountains = (RecyclerView) findViewById(R.id.rv_mountains);
         mRvMonuments = (RecyclerView) findViewById(R.id.rv_monuments);
         mRvLongDistances = (RecyclerView) findViewById(R.id.rv_long_distances);
-        mTvMountains = (TextView) findViewById(R.id.tv_mountains);
-
 
         mMountainAdapter = new MountainAdapter();
         mMonumentsAdapter = new MonumentsAdapter();
@@ -49,7 +52,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
-        setUpLongDistanceAdapter();
+        setUpLongDistancesAdapter();
 
     }
 
@@ -70,7 +73,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mRvMountains.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mMountainAdapter.giveAdapterValue(elementArray("mountains"));
+        mMountainAdapter.giveAdapterValue(elementArray(MOUNTAINS));
     }
 
     public void setUpMonumentsAdapter() {
@@ -80,45 +83,70 @@ public class LandingPageActivity extends AppCompatActivity {
         mRvMonuments.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mMonumentsAdapter.giveAdapterValue(giveValueToAdapter(1, 4));
+        mMonumentsAdapter.giveAdapterValue(elementArray(MONUMENTS));
     }
 
-    public void setUpLongDistanceAdapter() {
+    public void setUpLongDistancesAdapter() {
 
         mRvLongDistances.setAdapter(mLongDistancesAdapter);
         mRvLongDistances.setHasFixedSize(true);
         mRvLongDistances.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mLongDistancesAdapter.giveAdapterValue(giveValueToAdapter(1, 4));
+
+        mLongDistancesAdapter.giveAdapterValue(elementArray(LONGDISTANCES));
     }
 
-    private ArrayList<Integer> giveValueToAdapter(int start, int end) {
 
-        ArrayList<Integer> arr = new ArrayList<>();
-
-        for (int i = start; i < end; i++) {
-            arr.add(i);
-        }
-        return arr;
-    }
-
-    private ArrayList<Element> elementArray(String element) {
+    private ArrayList<Element> elementArray(String el) {
         ArrayList<Element> arrElement = new ArrayList<>();
-        if (element.equals("mountains")) {
-            String[] mountainsNames = getResources().getStringArray(R.array.mountains);
-            int[] elevation = getResources().getIntArray(R.array.mountainsElevation);
-            int[] images = {R.drawable.meverest, R.drawable.mk2, R.drawable.mkangchenjunga, R.drawable.mnangaparbat, R.drawable.mlhotse, R.drawable.mmakalu, R.drawable.mmanaslu, R.drawable.mchooyu, R.drawable.mkilimanjaro, R.drawable.mdenali};
+
+        switch (el) {
+
+            case MOUNTAINS:
+                String[] mountainsNames = getResources().getStringArray(R.array.mountains);
+                int[] elevation = getResources().getIntArray(R.array.mountainsElevation);
+                int[] images = {R.drawable.meverest, R.drawable.mk2, R.drawable.mkangchenjunga, R.drawable.mnangaparbat, R.drawable.mlhotse, R.drawable.mmakalu, R.drawable.mmanaslu, R.drawable.mchooyu, R.drawable.mkilimanjaro, R.drawable.mdenali};
 
 
-            for (int i = 0; i < 3; i++) {
-                Element obj = new Element();
-                obj.setName(mountainsNames[i]);
-                obj.setElevation(elevation[i]);
-                obj.setImages(images[i]);
-                arrElement.add(obj);
-            }
+                for (int i = 0; i < SHOWITEM; i++) {
+                    Element obj = new Element();
+                    obj.setName(mountainsNames[i]);
+                    obj.setElevation(elevation[i]);
+                    obj.setImages(images[i]);
+                    arrElement.add(obj);
+                }
+                break;
+            case MONUMENTS:
+                String[] monumentsNames = getResources().getStringArray(R.array.monumentsNames);
+                int[] monumentsHeights = getResources().getIntArray(R.array.monumentsHeights);
+                int[] monumentsImages = {R.drawable.statueofliberty, R.drawable.eiffeltower, R.drawable.christtheredeemer, R.drawable.greatpyramidofgiza, R.drawable.tajmahal, R.drawable.stonehenge, R.drawable.acropolisofathens, R.drawable.greatwallofchina, R.drawable.burjkhalifa, R.drawable.colosseum};
+
+                for (int i = 0; i < SHOWITEM; i++) {
+                    Element obj = new Element();
+                    obj.setName(monumentsNames[i]);
+                    obj.setElevation(monumentsHeights[i]);
+                    obj.setImages(monumentsImages[i]);
+                    arrElement.add(obj);
+                }
+                break;
+
+            case LONGDISTANCES:
+                String[] longDistancesNames = getResources().getStringArray(R.array.longDistancesNames);
+                int[] longDistancesLengths = getResources().getIntArray(R.array.longDistancesLengths);
+                int[] longDistancesImages = {R.drawable.atacamacrossingchile, R.drawable.marathonofthemidnightsunnorway, R.drawable.greatethiopianrunethiopia, R.drawable.comradesmarathonsouthafrica, R.drawable.junglemarathonbrazil, R.drawable.twooceansmarathonsouthafrica, R.drawable.bagantemplemarathonmyanmar, R.drawable.icemarathonantarctica, R.drawable.tenzinhillaryeverestmarathonnepal, R.drawable.fujisanmarathonjapan};
+
+                for (int i = 0; i < SHOWITEM; i++) {
+                    Element obj = new Element();
+                    obj.setName(longDistancesNames[i]);
+                    obj.setElevation(longDistancesLengths[i]);
+                    obj.setImages(longDistancesImages[i]);
+                    arrElement.add(obj);
+                }
+                break;
         }
+
+
         return arrElement;
     }
 
@@ -127,13 +155,13 @@ public class LandingPageActivity extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.tv_mountains:
-                viewAll.putExtra("id", "mountains");
+                viewAll.putExtra(ID, MOUNTAINS);
                 break;
             case R.id.tv_monuments:
-                viewAll.putExtra("id", "monuments");
+                viewAll.putExtra(ID, MONUMENTS);
                 break;
             case R.id.tv_long_distances:
-                viewAll.putExtra("id", "long distances");
+                viewAll.putExtra(ID, LONGDISTANCES);
                 break;
         }
 
@@ -141,8 +169,8 @@ public class LandingPageActivity extends AppCompatActivity {
     }
 
     public void btnViewAllClick(View view) {
-//        Intent viewAll = new Intent(this, ViewAllActivity.class);
-//        viewAll.putExtra("id", "view all");
-//        this.startActivity(viewAll);
+        Intent viewAll = new Intent(this, ViewAllActivity.class);
+        viewAll.putExtra(ID, VIEWALL);
+        this.startActivity(viewAll);
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.hapadim.ViewAllActivity"
+    >
+
+    <item
+        android:id="@+id/item_ft_asc"
+        android:title="Sort Feet Ascending"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/item_ft_desc"
+        android:title="Sort Feet Descending"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/item_name_asc"
+        android:title="Sort Name Ascending"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/item_name_desc"
+        android:title="Sort Name Descending"
+        app:showAsAction="never" />
+
+</menu>

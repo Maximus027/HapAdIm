@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="monumentsNames">
+        <item>Statue of Liberty</item>
+        <item>Eiffel Tower</item>
+        <item>Christ the Redeemer</item>
+        <item>Great Pyramid of Giza</item>
+        <item>Taj Mahal</item>
+        <item>Stonehenge</item>
+        <item>Acropolis of Athens</item>
+        <item>Great Wall of China</item>
+        <item>Burj Khalifa</item>
+        <item>Colosseum</item>
+    </string-array>
+
+    <integer-array name="monumentsHeights">
+        <item>305</item>
+        <item>984</item>
+        <item>125</item>
+        <item>455</item>
+        <item>240</item>
+        <item>30</item>
+        <item>490</item>
+        <item>29041584</item>
+        <item>2722</item>
+        <item>157</item>
+    </integer-array>
+</resources>
