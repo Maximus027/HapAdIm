@@ -5,6 +5,7 @@ package com.example.hapadim;
  */
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.hapadim.MountainsNotifications.NotificationBuilder;
 import com.example.hapadim.adapters.LongDistancesAdapter;
 import com.example.hapadim.adapters.MonumentsAdapter;
 import com.example.hapadim.adapters.MountainAdapter;
@@ -32,11 +34,13 @@ public class LandingPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landingpage);
+        setUpNotification();
+
 
         mRvMountains = (RecyclerView) findViewById(R.id.rv_mountains);
         mRvMonuments = (RecyclerView) findViewById(R.id.rv_monuments);
         mRvLongDistances = (RecyclerView) findViewById(R.id.rv_long_distances);
-        mTvMountains = (TextView)findViewById(R.id.tv_mountains);
+        mTvMountains = (TextView) findViewById(R.id.tv_mountains);
 
 
         mMountainAdapter = new MountainAdapter();
@@ -48,6 +52,16 @@ public class LandingPageActivity extends AppCompatActivity {
         setUpLongDistanceAdapter();
 
     }
+
+    private void setUpNotification() {
+        Resources resources = getResources();
+        NotificationBuilder notificationBuilder =
+                new NotificationBuilder(R.drawable.unlockicon,
+                        resources.getString(R.string.notiAchievementTitles),
+                        resources.getString(R.string.everest1000));
+        notificationBuilder.makeNotification(getApplicationContext());
+    }
+
 
     public void setUpMountainsAdapter() {
 
@@ -66,7 +80,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mRvMonuments.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mMonumentsAdapter.giveAdapterValue(giveValueToAdapter(1,4));
+        mMonumentsAdapter.giveAdapterValue(giveValueToAdapter(1, 4));
     }
 
     public void setUpLongDistanceAdapter() {
@@ -79,38 +93,39 @@ public class LandingPageActivity extends AppCompatActivity {
         mLongDistancesAdapter.giveAdapterValue(giveValueToAdapter(1, 4));
     }
 
-    private ArrayList<Integer> giveValueToAdapter(int start, int end){
+    private ArrayList<Integer> giveValueToAdapter(int start, int end) {
 
         ArrayList<Integer> arr = new ArrayList<>();
 
-        for(int i=start; i<end; i++){
+        for (int i = start; i < end; i++) {
             arr.add(i);
         }
         return arr;
     }
-private ArrayList<Element> elementArray(String element){
-    ArrayList<Element>arrElement = new ArrayList<>();
-    if (element.equals("mountains")) {
-        String[] mountainsNames = getResources().getStringArray(R.array.mountains);
-        int[] elevation = getResources().getIntArray(R.array.mountainsElevation);
-        int[] images = {R.drawable.meverest, R.drawable.mk2, R.drawable.mkangchenjunga, R.drawable.mnangaparbat, R.drawable.mlhotse, R.drawable.mmakalu, R.drawable.mmanaslu, R.drawable.mchooyu, R.drawable.mkilimanjaro, R.drawable.mdenali};
+
+    private ArrayList<Element> elementArray(String element) {
+        ArrayList<Element> arrElement = new ArrayList<>();
+        if (element.equals("mountains")) {
+            String[] mountainsNames = getResources().getStringArray(R.array.mountains);
+            int[] elevation = getResources().getIntArray(R.array.mountainsElevation);
+            int[] images = {R.drawable.meverest, R.drawable.mk2, R.drawable.mkangchenjunga, R.drawable.mnangaparbat, R.drawable.mlhotse, R.drawable.mmakalu, R.drawable.mmanaslu, R.drawable.mchooyu, R.drawable.mkilimanjaro, R.drawable.mdenali};
 
 
-        for (int i = 0; i < 3; i++) {
-            Element obj = new Element();
-            obj.setName(mountainsNames[i]);
-            obj.setElevation(elevation[i]);
-            obj.setImages(images[i]);
-            arrElement.add(obj);
+            for (int i = 0; i < 3; i++) {
+                Element obj = new Element();
+                obj.setName(mountainsNames[i]);
+                obj.setElevation(elevation[i]);
+                obj.setImages(images[i]);
+                arrElement.add(obj);
+            }
         }
+        return arrElement;
     }
-    return arrElement;
-}
 
-    public void tvClick(View view){
+    public void tvClick(View view) {
         Intent viewAll = new Intent(this, ViewAllActivity.class);
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_mountains:
                 viewAll.putExtra("id", "mountains");
                 break;

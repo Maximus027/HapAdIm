@@ -12,13 +12,13 @@ import io.realm.RealmList;
 public class DBOperations {
 
     private static DBOperations instance;
-
     public static DBOperations getInstance() {
         if (instance == null) {
             instance = new DBOperations();
         }
         return instance;
     }
+
 
     DBOperations() {
 
