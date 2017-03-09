@@ -29,12 +29,12 @@
 
     <TextView
         android:id="@+id/locationName"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutDots"
         android:layout_marginBottom="@dimen/cardViewMargin"
-        android:layout_marginTop="@dimen/cardViewMargin" />
+        android:layout_marginTop="@dimen/cardViewMargin"
+        android:gravity="center_horizontal" />
 
     <RelativeLayout
         android:id="@+id/locationStartPageInfo"
@@ -80,13 +80,5 @@
         android:layout_below="@id/locationStartPageInfo"
         android:layout_marginBottom="@dimen/cardViewMargin"
         android:layout_marginTop="@dimen/cardViewMargin" />
-
-    <ImageView
-        android:id="@+id/VR_previewBox"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@id/locationFacts"
-        android:layout_marginLeft="@dimen/cardViewMargin"
-        android:layout_marginRight="@dimen/cardViewMargin" />
 
 </RelativeLayout>
