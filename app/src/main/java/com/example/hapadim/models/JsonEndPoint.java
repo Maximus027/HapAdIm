@@ -12,7 +12,6 @@ import java.io.InputStream;
 public class JsonEndPoint {
 
     public String readFromJsonFile(Context context) {
-        String jsonFile = "places.json";
         InputStream is = context.getResources().openRawResource(R.raw.places_json);
         StringBuffer sbJsonString = new StringBuffer();
         int character;

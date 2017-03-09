@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class StatueOfLiberty extends AppCompatActivity {
-//
+
 //    Places places = new Places();
 //
 //    public Places getPlaces() {

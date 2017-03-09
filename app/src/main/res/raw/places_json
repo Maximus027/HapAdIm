@@ -5,7 +5,7 @@
       "placeName":"Statue Of Liberty",
       "stepNumber":354,
       "distance": ,
-      "calories:,
+      "calories":,
       "urlVR":"https://www.youtube.com/watch?v=HDe0WErg5UQ",
       "urlImg":"url from server ",
       "badges":[
@@ -28,7 +28,7 @@
       "placeName":"Effiel Tower",
       "stepNumber":1920,
       "distance": ,
-      "calories:,
+      "calories":,
       "urlVR":"https://www.youtube.com/watch?v=sJxiPiAaB4k",
       "urlImg":"url from server ",
       "badges":[
@@ -52,7 +52,7 @@
       "placeName":"Empire State Building ",
       "stepNumber":1579,
       "distance": ,
-      "calories:,
+      "calories":,
       "urlVR":"https://www.youtube.com/watch?v=8hgwObX3ask",
       "urlImg":" ",
       "badges":[
@@ -100,7 +100,7 @@
       "placeName":"Mount Everest ",
       "stepNumber":58531,
       "distance": ,
-      "calories:,
+      "calories":,
       "urlVR":"https://www.youtube.com/watch?v=vaEY0RL8Fs4",
       "urlImg":" ",
       "badges":[
@@ -118,7 +118,7 @@
       "placeName":"K2",
       "stepNumber":56897,
       "distance": ,
-       "calories:,
+      "calories":,
       "urlVR":"https://www.youtube.com/watch?v=gzFRvWq1RWQ",
       "urlImg":" ",
       "badges":[
@@ -135,7 +135,8 @@
       "category":"Long Distance",
       "placeName":"From NJ to California ",
       "stepNumber":5768800,
-      "distance":"CaliforniaFamousplaceVR",
+      "distance": ,
+      "calories":,
       "urlVR":"figure",
       "urlImg":" ",
       "badges":[
