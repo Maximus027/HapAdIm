@@ -1,4 +1,4 @@
-package com.example.hapadim.MountainsNotifications;
+package com.example.hapadim;
 
 import android.app.NotificationManager;
 import android.content.Context;
