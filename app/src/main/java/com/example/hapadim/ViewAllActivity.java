@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hapadim.adapters.MountainAdapter;
-import com.squareup.picasso.Picasso;
 
 public class ViewAllActivity extends AppCompatActivity {
 
@@ -19,7 +18,7 @@ public class ViewAllActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.locationviewholder);
         ImageView imageView = (ImageView)findViewById(R.id.locationSlideImages) ;
-        Picasso.with(getApplicationContext()).load(R.drawable.mteverestimage).resize(300,300).into(imageView);
+//        Picasso.with(getApplicationContext()).load(R.drawable.mteverestimage).resize(300,300).into(imageView);
 
         TextView textView = (TextView) findViewById(R.id.locationFacts);
         textView.setText("Everest is 29,035 feet or 8848 meters high\n" +
