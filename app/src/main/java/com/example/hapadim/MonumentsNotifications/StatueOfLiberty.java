@@ -2,20 +2,18 @@ package com.example.hapadim.MonumentsNotifications;
 
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.hapadim.database.Places;
-
 /**
  * Created by queenabergen on 3/3/17.
  */
 
 public class StatueOfLiberty extends AppCompatActivity {
-
-    Places places = new Places();
-
-    public Places getPlaces() {
-        places.getBadges().get(0);
-        return places;
-    }
+//
+//    Places places = new Places();
+//
+//    public Places getPlaces() {
+//        places.getBadges().get(0);
+//        return places;
+//    }
 
 
 

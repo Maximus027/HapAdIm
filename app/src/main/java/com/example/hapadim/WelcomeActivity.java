@@ -24,6 +24,8 @@ import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getName();
+
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
@@ -190,4 +192,5 @@ public class WelcomeActivity extends AppCompatActivity {
             container.removeView(view);
         }
     }
+
 }
