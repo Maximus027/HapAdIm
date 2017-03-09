@@ -5,12 +5,14 @@ package com.example.hapadim;
  */
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.hapadim.MountainsNotifications.NotificationBuilder;
 import com.example.hapadim.adapters.LongDistancesAdapter;
 import com.example.hapadim.adapters.MonumentsAdapter;
 import com.example.hapadim.adapters.MountainAdapter;
@@ -37,6 +39,8 @@ public class LandingPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landingpage);
+        setUpNotification();
+
 
         mRvMountains = (RecyclerView) findViewById(R.id.rv_mountains);
         mRvMonuments = (RecyclerView) findViewById(R.id.rv_monuments);
@@ -51,6 +55,16 @@ public class LandingPageActivity extends AppCompatActivity {
         setUpLongDistancesAdapter();
 
     }
+
+    private void setUpNotification() {
+        Resources resources = getResources();
+        NotificationBuilder notificationBuilder =
+                new NotificationBuilder(R.drawable.unlockicon,
+                        resources.getString(R.string.notiAchievementTitles),
+                        resources.getString(R.string.everest1000));
+        notificationBuilder.makeNotification(getApplicationContext());
+    }
+
 
     public void setUpMountainsAdapter() {
 
@@ -83,8 +97,8 @@ public class LandingPageActivity extends AppCompatActivity {
         mLongDistancesAdapter.giveAdapterValue(elementArray(LONGDISTANCES));
     }
 
-    private ArrayList<Element> elementArray(String el) {
 
+    private ArrayList<Element> elementArray(String el) {
         ArrayList<Element> arrElement = new ArrayList<>();
 
         switch (el) {
@@ -141,7 +155,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.tv_mountains:
-                viewAll.putExtra(ID,MOUNTAINS);
+                viewAll.putExtra(ID, MOUNTAINS);
                 break;
             case R.id.tv_monuments:
                 viewAll.putExtra(ID, MONUMENTS);
