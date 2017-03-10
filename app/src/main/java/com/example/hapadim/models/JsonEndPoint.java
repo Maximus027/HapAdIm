@@ -18,9 +18,9 @@ import java.util.ArrayList;
 
 public class JsonEndPoint {
 
-    ArrayList<Place> mountains;
-    ArrayList<Place> monuments;
-    ArrayList<Place> longDistance;
+    private ArrayList<Place> mountains;
+    private ArrayList<Place> monuments;
+    private ArrayList<Place> longDistance;
 
     public String readFromJsonFile(Context context) {
         InputStream is = context.getResources().openRawResource(R.raw.places_json);
@@ -54,8 +54,10 @@ public class JsonEndPoint {
         mountains = new ArrayList<>();
         monuments = new ArrayList<>();
         longDistance = new ArrayList<>();
+
         try {
             JSONArray jsonArray = new JSONArray(jsonObject);
+
             for (int i = 0; i < jsonArray.length(); i++) {
                 Place place = new Place();
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
@@ -64,6 +66,7 @@ public class JsonEndPoint {
                 place.setUrlIMG(jsonObject1.getString("urlIMG"));
                 place.setStepNumber(jsonObject1.getLong("stepNumber"));
                 place.setUrlVR(jsonObject1.getString("urlVR"));
+
                 JSONArray badges = jsonObject1.getJSONArray("badges");
                 for (int j = 0; i < badges.length(); i++) {
                     JSONObject getBadge = badges.getJSONObject(i);
