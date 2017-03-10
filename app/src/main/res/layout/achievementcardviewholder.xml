@@ -28,7 +28,8 @@
             android:id="@+id/badgeDescription"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/badgeMarginCardView"
-            android:layout_toRightOf="@id/cardDivider" />
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/badgeMarginCardView" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

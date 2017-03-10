@@ -3,6 +3,7 @@
     package="com.example.hapadim">
 
     <uses-feature android:name="android.hardware.sensor.stepcounter" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -22,7 +23,6 @@
         <activity
             android:name=".LandingPageActivity"
             android:label="@string/title_activity_welcome"></activity>
-
         <activity
             android:name=".ViewAllActivity"
             android:label="View All">

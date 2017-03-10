@@ -1,6 +1,7 @@
 package com.example.hapadim.adapters;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +12,8 @@ import android.widget.TextView;
 
 import com.example.hapadim.R;
 import com.example.hapadim.ViewAllActivity;
-import com.example.hapadim.models.Element;
+import com.example.hapadim.models.Place;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -22,13 +24,14 @@ import java.util.ArrayList;
 
 public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<Element> temp;
+    private ArrayList<Place> temp;
+    Context context;
 
     public LongDistancesAdapter() {
 
     }
 
-    public void giveAdapterValue(ArrayList<Element> value) {
+    public void giveAdapterValue(ArrayList<Place> value) {
         this.temp = value;
         notifyDataSetChanged();
     }
@@ -64,10 +67,12 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         if (holder instanceof Holder) {
             Holder mHolder = (Holder) holder;
+            Long stepNumber = temp.get(position).getStepNumber();
+            String newStepNumber = stepNumber.toString();
 
-            mHolder.mTvName.setText(temp.get(position).getName() + "");
-            mHolder.mTvElevation.setText(temp.get(position).getElevation() + "");
-            mHolder.mImages.setImageResource(temp.get(position).getImages());
+            mHolder.mTvName.setText(temp.get(position).getPlaceName());
+            mHolder.mTvElevation.setText(newStepNumber);
+            Picasso.with(context).load(temp.get(position).getUrlIMG());
         }
 
     }
@@ -86,6 +91,7 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         private Holder(View itemView) {
             super(itemView);
+            context = itemView.getContext();
 
             mTvName = (TextView) itemView.findViewById(R.id.tv_name);
             mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
