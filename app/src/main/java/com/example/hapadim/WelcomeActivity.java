@@ -24,6 +24,8 @@ import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
+    private static final String TAG = MainActivity.class.getName();
+
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
@@ -118,7 +120,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomeActivity.this, SecondActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, LandingPageActivity.class));
         finish();
     }
 
@@ -190,4 +192,5 @@ public class WelcomeActivity extends AppCompatActivity {
             container.removeView(view);
         }
     }
+
 }

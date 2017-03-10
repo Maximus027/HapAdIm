@@ -8,7 +8,11 @@ import android.support.v7.app.NotificationCompat;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
+ * <<<<<<< HEAD
  * Created by queenabergen on 3/9/17.
+ * =======
+ * Created by queenabergen on 3/4/17.
+ * >>>>>>> 79ebe5445bdae4e2e1c40c356c792a388386dfac
  */
 
 public class NotificationBuilder {
@@ -24,12 +28,10 @@ public class NotificationBuilder {
         this.intent = intent;
     }
 
+    //add intent to parameters
     public void makeNotification(Context context) {
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.unlockicon)
-                        .setContentTitle(context.getString(R.string.notiAchievementTitles))
-                        .setContentText(context.getString(R.string.everest_Completion))
                         .setSmallIcon(icon)
                         .setContentTitle(contentTitle)
                         .setContentText(contentText);
@@ -38,6 +40,7 @@ public class NotificationBuilder {
         mNotificationManager.notify(1, mBuilder.build());
 
     }
+
 
 //    private void setUpNotification() {
 //        Resources resources = getResources();
@@ -48,3 +51,6 @@ public class NotificationBuilder {
 //        notificationBuilder.makeNotification(getApplicationContext());
 //    }
 }
+
+
+

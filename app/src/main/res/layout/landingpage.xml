@@ -7,20 +7,19 @@
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.hapadim.SecondActivity">
+    tools:context="com.example.hapadim.LandingPageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_mountains"
-            android:layout_marginLeft="@dimen/cardViewMargin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardViewMargin"
             android:onClick="tvClick"
             android:text="MOUNTAINS" />
 
@@ -40,9 +39,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_marginLeft="@dimen/cardViewMargin"
+            android:id="@+id/tv_monuments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardViewMargin"
             android:text="MONUMENTS" />
 
         <android.support.v7.widget.RecyclerView
@@ -56,10 +56,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/cardViewMargin"
         android:layout_weight="1"
         android:orientation="vertical">
 
+
         <TextView
+            android:id="@+id/tv_long_distances"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="LONG DISATANCES" />
@@ -70,5 +73,19 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
+
     </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/cardViewMargin"
+        android:layout_marginRight="@dimen/cardViewMargin"
+        android:layout_marginTop="@dimen/cardViewMargin"
+        android:background="#548fb7"
+        android:onClick="btnViewAllClick"
+        android:text="View All" />
 </LinearLayout>
+
+

@@ -24,7 +24,8 @@
     <string name="stateofmindbadge">Empire State of Mind Badge Acquired! Enjoy the 360 view available now!</string>
     <string name="victoryStatue">You\'ve Completed the ENTIRE length of the Statue of Liberty,Come see the view !</string>
     <string name="everest_Completion">Congratulations ! You\'ve completed Mt. Everest, Come see the view!</string>
-    <string name="everest1000">Congratulations ! You\'ve completed Mt. Everest, Come see the view!</string>
+    <string name="everest1000">CHANGE NOTIFICATION</string>
+    <!--TODO change notification string-->
     <string name="everest5000">You\'re well on your way to the top</string>
     <string name="everest5000expanded">TIP: Come off the bus or train a stop early to get those extra steps</string>
     <string name="everest10000">Congratulations ! You\'ve acquired the Everest Adventurer Badge !</string>
@@ -34,8 +35,6 @@
     <string name="walkingtip1">Park your car further back at the store and get a few more steps !</string>
     <string name="walkingtip2">Why not take the elevator and get those extra steps in !</string>
     <string name="walkingtip3">I Dare you to walk to the nearest bathroom and back</string>
-
-
 
 
 </resources>

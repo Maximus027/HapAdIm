@@ -1,34 +1,26 @@
-package com.example.hapadim.database;
+package com.example.hapadim.models;
 
-import io.realm.RealmList;
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-
-import static android.R.attr.id;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by meltemyildirim on 3/2/17.
+ * Created by meltemyildirim on 3/7/17.
  */
 
-public class Places extends RealmObject {
-    @PrimaryKey
-    private int placeId;
+public class Place {
+
+    private long placeId;
     private String category;
     private String placeName;
     private long stepNumber;
-    private String distance;
+    private long distance;
+    private long caloriesBurned;
     private String urlVR;
     private String urlIMG;
-    private RealmList<Badge> badges;
+    private List<Badge> badges;
 
-    //getter
-
-    public RealmList<Badge> getBadges() {
-        return badges;
-    }
-
-    public int getId() {
-        return id;
+    public long getPlaceId() {
+        return placeId;
     }
 
     public String getCategory() {
@@ -43,8 +35,12 @@ public class Places extends RealmObject {
         return stepNumber;
     }
 
-    public String getDistance() {
+    public long getDistance() {
         return distance;
+    }
+
+    public long getCaloriesBurned() {
+        return caloriesBurned;
     }
 
     public String getUrlVR() {
@@ -55,9 +51,16 @@ public class Places extends RealmObject {
         return urlIMG;
     }
 
+    public List<Badge> getBadges() {
+        if(badges != null){
+            return badges;
+        }
+        else{
+            return new ArrayList<>();
+        }
+    }
 
-    //setter
-    public void setPlaceId(int placeId) {
+    public void setPlaceId(long placeId) {
         this.placeId = placeId;
     }
 
@@ -73,8 +76,12 @@ public class Places extends RealmObject {
         this.stepNumber = stepNumber;
     }
 
-    public void setDistance(String distance) {
+    public void setDistance(long distance) {
         this.distance = distance;
+    }
+
+    public void setCaloriesBurned(long caloriesBurned) {
+        this.caloriesBurned = caloriesBurned;
     }
 
     public void setUrlVR(String urlVR) {
@@ -85,7 +92,7 @@ public class Places extends RealmObject {
         this.urlIMG = urlIMG;
     }
 
-    public void setBadges(RealmList<Badge> badges) {
+    public void setBadges(List<Badge> badges) {
         this.badges = badges;
     }
 }
