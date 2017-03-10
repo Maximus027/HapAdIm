@@ -1,6 +1,7 @@
 package com.example.hapadim.adapters;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,7 +12,8 @@ import android.widget.TextView;
 
 import com.example.hapadim.R;
 import com.example.hapadim.ViewAllActivity;
-import com.example.hapadim.models.Element;
+import com.example.hapadim.models.Place;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -22,13 +24,14 @@ import java.util.ArrayList;
 
 public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<Element> temp;
+    private ArrayList<Place> temp;
+    Context context;
 
     public MonumentsAdapter() {
 
     }
 
-    public void giveAdapterValue(ArrayList<Element> value) {
+    public void giveAdapterValue(ArrayList<Place> value) {
         this.temp = value;
         notifyDataSetChanged();
     }
@@ -59,24 +62,6 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     }
 
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-        if (holder instanceof Holder) {
-            Holder mHolder = (Holder) holder;
-
-            mHolder.mTvName.setText(temp.get(position).getName() + "");
-            mHolder.mTvElevation.setText(temp.get(position).getElevation() + "");
-            mHolder.mImages.setImageResource(temp.get(position).getImages());
-        }
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return temp.size() + 1;
-    }
-
 
     private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -86,6 +71,7 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         private Holder(View itemView) {
             super(itemView);
+
 
             mTvName = (TextView) itemView.findViewById(R.id.tv_name);
             mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
@@ -99,6 +85,33 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
     }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+
+        if (holder instanceof Holder) {
+            Holder mHolder = (Holder) holder;
+            Long stepNumber = temp.get(position).getStepNumber();
+            String newStepNumber = stepNumber.toString();
+
+            mHolder.mTvName.setText(temp.get(position).getPlaceName());
+            mHolder.mTvElevation.setText(newStepNumber);
+            Picasso.with(context).load(temp.get(position).getUrlIMG());
+            mHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return temp.size() + 1;
+    }
+
 
     private class Footer extends RecyclerView.ViewHolder implements View.OnClickListener {
 
