@@ -12,9 +12,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.example.hapadim.adapters.LocationAdapter;
 import com.example.hapadim.adapters.LongDistancesAdapter;
 import com.example.hapadim.adapters.MonumentsAdapter;
-import com.example.hapadim.adapters.MountainAdapter;
 import com.example.hapadim.models.Element;
 import com.example.hapadim.models.JsonEndPoint;
 
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class LandingPageActivity extends AppCompatActivity {
 
     private RecyclerView mRvMountains, mRvMonuments, mRvLongDistances;
-    private MountainAdapter mMountainAdapter;
+    private LocationAdapter mMountainAdapter;
     private MonumentsAdapter mMonumentsAdapter;
     private LongDistancesAdapter mLongDistancesAdapter;
     private JsonEndPoint endPoint;
@@ -49,8 +49,8 @@ public class LandingPageActivity extends AppCompatActivity {
         mRvMonuments = (RecyclerView) findViewById(R.id.rv_monuments);
         mRvLongDistances = (RecyclerView) findViewById(R.id.rv_long_distances);
 
-        mMountainAdapter = new MountainAdapter();
-        mMonumentsAdapter = new MonumentsAdapter();
+        mMountainAdapter = new LocationAdapter();
+        mMonumentsAdapter = new MonumentsAdapter(endPoint.getMountains());
         mLongDistancesAdapter = new LongDistancesAdapter();
 
         setUpMountainsAdapter();

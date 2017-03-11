@@ -37,7 +37,7 @@ public class ViewAllActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_all);
 
 //        mRvViewAll = (RecyclerView) findViewById(R.id.rv_view_all);
-//        mMountainAdapter = new MountainAdapter();
+//        mMountainAdapter = new LocationAdapter();
 //
 //
 //        mRvViewAll.setAdapter(mMountainAdapter);
