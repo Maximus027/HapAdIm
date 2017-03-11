@@ -1,8 +1,5 @@
 package com.example.hapadim;
 
-/**
- * Created by Nesada on 2/28/2017.
- */
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +19,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+/**
+ * Created by NesadaKoca on 2/28/2017.
+ */
+
 public class WelcomeActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getName();
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -190,4 +194,5 @@ public class WelcomeActivity extends AppCompatActivity {
             container.removeView(view);
         }
     }
+
 }

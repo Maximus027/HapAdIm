@@ -14,7 +14,7 @@ import com.example.hapadim.models.Element;
 import java.util.ArrayList;
 
 /**
- * Created by Nesada on 2/28/2017.
+ * Created by NesadaKoca on 2/28/2017.
  */
 
 public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> {
@@ -44,6 +44,12 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
         holder.mTvNameViewAll.setText(temp.get(position).getName() + "");
         holder.mTvElevationViewAll.setText(temp.get(position).getElevation() + "");
         holder.mImgViewAll.setImageResource(temp.get(position).getImages());
+        holder.mImgViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override

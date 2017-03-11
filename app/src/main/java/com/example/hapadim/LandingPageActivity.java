@@ -1,22 +1,26 @@
 package com.example.hapadim;
 
-/**
- * Created by Nesada on 2/28/2017.
- */
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+
 import com.example.hapadim.adapters.LongDistancesAdapter;
 import com.example.hapadim.adapters.MonumentsAdapter;
 import com.example.hapadim.adapters.MountainAdapter;
 import com.example.hapadim.models.Element;
+import com.example.hapadim.models.JsonEndPoint;
 
 import java.util.ArrayList;
 
+/**
+ * Created by NesadaKoca on 2/28/2017.
+ */
 
 public class LandingPageActivity extends AppCompatActivity {
 
@@ -24,6 +28,7 @@ public class LandingPageActivity extends AppCompatActivity {
     private MountainAdapter mountainAdapter;
     private MonumentsAdapter monumentsAdapter;
     private LongDistancesAdapter longDistancesAdapter;
+    private JsonEndPoint endPoint;
 
     private static final String MOUNTAINS = "mountains";
     private static final String MONUMENTS = "monuments";
@@ -36,6 +41,10 @@ public class LandingPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landingpage);
+        setUpNotification();
+        endPoint = new JsonEndPoint();
+        endPoint.populateLocations(endPoint.readFromJsonFile(getApplicationContext()));
+
 
         mountainsRV = (RecyclerView) findViewById(R.id.rv_mountains);
         monumentsRV = (RecyclerView) findViewById(R.id.rv_monuments);
@@ -52,6 +61,16 @@ public class LandingPageActivity extends AppCompatActivity {
 
     }
 
+    private void setUpNotification() {
+        Resources resources = getResources();
+        NotificationBuilder notificationBuilder =
+                new NotificationBuilder(R.drawable.unlockicon,
+                        resources.getString(R.string.notiAchievementTitles),
+                        resources.getString(R.string.everest1000));
+        notificationBuilder.makeNotification(getApplicationContext());
+    }
+
+
     public void setUpMountainsAdapter() {
 
         mountainsRV.setAdapter(mountainAdapter);
@@ -59,7 +78,12 @@ public class LandingPageActivity extends AppCompatActivity {
         mountainsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mountainAdapter.giveAdapterValue(elementArray(MOUNTAINS));
+
+       // mountainAdapter.giveAdapterValue(elementArray(MOUNTAINS));
+
+        mountainAdapter.giveAdapterValue(endPoint.getMountains());
+        Log.e("TEST",endPoint.getMountains().size() + "");
+
     }
 
     public void setUpMonumentsAdapter() {
@@ -69,7 +93,9 @@ public class LandingPageActivity extends AppCompatActivity {
         monumentsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        monumentsAdapter.giveAdapterValue(elementArray(MONUMENTS));
+       //monumentsAdapter.giveAdapterValue(elementArray(MONUMENTS));
+        monumentsAdapter.giveAdapterValue(endPoint.getMonuments());
+        Log.e("TEST",endPoint.getMountains().size() + "");
     }
 
     public void setUpLongDistancesAdapter() {
@@ -80,11 +106,13 @@ public class LandingPageActivity extends AppCompatActivity {
                 LinearLayoutManager.HORIZONTAL,
                 false));
 
-        longDistancesAdapter.giveAdapterValue(elementArray(LONGDISTANCES));
+        //longDistancesAdapter.giveAdapterValue(elementArray(LONGDISTANCES));
+        longDistancesAdapter.giveAdapterValue(endPoint.getLongDistance());
+        Log.e("TEST",endPoint.getLongDistance().size() + "");
     }
 
-    private ArrayList<Element> elementArray(String el) {
 
+    private ArrayList<Element> elementArray(String el) {
         ArrayList<Element> arrElement = new ArrayList<>();
 
         switch (el) {
@@ -141,7 +169,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.tv_mountains:
-                viewAll.putExtra(ID,MOUNTAINS);
+                viewAll.putExtra(ID, MOUNTAINS);
                 break;
             case R.id.tv_monuments:
                 viewAll.putExtra(ID, MONUMENTS);

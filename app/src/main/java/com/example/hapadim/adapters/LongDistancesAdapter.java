@@ -1,6 +1,7 @@
 package com.example.hapadim.adapters;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,24 +12,26 @@ import android.widget.TextView;
 
 import com.example.hapadim.R;
 import com.example.hapadim.ViewAllActivity;
-import com.example.hapadim.models.Element;
+import com.example.hapadim.models.Place;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 
 /**
- * Created by Nesada on 2/28/2017.
+ * Created by NesadaKoca on 2/28/2017.
  */
 
 public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<Element> temp;
+    private ArrayList<Place> temp;
+    Context context;
 
     public LongDistancesAdapter() {
 
     }
 
-    public void giveAdapterValue(ArrayList<Element> value) {
+    public void giveAdapterValue(ArrayList<Place> value) {
         this.temp = value;
         notifyDataSetChanged();
     }
@@ -64,10 +67,13 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         if (holder instanceof Holder) {
             Holder mHolder = (Holder) holder;
+            Long stepNumber = temp.get(position).getStepNumber();
+            String newStepNumber = stepNumber.toString();
 
-            mHolder.tvName.setText(temp.get(position).getName() + "");
-            mHolder.tvElevation.setText(temp.get(position).getElevation() + "");
-            mHolder.images.setImageResource(temp.get(position).getImages());
+
+            mHolder.tvName.setText(temp.get(position).getPlaceName());
+            mHolder.tvElevation.setText(newStepNumber);
+            Picasso.with(context).load(temp.get(position).getUrlIMG());
         }
 
     }
@@ -86,6 +92,7 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         private Holder(View itemView) {
             super(itemView);
+            context = itemView.getContext();
 
             tvName = (TextView) itemView.findViewById(R.id.tv_name);
             tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);

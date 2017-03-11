@@ -17,6 +17,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Created by NesadaKoca on 2/28/2017.
+ */
+
 public class ViewAllActivity extends AppCompatActivity {
 
     private RecyclerView viewAllRV;
@@ -35,6 +39,7 @@ public class ViewAllActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all);
+
 
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,7 +73,7 @@ public class ViewAllActivity extends AppCompatActivity {
         ArrayList<Element> arrEl = new ArrayList<>();
         arrEl = elementArray(name);
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.item_ft_asc:
                 Collections.sort(arrEl, new Comparator<Element>() {
