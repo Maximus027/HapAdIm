@@ -7,7 +7,7 @@
       "distance": ,
       "calories":,
       "urlVR":"https://www.youtube.com/watch?v=HDe0WErg5UQ",
-      "urlImg":"url from server ",
+      "urlImg":"http://i67.tinypic.com/mcaj4l.jpg",
       "badges":[
          {
             "badgeId":1,
@@ -30,7 +30,7 @@
       "distance": ,
       "calories":,
       "urlVR":"https://www.youtube.com/watch?v=sJxiPiAaB4k",
-      "urlImg":"url from server ",
+      "urlImg":"http://i68.tinypic.com/v3hx1i.jpg",
       "badges":[
          {
             "badgeId":1,
@@ -54,7 +54,7 @@
       "distance": ,
       "calories":,
       "urlVR":"https://www.youtube.com/watch?v=8hgwObX3ask",
-      "urlImg":" ",
+      "urlImg":"http://i68.tinypic.com/de5phf.jpg",
       "badges":[
          {
             "badgeId":1,
@@ -65,37 +65,188 @@
       ]
    },
    {
-      "placeId":4,
-      "category":"Monument",
-      "placeName":"Sears Tower/ Willis Tower  ",
-      "stepNumber":2109,
-      "distance": ,
+       "placeId":4,
+       "category":"Monument",
+       "placeName":"Sears Tower/ Willis Tower  ",
+       "stepNumber":2109,
+       "distance": ,
        "calories:,
-      "urlVR":"https://www.youtube.com/watch?v=PWbqlgO-urs",
-      "urlImg":" ",
-      "badges":[
-         {
-            "badgeId":1,
-            "badgedName":"Sears Savage Badge",
-            "badgeImg":" ",
-            "badgeDesc":"Keep Griding"
-         },
-         {
-            "badgeId":2,
-            "badgedName":"Willis Wanderer Badge",
-            "badgeImg":" ",
-            "badgeDesc":"You're half way there, make it to the top ! "
-         },
-         {
-            "badgeId":3,
-            "badgedName":"Sears Clouds Badge",
-            "badgeImg":" ",
-            "badgeDesc":"With only a few more steps, keep going"
-         }
-      ]
+       "urlVR":"https://www.youtube.com/watch?v=PWbqlgO-urs",
+       "urlImg":"http://i68.tinypic.com/2quoe15.jpg",
+       "badges":[
+           {
+             "badgeId":1,
+             "badgedName":"Sears Savage Badge",
+             "badgeImg":" ",
+             "badgeDesc":"Keep Griding"
+           },
+           {
+             "badgeId":2,
+             "badgedName":"Willis Wanderer Badge",
+             "badgeImg":" ",
+             "badgeDesc":"You're half way there, make it to the top ! "
+           },
+           {
+             "badgeId":3,
+             "badgedName":"Sears Clouds Badge",
+             "badgeImg":" ",
+             "badgeDesc":"With only a few more steps, keep going"
+           }
+       ]
    },
    {
-      "placeId":5,
+        "placeId":5,
+        "category":"Monument",
+        "placeName":"St.Louis Gateway Arch ",
+        "stepNumber":1076,
+        "distance": ,
+        "calories:,
+        "urlVR":"https://www.youtube.com/watch?v=7c0IMH3Rnro ",
+        "urlImg":"http://i64.tinypic.com/15zfm2w.jpg",
+        "badges":[
+            {
+             "badgeId":1,
+             "badgedName":"Golden Gate Graduate",
+             "badgeImg":" ",
+             "badgeDesc":"Never Give Up!"
+            },
+        ]
+   },
+   {
+         "placeId":6,
+         "category":"Monument",
+         "placeName":"Golden Bridge  ",
+         "stepNumber":4276,
+         "distance": ,
+          "calories:,
+         "urlVR":"https://www.youtube.com/watch?v=VZ8nEJTX3Vk",
+         "urlImg":"http://i68.tinypic.com/k3my37.jpg",
+         "badges":[
+            {
+              "badgeId":1,
+              "badgedName":"Golden Gate Graduate",
+              "badgeImg":" ",
+              "badgeDesc":"Never Give Up!"
+            },
+         ]
+   },
+   {
+        "placeId":7,
+        "category":"Monument",
+        "placeName":"Christ the Redeemer",
+        "stepNumber":300,
+        "distance": ,
+        "calories:,
+        "urlVR":"https://www.youtube.com/watch?v=VZ8nEJTX3Vk",
+        "urlImg":"http://i63.tinypic.com/2qnm9p1.jpg",
+        "badges":[
+            {
+              "badgeId":1,
+              "badgedName":"Jesus Christ!",
+              "badgeImg":" ",
+              "badgeDesc":" "
+            },
+        ]
+   },
+   {
+        "placeId":8,
+        "category":"Monument",
+        "placeName":"Christ the Redeemer",
+        "stepNumber":300,
+        "distance": ,
+        "calories:,
+        "urlVR":" ",
+        "urlImg":"http://i63.tinypic.com/2qnm9p1.jpg",
+        "badges":[
+            {
+              "badgeId":1,
+              "badgedName":"Jesus Christ!",
+              "badgeImg":" ",
+              "badgeDesc":" "
+            },
+        ]
+   },
+   {
+        "placeId":9,
+        "category":"Monument",
+        "placeName":"Great Pyramid of Giza",
+        "stepNumber":432,
+        "distance": ,
+        "calories:,
+        "urlVR":" ",
+        "urlImg":"http://i66.tinypic.com/2b8md0.jpg",
+        "badges":[
+           {
+             "badgeId":1,
+             "badgedName":"Golden wand of the Pharaoh",
+             "badgeImg":" ",
+             "badgeDesc":" "
+           },
+        ]
+   },
+   {
+        "placeId":10,
+        "category":"Monument",
+        "placeName":"Taj Mahal",
+        "stepNumber":349,
+        "distance": ,
+        "calories:,
+        "urlVR":" ",
+        "urlImg":"http://i63.tinypic.com/2ew14zc.jpg",
+        "badges":[
+           {
+             "badgeId":1,
+             "badgedName":"Namaste!",
+             "badgeImg":" ",
+             "badgeDesc":" "
+           },
+        ]
+   },
+   {
+        "placeId":11,
+        "category":"Monument",
+        "placeName":"Great Wall",
+        "stepNumber":11616634,
+        "distance": ,
+        "calories:,
+        "urlVR":" ",
+        "urlImg":"http://i68.tinypic.com/vo924z.jpg",
+        "badges":[
+           {
+             "badgeId":1,
+             "badgedName":"White Dragon medal",
+             "badgeImg":" ",
+             "badgeDesc":" "
+           },
+        ]
+   },
+   {
+        "placeId":12,
+        "category":"Monument",
+        "placeName":"Burj Khalifa",
+        "stepNumber":1089,
+        "distance": ,
+        "calories:,
+        "urlVR":" ",
+        "urlImg":"http://i66.tinypic.com/149t89x.jpg",
+        "badges":[
+           {
+             "badgeId":1,
+             "badgedName":"Diamond of the Sheikh ",
+             "badgeImg":" ",
+             "badgeDesc":" "
+           },
+        ]
+   },
+
+
+
+
+
+
+
+   {
+      "placeId":7,
       "category":"Mountain",
       "placeName":"Mount Everest ",
       "stepNumber":58531,
@@ -113,7 +264,7 @@
       ]
    },
    {
-      "placeId":6,
+      "placeId":8,
       "category":"Mountain",
       "placeName":"K2",
       "stepNumber":56897,
@@ -131,7 +282,7 @@
       ]
    },
    {
-      "placeId":7,
+      "placeId":9,
       "category":"Long Distance",
       "placeName":"From NJ to California ",
       "stepNumber":5768800,
