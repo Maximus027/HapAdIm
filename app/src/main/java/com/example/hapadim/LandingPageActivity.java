@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.hapadim.adapters.LongDistancesAdapter;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 
 public class LandingPageActivity extends AppCompatActivity {
 
+    private static final String TAG = LandingPageActivity.class.getName();
     private RecyclerView mRvMountains, mRvMonuments, mRvLongDistances;
     private MountainAdapter mMountainAdapter;
     private MonumentsAdapter mMonumentsAdapter;
@@ -42,7 +44,9 @@ public class LandingPageActivity extends AppCompatActivity {
         setContentView(R.layout.landingpage);
         setUpNotification();
         endPoint = new JsonEndPoint();
-        endPoint.populateLocations(endPoint.readFromJsonFile(getApplicationContext()));
+        String jsonString = endPoint.readFromJsonFile(this);
+        Log.d(TAG, jsonString);
+        endPoint.populateLocations(jsonString);
 
 
         mRvMountains = (RecyclerView) findViewById(R.id.rv_mountains);
@@ -50,7 +54,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mRvLongDistances = (RecyclerView) findViewById(R.id.rv_long_distances);
 
         mMountainAdapter = new MountainAdapter();
-        mMonumentsAdapter = new MonumentsAdapter();
+        mMonumentsAdapter = new MonumentsAdapter(endPoint.getMonuments());
         mLongDistancesAdapter = new LongDistancesAdapter();
 
         setUpMountainsAdapter();

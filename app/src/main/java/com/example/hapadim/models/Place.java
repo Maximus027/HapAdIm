@@ -1,23 +1,25 @@
 package com.example.hapadim.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by meltemyildirim on 3/7/17.
  */
-
+@Parcel
 public class Place {
 
-    private long placeId;
-    private String category;
-    private String placeName;
-    private long stepNumber;
-    private long distance;
-    private long caloriesBurned;
-    private String urlVR;
-    private String urlIMG;
-    private List<Badge> badges;
+    public long placeId;
+    public String category;
+    public String placeName;
+    public long stepNumber;
+    public long distance;
+    public long caloriesBurned;
+    public String urlVR;
+    public String urlIMG;
+    public List<Badge> badges;
 
     public long getPlaceId() {
         return placeId;
@@ -52,10 +54,9 @@ public class Place {
     }
 
     public List<Badge> getBadges() {
-        if(badges != null){
+        if (badges != null) {
             return badges;
-        }
-        else{
+        } else {
             return new ArrayList<>();
         }
     }

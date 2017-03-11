@@ -4,6 +4,7 @@ package com.example.hapadim.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.example.hapadim.models.Place;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -24,22 +26,25 @@ import java.util.ArrayList;
 
 public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<Place> temp;
+    private List<Place> monuments;
     Context context;
+    public static final String TAG = MonumentsAdapter.class.getName();
 
-    public MonumentsAdapter() {
+    public MonumentsAdapter(List<Place> monuments) {
+        Log.d(TAG, "Monuments size " + monuments.size());
+        this.monuments = monuments;
 
     }
 
     public void giveAdapterValue(ArrayList<Place> value) {
-        this.temp = value;
+        this.monuments = value;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemViewType(int position) {
 
-        if (position < temp.size()) {
+        if (position < monuments.size()) {
             return 0;
         } else {
             return 1;
@@ -91,12 +96,12 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         if (holder instanceof Holder) {
             Holder mHolder = (Holder) holder;
-            Long stepNumber = temp.get(position).getStepNumber();
+            Long stepNumber = monuments.get(position).getStepNumber();
             String newStepNumber = stepNumber.toString();
-
-            mHolder.mTvName.setText(temp.get(position).getPlaceName());
+            String placeName = monuments.get(position).getPlaceName();
+            mHolder.mTvName.setText(placeName);
             mHolder.mTvElevation.setText(newStepNumber);
-            Picasso.with(context).load(temp.get(position).getUrlIMG());
+            Picasso.with(context).load(monuments.get(position).getUrlIMG());
             mHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -109,7 +114,7 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return temp.size() + 1;
+        return monuments.size();
     }
 
 

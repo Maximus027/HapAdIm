@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+
     private ArrayList<Place> temp;
     Context context;
 
@@ -108,7 +109,6 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     private class Footer extends RecyclerView.ViewHolder implements View.OnClickListener {
-
         private Footer(View itemView) {
             super(itemView);
 

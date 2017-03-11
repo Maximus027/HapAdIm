@@ -1,12 +1,15 @@
 package com.example.hapadim.models;
 
 import android.content.Context;
+import android.os.Parcelable;
+import android.util.Log;
 
 import com.example.hapadim.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,9 +21,10 @@ import java.util.ArrayList;
 
 public class JsonEndPoint {
 
-    ArrayList<Place> mountains;
-    ArrayList<Place> monuments;
-    ArrayList<Place> longDistance;
+    public static ArrayList<Place> mountains;
+    public static ArrayList<Place> monuments;
+    public static ArrayList<Place> longDistance;
+    public static final String TAG = JsonEndPoint.class.getName();
 
     public String readFromJsonFile(Context context) {
         InputStream is = context.getResources().openRawResource(R.raw.places_json);
@@ -56,6 +60,7 @@ public class JsonEndPoint {
         longDistance = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(jsonObject);
+            Log.d(TAG, "JSONArr size " + jsonArray.length());
             for (int i = 0; i < jsonArray.length(); i++) {
                 Place place = new Place();
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
@@ -65,7 +70,7 @@ public class JsonEndPoint {
                 place.setStepNumber(jsonObject1.getLong("stepNumber"));
                 place.setUrlVR(jsonObject1.getString("urlVR"));
                 JSONArray badges = jsonObject1.getJSONArray("badges");
-                for (int j = 0; i < badges.length(); i++) {
+                for (int j = 0; j < badges.length(); j++) {
                     JSONObject getBadge = badges.getJSONObject(i);
                     Badge badge = new Badge();
                     badge.setBadgeDesc(getBadge.getString("badgedName"));
@@ -74,6 +79,7 @@ public class JsonEndPoint {
                 }
                 if (place.getCategory().equals("Mountains")) {
                     mountains.add(place);
+
                 } else if (place.getCategory().equals("Monuments")) {
                     monuments.add(place);
                 } else {
@@ -85,6 +91,11 @@ public class JsonEndPoint {
             e.printStackTrace();
         }
 
+
+    }
+
+    public void wrapParcelables(Boolean facts) {
+        Parcelable wrapped = Parcels.wrap(new Place());
 
     }
 
