@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 
 /**
- * Created by Nesada on 2/28/2017.
+ * Created by NesadaKoca on 2/28/2017.
  */
 
 public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -70,8 +70,9 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
             Long stepNumber = temp.get(position).getStepNumber();
             String newStepNumber = stepNumber.toString();
 
-            mHolder.mTvName.setText(temp.get(position).getPlaceName());
-            mHolder.mTvElevation.setText(newStepNumber);
+
+            mHolder.tvName.setText(temp.get(position).getPlaceName());
+            mHolder.tvElevation.setText(newStepNumber);
             Picasso.with(context).load(temp.get(position).getUrlIMG());
         }
 
@@ -85,17 +86,17 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView mTvName, mTvElevation;
-        ImageView mImages;
+        TextView tvName, tvElevation;
+        ImageView images;
 
 
         private Holder(View itemView) {
             super(itemView);
             context = itemView.getContext();
 
-            mTvName = (TextView) itemView.findViewById(R.id.tv_name);
-            mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
-            mImages = (ImageView) itemView.findViewById(R.id.images);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
+            images = (ImageView) itemView.findViewById(R.id.images);
             itemView.setOnClickListener(this);
         }
 

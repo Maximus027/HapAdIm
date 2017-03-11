@@ -17,10 +17,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Created by NesadaKoca on 2/28/2017.
+ */
+
 public class ViewAllActivity extends AppCompatActivity {
 
-    private RecyclerView mRvViewAll;
-    private ViewAllAdapter mViewAllAdapter;
+    private RecyclerView viewAllRV;
+    private ViewAllAdapter viewAllAdapter;
     private Bundle bundle;
 
     private static final String MOUNTAINS = "mountains";
@@ -36,18 +40,6 @@ public class ViewAllActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all);
 
-//        mRvViewAll = (RecyclerView) findViewById(R.id.rv_view_all);
-//        mMountainAdapter = new MountainAdapter();
-//
-//
-//        mRvViewAll.setAdapter(mMountainAdapter);
-//        mRvViewAll.setHasFixedSize(true);
-//        mRvViewAll.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
-//                LinearLayoutManager.VERTICAL,
-//                false));
-//
-//        SecondActivity secondActivity = new SecondActivity();
-//        mMountainAdapter.giveAdapterValue(secondActivity.giveValueToAdapter(1, 10));
 
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -57,8 +49,8 @@ public class ViewAllActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mRvViewAll = (RecyclerView) findViewById(R.id.rv_view_all);
-        mViewAllAdapter = new ViewAllAdapter();
+        viewAllRV = (RecyclerView) findViewById(R.id.rv_view_all);
+        viewAllAdapter = new ViewAllAdapter();
 
         bundle = getIntent().getExtras();
         name = bundle.getString("id");
@@ -121,19 +113,19 @@ public class ViewAllActivity extends AppCompatActivity {
                 break;
         }
 
-        mViewAllAdapter.giveAdapterValue(arrEl);
+        viewAllAdapter.giveAdapterValue(arrEl);
 
         return super.onOptionsItemSelected(item);
     }
 
     private void setupViewAllAdapter() {
 
-        mRvViewAll.setAdapter(mViewAllAdapter);
-        mRvViewAll.setHasFixedSize(true);
-        mRvViewAll.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+        viewAllRV.setAdapter(viewAllAdapter);
+        viewAllRV.setHasFixedSize(true);
+        viewAllRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,
                 false));
-        mViewAllAdapter.giveAdapterValue(elementArray(name));
+        viewAllAdapter.giveAdapterValue(elementArray(name));
     }
 
     private ArrayList<Element> elementArray(String el) {

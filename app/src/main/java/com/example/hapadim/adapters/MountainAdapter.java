@@ -19,12 +19,12 @@ import java.util.ArrayList;
 
 
 /**
- * Created by Nesada on 2/28/2017.
+ * Created by NesadaKoca on 2/28/2017.
  */
 
 public class MountainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private TextView mTvTest;
+    private TextView tvTest;
     ArrayList<Place> temp;
     private Context context;
 
@@ -56,25 +56,66 @@ public class MountainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
             return new Footer(view);
 
-        } else {
+        } else{
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.landingpageviewholder, parent, false);
             return new Holder(view);
         }
 
     }
 
+//    @Override
+//    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+//
+//        if (holder instanceof Holder){
+//            Holder mHolder = (Holder) holder;
+//            mHolder.tvName.setText(temp.get(position).getName() + "");
+//            mHolder.tvElevation.setText(temp.get(position).getElevation()+ "");
+//            mHolder.images.setImageResource(temp.get(position).getImages());
+
+//        }
+//
+//    }
+//
+//    @Override
+//    public int getItemCount() {
+//
+//        return temp.size() +1;
+//    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+
+        if (holder instanceof Holder) {
+            Holder mHolder = (Holder) holder;
+            Long stepNumber = temp.get(position).getStepNumber();
+            String newStepNumber = stepNumber.toString();
+            mHolder.tvName.setText(temp.get(position).getPlaceName());
+            mHolder.tvElevation.setText(newStepNumber);
+            Picasso.with(context).load(temp.get(position).getUrlIMG());
+
+
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return temp.size() +1;
+    }
 
     private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView mTvName, mTvElevation;
-        ImageView mImages;
+        TextView tvName, tvElevation;
+        ImageView images;
+
 
 
         private Holder(View itemView) {
             super(itemView);
-            mTvName = (TextView) itemView.findViewById(R.id.tv_name);
-            mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
-            mImages = (ImageView) itemView.findViewById(R.id.images);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
+            images = (ImageView) itemView.findViewById(R.id.images);
+
             itemView.setOnClickListener(this);
         }
 
@@ -86,35 +127,14 @@ public class MountainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
-        if (holder instanceof Holder) {
-            Holder mHolder = (Holder) holder;
-            Long stepNumber = temp.get(position).getStepNumber();
-            String newStepNumber = stepNumber.toString();
-            mHolder.mTvName.setText(temp.get(position).getPlaceName());
-            mHolder.mTvElevation.setText(newStepNumber);
-            Picasso.with(context).load(temp.get(position).getUrlIMG());
-
-
-        }
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return temp.size();
-    }
-
 
     private class Footer extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Footer(View itemView) {
             super(itemView);
 
-            mTvTest = (TextView) itemView.findViewById(R.id.tv_test);
-            mTvTest.setOnClickListener(new View.OnClickListener() {
+            tvTest = (TextView) itemView.findViewById(R.id.tv_test);
+            tvTest.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent();

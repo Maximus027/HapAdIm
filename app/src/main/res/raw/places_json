@@ -246,7 +246,7 @@
 
 
    {
-      "placeId":7,
+      "placeId":13,
       "category":"Mountain",
       "placeName":"Mount Everest ",
       "stepNumber":58531,
@@ -264,7 +264,7 @@
       ]
    },
    {
-      "placeId":8,
+      "placeId":14,
       "category":"Mountain",
       "placeName":"K2",
       "stepNumber":56897,
@@ -282,7 +282,7 @@
       ]
    },
    {
-      "placeId":9,
+      "placeId":15,
       "category":"Long Distance",
       "placeName":"From NJ to California ",
       "stepNumber":5768800,
