@@ -21,7 +21,7 @@ import java.util.List;
 
 
 /**
- * Created by Nesada on 2/28/2017.
+ * Created by NesadaKoca on 2/28/2017.
  */
 
 public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -64,32 +64,20 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             return new Holder(view);
         }
 
-
     }
 
-
-    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        TextView mTvName, mTvElevation;
-        ImageView mImages;
-
-
-        private Holder(View itemView) {
-            super(itemView);
-
-
-            mTvName = (TextView) itemView.findViewById(R.id.tv_name);
-            mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
-            mImages = (ImageView) itemView.findViewById(R.id.images);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-
-        }
-
-    }
+//    @Override
+//    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+//
+//        if (holder instanceof Holder) {
+//            Holder mHolder = (Holder) holder;
+//
+////            mHolder.tvName.setText(monuments.get(position).getName() + "");
+////            mHolder.tvElevation.setText(monuments.get(position).getElevation() + "");
+////            mHolder.images.setImageResource(monuments.get(position).getImages());
+//        }
+//
+//    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
@@ -98,9 +86,9 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             Holder mHolder = (Holder) holder;
             Long stepNumber = monuments.get(position).getStepNumber();
             String newStepNumber = stepNumber.toString();
-            String placeName = monuments.get(position).getPlaceName();
-            mHolder.mTvName.setText(placeName);
-            mHolder.mTvElevation.setText(newStepNumber);
+
+            mHolder.tvName.setText(monuments.get(position).getPlaceName());
+            mHolder.tvElevation.setText(newStepNumber);
             Picasso.with(context).load(monuments.get(position).getUrlIMG());
             mHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -112,9 +100,35 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     }
 
+
+    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView tvName, tvElevation;
+        ImageView images;
+
+
+        private Holder(View itemView) {
+            super(itemView);
+
+
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
+            images = (ImageView) itemView.findViewById(R.id.images);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+        }
+
+    }
+
+
     @Override
     public int getItemCount() {
-        return monuments.size();
+        return monuments.size() + 1;
     }
 
 

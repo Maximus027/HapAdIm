@@ -199,12 +199,6 @@
 		}]
 	},
 
-
-
-
-
-
-
 	{
 		"placeId": 13,
 		"category": "Mountain",
@@ -251,4 +245,59 @@
 			"badgeDesc": ""
 		}]
 	}
+
+   {
+      "placeId":13,
+      "category":"Mountain",
+      "placeName":"Mount Everest ",
+      "stepNumber":58531,
+      "distance": ,
+      "calories":,
+      "urlVR":"https://www.youtube.com/watch?v=vaEY0RL8Fs4",
+      "urlImg":" ",
+      "badges":[
+         {
+            "badgeId":1,
+            "badgedName":"",
+            "badgeImg":"",
+            "badgeDesc":""
+         }
+      ]
+   },
+   {
+      "placeId":14,
+      "category":"Mountain",
+      "placeName":"K2",
+      "stepNumber":56897,
+      "distance": ,
+      "calories":,
+      "urlVR":"https://www.youtube.com/watch?v=gzFRvWq1RWQ",
+      "urlImg":" ",
+      "badges":[
+         {
+            "badgeId":1,
+            "badgedName":"",
+            "badgeImg":"",
+            "badgeDesc":""
+         }
+      ]
+   },
+   {
+      "placeId":15,
+      "category":"Long Distance",
+      "placeName":"From NJ to California ",
+      "stepNumber":5768800,
+      "distance": ,
+      "calories":,
+      "urlVR":"figure",
+      "urlImg":" ",
+      "badges":[
+         {
+            "badgeId":1,
+            "badgedName":"",
+            "badgeImg":"",
+            "badgeDesc":""
+         }
+      ]
+   }
 ]
