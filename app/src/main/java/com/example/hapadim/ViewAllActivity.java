@@ -36,6 +36,19 @@ public class ViewAllActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all);
 
+//        mRvViewAll = (RecyclerView) findViewById(R.id.rv_view_all);
+//        mMountainAdapter = new MountainAdapter();
+//
+//
+//        mRvViewAll.setAdapter(mMountainAdapter);
+//        mRvViewAll.setHasFixedSize(true);
+//        mRvViewAll.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+//                LinearLayoutManager.VERTICAL,
+//                false));
+//
+//        SecondActivity secondActivity = new SecondActivity();
+//        mMountainAdapter.giveAdapterValue(secondActivity.giveValueToAdapter(1, 10));
+
         try {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
@@ -68,7 +81,7 @@ public class ViewAllActivity extends AppCompatActivity {
         ArrayList<Element> arrEl = new ArrayList<>();
         arrEl = elementArray(name);
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.item_ft_asc:
                 Collections.sort(arrEl, new Comparator<Element>() {

@@ -15,68 +15,64 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_mountains"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardViewMargin"
+            android:onClick="tvClick"
+            android:text="MOUNTAINS" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_mountains"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_mountains"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="tvClick"
-                android:text="MOUNTAINS" />
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_mountains"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-            </android.support.v7.widget.RecyclerView>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_monuments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardViewMargin"
+            android:text="MONUMENTS" />
 
-        <LinearLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_monuments"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_monuments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MONUMENTS" />
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_monuments"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/cardViewMargin"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-            </android.support.v7.widget.RecyclerView>
-        </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_long_distances"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LONG DISATANCES" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_long_distances"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/cardViewMargin"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_long_distances"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LONG DISATANCES" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_long_distances"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-
-        </LinearLayout>
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 

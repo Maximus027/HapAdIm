@@ -16,6 +16,8 @@ import com.example.hapadim.adapters.LongDistancesAdapter;
 import com.example.hapadim.adapters.MonumentsAdapter;
 import com.example.hapadim.adapters.MountainAdapter;
 import com.example.hapadim.models.Element;
+import com.example.hapadim.models.JsonEndPoint;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class LandingPageActivity extends AppCompatActivity {
     private MountainAdapter mMountainAdapter;
     private MonumentsAdapter mMonumentsAdapter;
     private LongDistancesAdapter mLongDistancesAdapter;
+    private JsonEndPoint endPoint;
 
     private static final String MOUNTAINS = "mountains";
     private static final String MONUMENTS = "monuments";
@@ -34,11 +37,15 @@ public class LandingPageActivity extends AppCompatActivity {
     private static final String ID = "id";
     private static final int SHOWITEM = 4;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landingpage);
         setUpNotification();
+        endPoint = new JsonEndPoint();
+        endPoint.populateLocations(endPoint.readFromJsonFile(getApplicationContext()));
 
 
         mRvMountains = (RecyclerView) findViewById(R.id.rv_mountains);
@@ -52,7 +59,6 @@ public class LandingPageActivity extends AppCompatActivity {
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
         setUpLongDistancesAdapter();
-
     }
 
     private void setUpNotification() {
@@ -72,7 +78,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mRvMountains.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mMountainAdapter.giveAdapterValue(elementArray(MOUNTAINS));
+        mMountainAdapter.giveAdapterValue(endPoint.getMountains());
     }
 
     public void setUpMonumentsAdapter() {
@@ -82,7 +88,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mRvMonuments.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mMonumentsAdapter.giveAdapterValue(elementArray(MONUMENTS));
+        mMonumentsAdapter.giveAdapterValue(endPoint.getMonuments());
     }
 
     public void setUpLongDistancesAdapter() {
@@ -93,7 +99,7 @@ public class LandingPageActivity extends AppCompatActivity {
                 LinearLayoutManager.HORIZONTAL,
                 false));
 
-        mLongDistancesAdapter.giveAdapterValue(elementArray(LONGDISTANCES));
+        mLongDistancesAdapter.giveAdapterValue(endPoint.getLongDistance());
     }
 
 

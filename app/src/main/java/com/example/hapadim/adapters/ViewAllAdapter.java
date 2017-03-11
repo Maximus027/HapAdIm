@@ -44,6 +44,12 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
         holder.mTvNameViewAll.setText(temp.get(position).getName() + "");
         holder.mTvElevationViewAll.setText(temp.get(position).getElevation() + "");
         holder.mImgViewAll.setImageResource(temp.get(position).getImages());
+        holder.mImgViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
