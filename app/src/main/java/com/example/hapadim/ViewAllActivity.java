@@ -19,8 +19,8 @@ import java.util.Comparator;
 
 public class ViewAllActivity extends AppCompatActivity {
 
-    private RecyclerView mRvViewAll;
-    private ViewAllAdapter mViewAllAdapter;
+    private RecyclerView viewAllRV;
+    private ViewAllAdapter viewAllAdapter;
     private Bundle bundle;
 
     private static final String MOUNTAINS = "mountains";
@@ -44,8 +44,8 @@ public class ViewAllActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mRvViewAll = (RecyclerView) findViewById(R.id.rv_view_all);
-        mViewAllAdapter = new ViewAllAdapter();
+        viewAllRV = (RecyclerView) findViewById(R.id.rv_view_all);
+        viewAllAdapter = new ViewAllAdapter();
 
         bundle = getIntent().getExtras();
         name = bundle.getString("id");
@@ -108,19 +108,19 @@ public class ViewAllActivity extends AppCompatActivity {
                 break;
         }
 
-        mViewAllAdapter.giveAdapterValue(arrEl);
+        viewAllAdapter.giveAdapterValue(arrEl);
 
         return super.onOptionsItemSelected(item);
     }
 
     private void setupViewAllAdapter() {
 
-        mRvViewAll.setAdapter(mViewAllAdapter);
-        mRvViewAll.setHasFixedSize(true);
-        mRvViewAll.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+        viewAllRV.setAdapter(viewAllAdapter);
+        viewAllRV.setHasFixedSize(true);
+        viewAllRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.VERTICAL,
                 false));
-        mViewAllAdapter.giveAdapterValue(elementArray(name));
+        viewAllAdapter.giveAdapterValue(elementArray(name));
     }
 
     private ArrayList<Element> elementArray(String el) {

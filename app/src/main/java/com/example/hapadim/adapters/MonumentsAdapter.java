@@ -63,9 +63,9 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if (holder instanceof Holder) {
             Holder mHolder = (Holder) holder;
 
-            mHolder.mTvName.setText(temp.get(position).getName() + "");
-            mHolder.mTvElevation.setText(temp.get(position).getElevation() + "");
-            mHolder.mImages.setImageResource(temp.get(position).getImages());
+            mHolder.tvName.setText(temp.get(position).getName() + "");
+            mHolder.tvElevation.setText(temp.get(position).getElevation() + "");
+            mHolder.images.setImageResource(temp.get(position).getImages());
         }
 
     }
@@ -78,16 +78,16 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView mTvName, mTvElevation;
-        ImageView mImages;
+        TextView tvName, tvElevation;
+        ImageView images;
 
 
         private Holder(View itemView) {
             super(itemView);
 
-            mTvName = (TextView) itemView.findViewById(R.id.tv_name);
-            mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
-            mImages = (ImageView) itemView.findViewById(R.id.images);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
+            images = (ImageView) itemView.findViewById(R.id.images);
             itemView.setOnClickListener(this);
         }
 

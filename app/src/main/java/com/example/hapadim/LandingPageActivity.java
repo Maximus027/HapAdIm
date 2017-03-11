@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-
+gi
 import com.example.hapadim.adapters.LongDistancesAdapter;
 import com.example.hapadim.adapters.MonumentsAdapter;
 import com.example.hapadim.adapters.MountainAdapter;
@@ -21,10 +21,10 @@ import java.util.ArrayList;
 
 public class LandingPageActivity extends AppCompatActivity {
 
-    private RecyclerView mRvMountains, mRvMonuments, mRvLongDistances;
-    private MountainAdapter mMountainAdapter;
-    private MonumentsAdapter mMonumentsAdapter;
-    private LongDistancesAdapter mLongDistancesAdapter;
+    private RecyclerView mountainsRV, monumentsRV, longDistancesRV;
+    private MountainAdapter mountainAdapter;
+    private MonumentsAdapter monumentsAdapter;
+    private LongDistancesAdapter longDistancesAdapter;
 
     private static final String MOUNTAINS = "mountains";
     private static final String MONUMENTS = "monuments";
@@ -38,49 +38,50 @@ public class LandingPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landingpage);
 
-        mRvMountains = (RecyclerView) findViewById(R.id.rv_mountains);
-        mRvMonuments = (RecyclerView) findViewById(R.id.rv_monuments);
-        mRvLongDistances = (RecyclerView) findViewById(R.id.rv_long_distances);
+        mountainsRV = (RecyclerView) findViewById(R.id.rv_mountains);
+        monumentsRV = (RecyclerView) findViewById(R.id.rv_monuments);
+        longDistancesRV = (RecyclerView) findViewById(R.id.rv_long_distances);
 
-        mMountainAdapter = new MountainAdapter();
-        mMonumentsAdapter = new MonumentsAdapter();
-        mLongDistancesAdapter = new LongDistancesAdapter();
+        mountainAdapter = new MountainAdapter();
+        monumentsAdapter = new MonumentsAdapter();
+        longDistancesAdapter = new LongDistancesAdapter();
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
         setUpLongDistancesAdapter();
 
+
     }
 
     public void setUpMountainsAdapter() {
 
-        mRvMountains.setAdapter(mMountainAdapter);
-        mRvMountains.setHasFixedSize(true);
-        mRvMountains.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+        mountainsRV.setAdapter(mountainAdapter);
+        mountainsRV.setHasFixedSize(true);
+        mountainsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mMountainAdapter.giveAdapterValue(elementArray(MOUNTAINS));
+        mountainAdapter.giveAdapterValue(elementArray(MOUNTAINS));
     }
 
     public void setUpMonumentsAdapter() {
 
-        mRvMonuments.setAdapter(mMonumentsAdapter);
-        mRvMonuments.setHasFixedSize(true);
-        mRvMonuments.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+        monumentsRV.setAdapter(monumentsAdapter);
+        monumentsRV.setHasFixedSize(true);
+        monumentsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
-        mMonumentsAdapter.giveAdapterValue(elementArray(MONUMENTS));
+        monumentsAdapter.giveAdapterValue(elementArray(MONUMENTS));
     }
 
     public void setUpLongDistancesAdapter() {
 
-        mRvLongDistances.setAdapter(mLongDistancesAdapter);
-        mRvLongDistances.setHasFixedSize(true);
-        mRvLongDistances.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
+        longDistancesRV.setAdapter(longDistancesAdapter);
+        longDistancesRV.setHasFixedSize(true);
+        longDistancesRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL,
                 false));
 
-        mLongDistancesAdapter.giveAdapterValue(elementArray(LONGDISTANCES));
+        longDistancesAdapter.giveAdapterValue(elementArray(LONGDISTANCES));
     }
 
     private ArrayList<Element> elementArray(String el) {
