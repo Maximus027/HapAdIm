@@ -14,7 +14,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static android.content.ContentValues.TAG;
+import static com.example.hapadim.adapters.MonumentsAdapter.TAG;
 
 /**
  * Created by meltemyildirim on 3/8/17.
@@ -28,7 +28,7 @@ public class JsonEndPoint {
     public JSONArray badges;
 
     public String readFromJsonFile(Context context) {
-        InputStream is = context.getResources().openRawResource(R.raw.places_json);
+        InputStream is = context.getResources().openRawResource(R.raw.places);
         StringBuffer sbJsonString = new StringBuffer();
         int character;
 
@@ -93,9 +93,5 @@ public class JsonEndPoint {
         } catch (JSONException e) {
             Log.d(TAG, "YOU HAVE ENTERED CATCH"+ Arrays.toString(e.getStackTrace()));
         }
-
-
-    }
-
-
+   }
 }
