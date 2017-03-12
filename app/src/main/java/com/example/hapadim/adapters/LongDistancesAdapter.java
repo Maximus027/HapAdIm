@@ -67,13 +67,13 @@ public class LongDistancesAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         if (holder instanceof Holder) {
             Holder mHolder = (Holder) holder;
-            Long stepNumber = temp.get(position).getStepNumber();
-            String newStepNumber = stepNumber.toString();
+            int stepNumber = temp.get(position).getStepNumber();
+            String newStepNumber = stepNumber + "";
 
 
             mHolder.tvName.setText(temp.get(position).getPlaceName());
             mHolder.tvElevation.setText(newStepNumber);
-            Picasso.with(context).load(temp.get(position).getUrlIMG());
+            Picasso.with(context).load(temp.get(position).getUrlImg());
         }
 
     }

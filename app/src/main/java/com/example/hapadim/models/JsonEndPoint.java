@@ -9,12 +9,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import static com.example.hapadim.adapters.MonumentsAdapter.TAG;
+import java.util.List;
 
 /**
  * Created by meltemyildirim on 3/8/17.
@@ -26,41 +26,48 @@ public class JsonEndPoint {
     private ArrayList<Place> monuments;
     private ArrayList<Place> longDistance;
     public JSONArray badges;
+    private final static String TAG = "json parser";
+    private PopulatedListListener listener;
 
-    public String readFromJsonFile(Context context) {
-        InputStream is = context.getResources().openRawResource(R.raw.places);
-        StringBuffer sbJsonString = new StringBuffer();
-        int character;
+    private static JsonEndPoint instance;
 
-        try {
-            while ((character = is.read()) != -1) {
-
-                sbJsonString.append((char) character);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static JsonEndPoint getInstance() {
+        if (instance == null) {
+            instance = new JsonEndPoint();
         }
-        return sbJsonString.toString();
+        return instance;
     }
 
-    public ArrayList<Place> getMountains() {
-        return mountains;
-    }
-
-    public ArrayList<Place> getMonuments() {
-        return monuments;
-    }
-
-    public ArrayList<Place> getLongDistance() {
-        return longDistance;
-    }
-
-    public void populateLocations(String jsonObject) {
-        Log.d(TAG, "THIS IS OBJECT: " + jsonObject);
+    private JsonEndPoint() {
         mountains = new ArrayList<>();
         monuments = new ArrayList<>();
         longDistance = new ArrayList<>();
+    }
 
+    public void setListener(PopulatedListListener listener) {
+        this.listener = listener;
+    }
+
+    private String readFromJsonFile(Context context) {
+        InputStream is = context.getResources().openRawResource(R.raw.places);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+        String line = "";
+        String result = "";
+        try {
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line;
+            }
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
+    public void populateLocations(Context context) {
+        String jsonObject = readFromJsonFile(context);
+        Log.d(TAG, "THIS IS OBJECT: " + jsonObject);
         try {
             Log.d(TAG, "YOU HAVE ENTERED TRY ");
             JSONArray jsonArray = new JSONArray(jsonObject);
@@ -70,28 +77,49 @@ public class JsonEndPoint {
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                 place.setCategory(jsonObject1.getString("category"));
                 place.setPlaceName(jsonObject1.getString("placeName"));
-                place.setUrlIMG(jsonObject1.getString("urlImg"));
-                place.setStepNumber(jsonObject1.getLong("stepNumber"));
+                place.setUrlImg(jsonObject1.getString("urlImg"));
+                place.setStepNumber(jsonObject1.getInt("stepNumber"));
                 place.setUrlVR(jsonObject1.getString("urlVR"));
+                badges = jsonObject1.getJSONArray("badges");
+
                 for (int j = 0; j < badges.length(); j++) {
-                    badges = jsonObject1.getJSONArray("badges");
-                    JSONObject getBadge = badges.getJSONObject(i);
+                    JSONObject getBadge = badges.getJSONObject(j);
                     Badge badge = new Badge();
                     badge.setBadgeDesc(getBadge.getString("badgeDesc"));
                     badge.setBadgedName(getBadge.getString("badgedName"));
                     badge.setBadgeImg(getBadge.getString("badgeImg"));
                 }
-                if (place.getCategory().equals("Mountains")) {
-                    mountains.add(place);
-                } else if (place.getCategory().equals("Monuments")) {
-                    monuments.add(place);
-                } else {
-                    longDistance.add(place);
 
+                if (place.getCategory().equals("Mountain")) {
+                    mountains.add(place);
+                } else if (place.getCategory().equals("Monument")) {
+                    monuments.add(place);
+                } else if (place.getCategory().equals("LongDistance")){
+                    longDistance.add(place);
                 }
             }
+
+            //listener.lists_are_populated();
         } catch (JSONException e) {
-            Log.d(TAG, "YOU HAVE ENTERED CATCH"+ Arrays.toString(e.getStackTrace()));
+            Log.e(TAG, "YOU HAVE ENTERED CATCH" + e);
         }
-   }
+    }
+
+
+    public List<Place> getMountains() {
+        return mountains;
+    }
+
+    public List<Place> getMonuments() {
+        return monuments;
+    }
+
+    public List<Place> getLongDistance() {
+        return longDistance;
+    }
+
+    public interface PopulatedListListener {
+        void lists_are_populated();
+    }
+
 }

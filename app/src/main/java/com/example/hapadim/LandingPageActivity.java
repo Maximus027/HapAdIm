@@ -10,13 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.example.hapadim.adapters.LocationAdapter;
 import com.example.hapadim.adapters.LongDistancesAdapter;
-import com.example.hapadim.adapters.MonumentsAdapter;
+import com.example.hapadim.adapters.LandMarksAdapter;
 import com.example.hapadim.adapters.MountainAdapter;
 import com.example.hapadim.models.Element;
 import com.example.hapadim.models.JsonEndPoint;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
@@ -29,7 +27,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private RecyclerView mountainsRV, monumentsRV, longDistancesRV;
     private MountainAdapter mountainAdapter;
-    private MonumentsAdapter monumentsAdapter;
+    private LandMarksAdapter landMarksAdapter;
     private LongDistancesAdapter longDistancesAdapter;
     private JsonEndPoint endPoint;
 
@@ -40,25 +38,49 @@ public class LandingPageActivity extends AppCompatActivity {
     private static final String ID = "id";
     private static final int SHOWITEM = 4;
 
+    private LandMarksAdapter mountainsAdapater;
+    private LandMarksAdapter monuments;
+    private LandMarksAdapter longDist;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.landingpage);
         setUpNotification();
-        endPoint = new JsonEndPoint();
-        endPoint.populateLocations(endPoint.readFromJsonFile(getApplicationContext()));
-
 
         mountainsRV = (RecyclerView) findViewById(R.id.rv_mountains);
         monumentsRV = (RecyclerView) findViewById(R.id.rv_monuments);
         longDistancesRV = (RecyclerView) findViewById(R.id.rv_long_distances);
 
-        mountainAdapter = new MountainAdapter();
-        monumentsAdapter = new MonumentsAdapter(endPoint.getMonuments());
-        longDistancesAdapter = new LongDistancesAdapter();
+        endPoint = JsonEndPoint.getInstance();
 
+
+        Log.d("json", "monuments size b4: " + endPoint.getMonuments().size());
+        Log.d("json", "long dist size b4: " + endPoint.getLongDistance().size());
+        Log.d("json", "mountains size b4: " + endPoint.getMountains().size());
+
+        mountainsAdapater = new LandMarksAdapter(endPoint.getMountains());
+        monuments = new LandMarksAdapter(endPoint.getMonuments());
+        longDist = new LandMarksAdapter(endPoint.getLongDistance());
+
+        JsonEndPoint.getInstance().setListener(new JsonEndPoint.PopulatedListListener() {
+            @Override
+            public void lists_are_populated() {
+
+                Log.d("json", "callback: " + endPoint.getMonuments().size());
+                Log.d("json", "callback: " + endPoint.getLongDistance().size());
+                Log.d("json", "callback: " + endPoint.getMountains().size());
+                mountainAdapter.notifyDataSetChanged();
+                monuments.notifyDataSetChanged();
+                longDist.notifyDataSetChanged();
+            }
+        });
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
@@ -76,43 +98,24 @@ public class LandingPageActivity extends AppCompatActivity {
 
 
     public void setUpMountainsAdapter() {
-
-        mountainsRV.setAdapter(mountainAdapter);
-        mountainsRV.setHasFixedSize(true);
-        mountainsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false));
-
-        // mountainAdapter.giveAdapterValue(elementArray(MOUNTAINS));
-
-        mountainAdapter.giveAdapterValue(endPoint.getMountains());
-        Log.e("TEST", endPoint.getMountains().size() + "");
-
+        mountainsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        mountainsRV.setAdapter(mountainsAdapater);
+        mountainsAdapater.notifyDataSetChanged();
+        Log.d("Adapters Mountains: ", endPoint.getMountains().size() + "");
     }
 
     public void setUpMonumentsAdapter() {
-
-        monumentsRV.setAdapter(monumentsAdapter);
-        monumentsRV.setHasFixedSize(true);
-        monumentsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false));
-        //monumentsAdapter.giveAdapterValue(elementArray(MONUMENTS));
-        monumentsAdapter.giveAdapterValue(endPoint.getMonuments());
-        Log.e("TEST", endPoint.getMountains().size() + "");
+        monumentsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
+        monumentsRV.setAdapter(monuments);
+        monuments.notifyDataSetChanged();
+        Log.e("Adapters Monuments: ", endPoint.getMountains().size() + "");
     }
 
     public void setUpLongDistancesAdapter() {
-
-        longDistancesRV.setAdapter(longDistancesAdapter);
-        longDistancesRV.setHasFixedSize(true);
-        longDistancesRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false));
-
-        //longDistancesAdapter.giveAdapterValue(elementArray(LONGDISTANCES));
-        longDistancesAdapter.giveAdapterValue(endPoint.getLongDistance());
-        Log.e("TEST", endPoint.getLongDistance().size() + "");
+        longDistancesRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
+        longDistancesRV.setAdapter(longDist);
+        longDist.notifyDataSetChanged();
+        Log.e("Adapters Long Dist: ", endPoint.getLongDistance().size() + "");
     }
 
 
