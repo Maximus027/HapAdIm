@@ -1,101 +1,253 @@
-[
+[{
+		"placeId": 1,
+		"category": "Monument",
+		"placeName": "Statue Of Liberty",
+		"stepNumber": 354,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+		"urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Journey To Freedom",
+			"badgeImg": " ",
+			"badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+		}, {
+			"badgeId": 2,
+			"badgedName": "Victory Statue Badge",
+			"badgeImg": " "
+		}]
+	}, {
+		"placeId": 2,
+		"category": "Monument",
+		"placeName": "Effiel Tower",
+		"stepNumber": 1920,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=sJxiPiAaB4k",
+		"urlImg": "http://i68.tinypic.com/v3hx1i.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Voyage de la Tour Badge ",
+			"badgeImg": " ",
+			"badgeDesc": "Journey To The Tower "
+		}, {
+			"badgeId": 2,
+			"badgedName": "Climbing Crossaint Badge",
+			"badgeImg": " ",
+			"badgeDesc": " "
+		}]
+	}, {
+		"placeId": 3,
+		"category": "Monument",
+		"placeName": "Empire State Building ",
+		"stepNumber": 1579,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=8hgwObX3ask",
+		"urlImg": "http://i68.tinypic.com/de5phf.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Empire State of Mind Badge",
+			"badgeImg": " ",
+			"badgeDesc": "Completing both locations in NYC gives you the Native New Yorker Badge "
+		}]
+	}, {
+		"placeId": 4,
+		"category": "Monument",
+		"placeName": "Sears Tower/ Willis Tower  ",
+		"stepNumber": 2109,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=PWbqlgO-urs",
+		"urlImg": "http://i68.tinypic.com/2quoe15.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Sears Savage Badge",
+			"badgeImg": " ",
+			"badgeDesc": "Keep Griding"
+		}, {
+			"badgeId": 2,
+			"badgedName": "Willis Wanderer Badge",
+			"badgeImg": " ",
+			"badgeDesc": "You're half way there, make it to the top ! "
+		}, {
+			"badgeId": 3,
+			"badgedName": "Sears Clouds Badge",
+			"badgeImg": " ",
+			"badgeDesc": "With only a few more steps, keep going"
+		}]
+	}, {
+		"placeId": 5,
+		"category": "Monument",
+		"placeName": "St.Louis Gateway Arch ",
+		"stepNumber": 1076,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=7c0IMH3Rnro ",
+		"urlImg": "http://i64.tinypic.com/15zfm2w.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Golden Gate Graduate",
+			"badgeImg": " ",
+			"badgeDesc": "Never Give Up!"
+		}]
+	}, {
+		"placeId": 6,
+		"category": "Monument",
+		"placeName": "Golden Bridge  ",
+		"stepNumber": 4276,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=VZ8nEJTX3Vk",
+		"urlImg": "http://i68.tinypic.com/k3my37.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Golden Gate Graduate",
+			"badgeImg": " ",
+			"badgeDesc": "Never Give Up!"
+		}]
+	}, {
+		"placeId": 7,
+		"category": "Monument",
+		"placeName": "Christ the Redeemer",
+		"stepNumber": 300,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=VZ8nEJTX3Vk",
+		"urlImg": "http://i63.tinypic.com/2qnm9p1.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Jesus Christ!",
+			"badgeImg": " ",
+			"badgeDesc": " "
+		}]
+	}, {
+		"placeId": 8,
+		"category": "Monument",
+		"placeName": "Christ the Redeemer",
+		"stepNumber": 300,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": " ",
+		"urlImg": "http://i63.tinypic.com/2qnm9p1.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Jesus Christ!",
+			"badgeImg": " ",
+			"badgeDesc": " "
+		}]
+	}, {
+		"placeId": 9,
+		"category": "Monument",
+		"placeName": "Great Pyramid of Giza",
+		"stepNumber": 432,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": " ",
+		"urlImg": "http://i66.tinypic.com/2b8md0.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Golden wand of the Pharaoh",
+			"badgeImg": " ",
+			"badgeDesc": " "
+		}]
+	}, {
+		"placeId": 10,
+		"category": "Monument",
+		"placeName": "Taj Mahal",
+		"stepNumber": 349,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": " ",
+		"urlImg": "http://i63.tinypic.com/2ew14zc.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Namaste!",
+			"badgeImg": " ",
+			"badgeDesc": " "
+		}]
+	}, {
+		"placeId": 11,
+		"category": "Monument",
+		"placeName": "Great Wall",
+		"stepNumber": 11616634,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": " ",
+		"urlImg": "http://i68.tinypic.com/vo924z.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "White Dragon medal",
+			"badgeImg": " ",
+			"badgeDesc": " "
+		}]
+	}, {
+		"placeId": 12,
+		"category": "Monument",
+		"placeName": "Burj Khalifa",
+		"stepNumber": 1089,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": " ",
+		"urlImg": "http://i66.tinypic.com/149t89x.jpg",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "Diamond of the Sheikh ",
+			"badgeImg": " ",
+			"badgeDesc": " "
+		}]
+	},
+
+	{
+		"placeId": 13,
+		"category": "Mountain",
+		"placeName": "Mount Everest ",
+		"stepNumber": 58531,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=vaEY0RL8Fs4",
+		"urlImg": " ",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "",
+			"badgeImg": "",
+			"badgeDesc": ""
+		}]
+	}, {
+		"placeId": 14,
+		"category": "Mountain",
+		"placeName": "K2",
+		"stepNumber": 56897,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "https://www.youtube.com/watch?v=gzFRvWq1RWQ",
+		"urlImg": " ",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "",
+			"badgeImg": "",
+			"badgeDesc": ""
+		}]
+	}, {
+		"placeId": 15,
+		"category": "Long Distance",
+		"placeName": "From NJ to California ",
+		"stepNumber": 5768800,
+		"distance": 0,
+		"calories": 0,
+		"urlVR": "figure",
+		"urlImg": " ",
+		"badges": [{
+			"badgeId": 1,
+			"badgedName": "",
+			"badgeImg": "",
+			"badgeDesc": ""
+		}]
+	}
+
    {
-      "placeId":1,
-      "category":"Monument",
-      "placeName":"Statue Of Liberty",
-      "stepNumber":354,
-      "distance": ,
-      "calories":,
-      "urlVR":"https://www.youtube.com/watch?v=HDe0WErg5UQ",
-      "urlImg":"url from server ",
-      "badges":[
-         {
-            "badgeId":1,
-            "badgedName":"Journey To Freedom",
-            "badgeImg":" ",
-            "badgeDesc":"Come off the bus one stop before yours to get some extra steps "
-         },
-         {
-            "badgeId":2,
-            "badgedName":"Victory Statue Badge",
-            "badgeImg":" "
-         }
-      ]
-   },
-   {
-      "placeId":2,
-      "category":"Monument",
-      "placeName":"Effiel Tower",
-      "stepNumber":1920,
-      "distance": ,
-      "calories":,
-      "urlVR":"https://www.youtube.com/watch?v=sJxiPiAaB4k",
-      "urlImg":"url from server ",
-      "badges":[
-         {
-            "badgeId":1,
-            "badgedName":"Voyage de la Tour Badge ",
-            "badgeImg":" ",
-            "badgeDesc":"Journey To The Tower "
-         },
-         {
-            "badgeId":2,
-            "badgedName":"Climbing Crossaint Badge",
-            "badgeImg":" ",
-            "badgeDesc":" "
-         }
-      ]
-   },
-   {
-      "placeId":3,
-      "category":"Monument",
-      "placeName":"Empire State Building ",
-      "stepNumber":1579,
-      "distance": ,
-      "calories":,
-      "urlVR":"https://www.youtube.com/watch?v=8hgwObX3ask",
-      "urlImg":" ",
-      "badges":[
-         {
-            "badgeId":1,
-            "badgedName":"Empire State of Mind Badge",
-            "badgeImg":" ",
-            "badgeDesc":"Completing both locations in NYC gives you the Native New Yorker Badge "
-         }
-      ]
-   },
-   {
-      "placeId":4,
-      "category":"Monument",
-      "placeName":"Sears Tower/ Willis Tower  ",
-      "stepNumber":2109,
-      "distance": ,
-       "calories:,
-      "urlVR":"https://www.youtube.com/watch?v=PWbqlgO-urs",
-      "urlImg":" ",
-      "badges":[
-         {
-            "badgeId":1,
-            "badgedName":"Sears Savage Badge",
-            "badgeImg":" ",
-            "badgeDesc":"Keep Griding"
-         },
-         {
-            "badgeId":2,
-            "badgedName":"Willis Wanderer Badge",
-            "badgeImg":" ",
-            "badgeDesc":"You're half way there, make it to the top ! "
-         },
-         {
-            "badgeId":3,
-            "badgedName":"Sears Clouds Badge",
-            "badgeImg":" ",
-            "badgeDesc":"With only a few more steps, keep going"
-         }
-      ]
-   },
-   {
-      "placeId":5,
+      "placeId":13,
       "category":"Mountain",
       "placeName":"Mount Everest ",
       "stepNumber":58531,
@@ -113,7 +265,7 @@
       ]
    },
    {
-      "placeId":6,
+      "placeId":14,
       "category":"Mountain",
       "placeName":"K2",
       "stepNumber":56897,
@@ -131,7 +283,7 @@
       ]
    },
    {
-      "placeId":7,
+      "placeId":15,
       "category":"Long Distance",
       "placeName":"From NJ to California ",
       "stepNumber":5768800,

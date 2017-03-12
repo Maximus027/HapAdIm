@@ -4,6 +4,7 @@ package com.example.hapadim.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,30 +17,34 @@ import com.example.hapadim.models.Place;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
- * Created by Nesada on 2/28/2017.
+ * Created by NesadaKoca on 2/28/2017.
  */
 
 public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private ArrayList<Place> temp;
+    private List<Place> monuments;
     Context context;
+    public static final String TAG = MonumentsAdapter.class.getName();
 
-    public MonumentsAdapter() {
+    public MonumentsAdapter(List<Place> monuments) {
+        Log.d(TAG, "Monuments size " + monuments.size());
+        this.monuments = monuments;
 
     }
 
     public void giveAdapterValue(ArrayList<Place> value) {
-        this.temp = value;
+        this.monuments = value;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemViewType(int position) {
 
-        if (position < temp.size()) {
+        if (position < monuments.size()) {
             return 0;
         } else {
             return 1;
@@ -59,44 +64,32 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             return new Holder(view);
         }
 
-
     }
 
-
-    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        TextView mTvName, mTvElevation;
-        ImageView mImages;
-
-
-        private Holder(View itemView) {
-            super(itemView);
-
-
-            mTvName = (TextView) itemView.findViewById(R.id.tv_name);
-            mTvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
-            mImages = (ImageView) itemView.findViewById(R.id.images);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-
-        }
-
-    }
+//    @Override
+//    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+//
+//        if (holder instanceof Holder) {
+//            Holder mHolder = (Holder) holder;
+//
+////            mHolder.tvName.setText(monuments.get(position).getName() + "");
+////            mHolder.tvElevation.setText(monuments.get(position).getElevation() + "");
+////            mHolder.images.setImageResource(monuments.get(position).getImages());
+//        }
+//
+//    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         if (holder instanceof Holder) {
             Holder mHolder = (Holder) holder;
-            Long stepNumber = temp.get(position).getStepNumber();
+            Long stepNumber = monuments.get(position).getStepNumber();
             String newStepNumber = stepNumber.toString();
 
-            mHolder.mTvName.setText(temp.get(position).getPlaceName());
-            mHolder.mTvElevation.setText(newStepNumber);
-            Picasso.with(context).load(temp.get(position).getUrlIMG());
+            mHolder.tvName.setText(monuments.get(position).getPlaceName());
+            mHolder.tvElevation.setText(newStepNumber);
+            Picasso.with(context).load(monuments.get(position).getUrlIMG());
             mHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -107,9 +100,35 @@ public class MonumentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     }
 
+
+    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView tvName, tvElevation;
+        ImageView images;
+
+
+        private Holder(View itemView) {
+            super(itemView);
+
+
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
+            images = (ImageView) itemView.findViewById(R.id.images);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+        }
+
+    }
+
+
     @Override
     public int getItemCount() {
-        return temp.size() + 1;
+        return monuments.size() + 1;
     }
 
 

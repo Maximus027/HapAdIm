@@ -1,8 +1,5 @@
 package com.example.hapadim;
 
-/**
- * Created by Nesada on 2/28/2017.
- */
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,7 +19,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.hapadim.googlefit.GoogleFitService;
+/**
+ * Created by NesadaKoca on 2/28/2017.
+ */
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -85,11 +84,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }
         });
-    }
-
-    private void startGoogleFitService() {
-        Intent intent = new Intent(this, GoogleFitService.class);
-        startService(intent);
     }
 
     private void addBottomDots(int currentPage) {
