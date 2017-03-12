@@ -16,6 +16,7 @@ import com.example.hapadim.adapters.MonumentsAdapter;
 import com.example.hapadim.adapters.MountainAdapter;
 import com.example.hapadim.models.Element;
 import com.example.hapadim.models.JsonEndPoint;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,8 @@ public class LandingPageActivity extends AppCompatActivity {
     private static final String ID = "id";
     private static final int SHOWITEM = 4;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +63,6 @@ public class LandingPageActivity extends AppCompatActivity {
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
         setUpLongDistancesAdapter();
-
-
     }
 
     private void setUpNotification() {
