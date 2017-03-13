@@ -27,7 +27,6 @@ public class JsonEndPoint {
     private ArrayList<Place> longDistance;
     public JSONArray badges;
     private final static String TAG = "json parser";
-    private PopulatedListListener listener;
 
     private static JsonEndPoint instance;
 
@@ -42,10 +41,6 @@ public class JsonEndPoint {
         mountains = new ArrayList<>();
         monuments = new ArrayList<>();
         longDistance = new ArrayList<>();
-    }
-
-    public void setListener(PopulatedListListener listener) {
-        this.listener = listener;
     }
 
     private String readFromJsonFile(Context context) {
@@ -63,7 +58,6 @@ public class JsonEndPoint {
         }
         return result;
     }
-
 
     public void populateLocations(Context context) {
         String jsonObject = readFromJsonFile(context);
@@ -98,8 +92,6 @@ public class JsonEndPoint {
                     longDistance.add(place);
                 }
             }
-
-            //listener.lists_are_populated();
         } catch (JSONException e) {
             Log.e(TAG, "YOU HAVE ENTERED CATCH" + e);
         }
@@ -116,10 +108,6 @@ public class JsonEndPoint {
 
     public List<Place> getLongDistance() {
         return longDistance;
-    }
-
-    public interface PopulatedListListener {
-        void lists_are_populated();
     }
 
 }

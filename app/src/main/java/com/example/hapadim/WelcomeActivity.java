@@ -19,8 +19,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.hapadim.models.JsonEndPoint;
-
 /**
  * Created by NesadaKoca on 2/28/2017.
  */
@@ -39,7 +37,6 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        JsonEndPoint.getInstance().populateLocations(this);
         prefManager = new PrefManager(this);
 
         if (Build.VERSION.SDK_INT >= 21) {

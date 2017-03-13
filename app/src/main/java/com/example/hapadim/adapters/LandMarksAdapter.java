@@ -27,32 +27,33 @@ import java.util.List;
 
 public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Place> monuments;
-    Context context;
+    private static final int HOLDER = 1;
+    private static final int FOOTER = 0;
+
+
+
+    private List<Place> landmarkList;
+    private Context context;
     public static final String TAG = LandMarksAdapter.class.getName();
 
-    public LandMarksAdapter(List<Place> monuments) {
-        Log.d(TAG, "Monuments size " + monuments.size());
-
-        if (monuments.size() == 0){
-            this.monuments = new ArrayList<>();
+    public LandMarksAdapter(List<Place> landmarks) {
+        Log.d(TAG, "Monuments size " + landmarks.size());
+        if (landmarks.size() == 0){
+            this.landmarkList = new ArrayList<>();
         } else {
-            this.monuments = monuments;
+            this.landmarkList = landmarks;
         }
-    }
-
-    public void giveAdapterValue(ArrayList<Place> value) {
-        this.monuments = value;
-        notifyDataSetChanged();
     }
 
     @Override
     public int getItemViewType(int position) {
 
-        if (position < monuments.size()) {
-            return 0;
-        } else {
+        if (position < landmarkList.size()) {
+            //reg viewholder
             return 1;
+        } else {
+            //footer
+            return 0;
         }
 
     }
@@ -61,8 +62,7 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
-
-        if (viewType == 1) {
+        if (viewType == 0) {
             View view = LayoutInflater.from(context).inflate(R.layout.footer_recyclerview, parent, false);
             return new Footer(view);
         } else {
@@ -74,20 +74,25 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        if (holder instanceof Holder) {
+        int type = holder.getItemViewType();
+
+        if (type == 1 ) {
             Holder mHolder = (Holder) holder;
-            int stepNumber = monuments.get(position).getStepNumber();
+            int stepNumber = landmarkList.get(position).getStepNumber();
             String newStepNumber = stepNumber +" ";
 
-            mHolder.tvName.setText(monuments.get(position).getPlaceName());
+            mHolder.tvName.setText(landmarkList.get(position).getPlaceName());
             mHolder.tvElevation.setText(newStepNumber);
-            Picasso.with(context).load(monuments.get(position).getUrlImg()).into(mHolder.images);
+            Picasso.with(context).load(landmarkList.get(position).getUrlImg()).into(mHolder.images);
             mHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, " landmarks ", Toast.LENGTH_SHORT).show();
                 }
             });
+
+        } else if (type == 0){
+            ((Footer) holder).bind(landmarkList.get(position-1));
         }
 
     }
@@ -114,23 +119,27 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return monuments.size() + 1;
+        return landmarkList.size() + 1;
     }
 
 
-    private class Footer extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class Footer extends RecyclerView.ViewHolder {
 
         private Footer(View itemView) {
             super(itemView);
-
-            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View view) {
-            Intent viewAll = new Intent(view.getContext(), ViewAllActivity.class);
-            viewAll.putExtra("id", "monuments");
-            view.getContext().startActivity(viewAll);
+        public void bind(final Place place){
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent viewAll = new Intent(v.getContext(), ViewAllActivity.class);
+                    viewAll.putExtra("category_key", place.getCategory());
+                    v.getContext().startActivity(viewAll);
+                }
+            });
+
         }
+
     }
 }
