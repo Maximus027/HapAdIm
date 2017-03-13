@@ -79,7 +79,7 @@ public class ViewAllActivity extends AppCompatActivity
 
         } else if (category.equals("Mountain")) {
 
-            selectedList = monuments;
+            selectedList = mountains;
             viewAllAdapter = new ViewAllAdapter(selectedList);
 
         } else {
