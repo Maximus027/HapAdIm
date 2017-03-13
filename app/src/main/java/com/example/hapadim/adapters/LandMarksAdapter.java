@@ -27,9 +27,12 @@ import java.util.List;
 
 public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    ImageView catIcon;
+    int mountIcon = R.drawable.mountainicon;
+    int monumentIcon = R.drawable.monumenticon;
+    int distanceIcon = R.drawable.walkicon;
     private static final int HOLDER = 1;
     private static final int FOOTER = 0;
-
 
 
     private List<Place> landmarkList;
@@ -38,7 +41,7 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     public LandMarksAdapter(List<Place> landmarks) {
         Log.d(TAG, "Monuments size " + landmarks.size());
-        if (landmarks.size() == 0){
+        if (landmarks.size() == 0) {
             this.landmarkList = new ArrayList<>();
         } else {
             this.landmarkList = landmarks;
@@ -71,15 +74,24 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
     }
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
         int type = holder.getItemViewType();
 
-        if (type == 1 ) {
+        if (type == 1) {
             Holder mHolder = (Holder) holder;
             int stepNumber = landmarkList.get(position).getStepNumber();
-            String newStepNumber = stepNumber +" ";
+            String newStepNumber = stepNumber + " ";
+            String catergory = landmarkList.get(position).getCategory();
+            if (catergory.equals("Mountain")) {
+                Picasso.with(context).load(mountIcon).into(catIcon);
+            } else if (catergory.equals("Monument")) {
+                Picasso.with(context).load(monumentIcon).into(catIcon);
+            } else {
+                Picasso.with(context).load(distanceIcon).into(catIcon);
+            }
 
             mHolder.tvName.setText(landmarkList.get(position).getPlaceName());
             mHolder.tvElevation.setText(newStepNumber);
@@ -87,12 +99,13 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             mHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Toast.makeText(context, " landmarks ", Toast.LENGTH_SHORT).show();
                 }
             });
 
-        } else if (type == 0){
-            ((Footer) holder).bind(landmarkList.get(position-1));
+        } else if (type == 0) {
+            ((Footer) holder).bind(landmarkList.get(position - 1));
         }
 
     }
@@ -100,12 +113,14 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvName, tvElevation;
         ImageView images;
+
         private Holder(View itemView) {
             super(itemView);
 
             tvName = (TextView) itemView.findViewById(R.id.tv_name);
             tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
             images = (ImageView) itemView.findViewById(R.id.images);
+            catIcon = (ImageView) itemView.findViewById(R.id.catergoryIcon);
             itemView.setOnClickListener(this);
         }
 
@@ -129,7 +144,7 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             super(itemView);
         }
 
-        public void bind(final Place place){
+        public void bind(final Place place) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
