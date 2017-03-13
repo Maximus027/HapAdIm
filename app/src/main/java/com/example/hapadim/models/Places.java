@@ -8,13 +8,23 @@ import java.util.List;
  */
 
 public class Places {
+
     private List<Place> places;
+    private static Places instance;
+
+    public Places getinstance() {
+        if (instance == null) {
+            instance = new Places();
+        }
+        return instance;
+    }
 
     public List<Place> getPlaces() {
+
         return places;
     }
 
-    public void setPlaces(List<Place> places) {
+    public void populatePlaces(List<Place> places) {
         this.places = places;
     }
 }
