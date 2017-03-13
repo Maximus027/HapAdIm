@@ -41,9 +41,9 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
 
-        holder.mTvNameViewAll.setText(listAll.get(position).getPlaceName() + "");
-        holder.mTvElevationViewAll.setText(listAll.get(position).getStepNumber() + "");
-        Picasso.with(context).load(listAll.get(position).getUrlImg()).into(holder.mImgViewAll);
+        holder.tvNameViewAll.setText(listAll.get(position).getPlaceName() + "");
+        holder.tvElevationViewAll.setText(listAll.get(position).getStepNumber() + "");
+        Picasso.with(context).load(listAll.get(position).getUrlImg()).into(holder.imgViewAll);
     }
 
     @Override
@@ -54,16 +54,16 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
 
     public class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView mTvNameViewAll, mTvElevationViewAll;
-        ImageView mImgViewAll;
+        TextView tvNameViewAll, tvElevationViewAll;
+        ImageView imgViewAll;
 
 
         public Holder(View itemView) {
             super(itemView);
 
-            mTvElevationViewAll = (TextView)itemView.findViewById(R.id.tv_elevation_view_all);
-            mTvNameViewAll = (TextView)itemView.findViewById(R.id.tv_name_view_all);
-            mImgViewAll = (ImageView)itemView.findViewById(R.id.img_view_all);
+            tvElevationViewAll = (TextView)itemView.findViewById(R.id.tv_elevation_view_all);
+            tvNameViewAll = (TextView)itemView.findViewById(R.id.tv_name_view_all);
+            imgViewAll = (ImageView)itemView.findViewById(R.id.img_view_all);
             itemView.setOnClickListener(this);
         }
 
