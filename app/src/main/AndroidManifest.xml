@@ -3,7 +3,8 @@
     package="com.example.hapadim">
 
     <uses-feature android:name="android.hardware.sensor.stepcounter" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +23,7 @@
         </activity>
         <activity
             android:name=".LandingPageActivity"
-            android:label="@string/title_activity_welcome"></activity>
+            android:label="@string/title_activity_welcome" />
         <activity
             android:name=".ViewAllActivity"
             android:label="View All">
@@ -30,6 +31,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LandingPageActivity" />
         </activity>
+
+        <service
+            android:name=".googlefit.GoogleFitService"
+            android:enabled="true" />
+
+        <activity android:name=".MockGoogleFit"></activity>
     </application>
 
 </manifest>

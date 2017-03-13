@@ -1,0 +1,227 @@
+[
+  {
+    "placeId": 1,
+    "category": "Monument",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  },
+  {
+    "placeId": 2,
+    "category": "Monument",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  },
+  {
+    "placeId": 3,
+    "category": "Monument",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  },
+  {
+    "placeId": 4,
+    "category": "Mountain",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  },
+  {
+    "placeId": 5,
+    "category": "Mountain",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  },
+  {
+    "placeId": 6,
+    "category": "Mountain",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  },
+  {
+    "placeId": 7,
+    "category": "LongDistance",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  },
+  {
+    "placeId": 8,
+    "category": "LongDistance",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  },
+  {
+    "placeId": 9,
+    "category": "LongDistance",
+    "placeName": "Statue Of Liberty",
+    "description": "lorem alksdjflkahsd",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
+    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "Journey To Freedom",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "Victory Statue Badge",
+        "badgeImg": " ",
+        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+      }
+    ]
+  }
+]

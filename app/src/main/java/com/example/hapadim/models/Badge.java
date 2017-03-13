@@ -4,6 +4,16 @@ package com.example.hapadim.models;
  * Created by meltemyildirim on 3/7/17.
  */
 
+/**
+ * "badges": [
+ {
+ "badgeId": 1,
+ "badgedName": "Journey To Freedom",
+ "badgeImg": " ",
+ "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+ }
+ */
+
 public class Badge {
     private int badgeId;
     private String badgedName;

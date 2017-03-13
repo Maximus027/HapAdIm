@@ -1,7 +1,6 @@
 package com.example.hapadim.models;
 
 import android.content.Context;
-import android.os.Parcelable;
 import android.util.Log;
 
 import com.example.hapadim.R;
@@ -9,11 +8,13 @@ import com.example.hapadim.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.parceler.Parcels;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by meltemyildirim on 3/8/17.
@@ -21,83 +22,92 @@ import java.util.ArrayList;
 
 public class JsonEndPoint {
 
-    public static ArrayList<Place> mountains;
-    public static ArrayList<Place> monuments;
-    public static ArrayList<Place> longDistance;
-    public static final String TAG = JsonEndPoint.class.getName();
+    private ArrayList<Place> mountains;
+    private ArrayList<Place> monuments;
+    private ArrayList<Place> longDistance;
+    public JSONArray badges;
+    private final static String TAG = "json parser";
 
-    public String readFromJsonFile(Context context) {
-        InputStream is = context.getResources().openRawResource(R.raw.places_json);
-        StringBuffer sbJsonString = new StringBuffer();
-        int character;
+    private static JsonEndPoint instance;
 
-        try {
-            while ((character = is.read()) != -1) {
-
-                sbJsonString.append((char) character);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static JsonEndPoint getInstance() {
+        if (instance == null) {
+            instance = new JsonEndPoint();
         }
-        return sbJsonString.toString();
+        return instance;
     }
 
-    public ArrayList<Place> getMountains() {
-        return mountains;
-    }
-
-    public ArrayList<Place> getMonuments() {
-        return monuments;
-    }
-
-    public ArrayList<Place> getLongDistance() {
-        return longDistance;
-    }
-
-    public void populateLocations(String jsonObject) {
+    private JsonEndPoint() {
         mountains = new ArrayList<>();
         monuments = new ArrayList<>();
         longDistance = new ArrayList<>();
+    }
+
+    private String readFromJsonFile(Context context) {
+        InputStream is = context.getResources().openRawResource(R.raw.places);
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+        String line = "";
+        String result = "";
         try {
+            while ((line = bufferedReader.readLine()) != null) {
+                result += line;
+            }
+            is.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public void populateLocations(Context context) {
+        String jsonObject = readFromJsonFile(context);
+        Log.d(TAG, "THIS IS OBJECT: " + jsonObject);
+        try {
+            Log.d(TAG, "YOU HAVE ENTERED TRY ");
             JSONArray jsonArray = new JSONArray(jsonObject);
-            Log.d(TAG, "JSONArr size " + jsonArray.length());
+            Log.d(TAG, "populateLocations: " + jsonArray.length());
             for (int i = 0; i < jsonArray.length(); i++) {
                 Place place = new Place();
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                 place.setCategory(jsonObject1.getString("category"));
                 place.setPlaceName(jsonObject1.getString("placeName"));
-                place.setUrlIMG(jsonObject1.getString("urlIMG"));
-                place.setStepNumber(jsonObject1.getLong("stepNumber"));
+                place.setUrlImg(jsonObject1.getString("urlImg"));
+                place.setStepNumber(jsonObject1.getInt("stepNumber"));
                 place.setUrlVR(jsonObject1.getString("urlVR"));
-                JSONArray badges = jsonObject1.getJSONArray("badges");
+                badges = jsonObject1.getJSONArray("badges");
+
                 for (int j = 0; j < badges.length(); j++) {
-                    JSONObject getBadge = badges.getJSONObject(i);
+                    JSONObject getBadge = badges.getJSONObject(j);
                     Badge badge = new Badge();
-                    badge.setBadgeDesc(getBadge.getString("badgedName"));
-                    badge.setBadgedName(getBadge.getString("badgeName"));
+                    badge.setBadgeDesc(getBadge.getString("badgeDesc"));
+                    badge.setBadgedName(getBadge.getString("badgedName"));
                     badge.setBadgeImg(getBadge.getString("badgeImg"));
                 }
-                if (place.getCategory().equals("Mountains")) {
+
+                if (place.getCategory().equals("Mountain")) {
                     mountains.add(place);
-
-                } else if (place.getCategory().equals("Monuments")) {
+                } else if (place.getCategory().equals("Monument")) {
                     monuments.add(place);
-                } else {
+                } else if (place.getCategory().equals("LongDistance")){
                     longDistance.add(place);
-
                 }
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+            Log.e(TAG, "YOU HAVE ENTERED CATCH" + e);
         }
-
-
     }
 
-    public void wrapParcelables(Boolean facts) {
-        Parcelable wrapped = Parcels.wrap(new Place());
 
+    public List<Place> getMountains() {
+        return mountains;
     }
 
+    public List<Place> getMonuments() {
+        return monuments;
+    }
+
+    public List<Place> getLongDistance() {
+        return longDistance;
+    }
 
 }
