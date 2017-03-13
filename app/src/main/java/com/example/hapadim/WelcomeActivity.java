@@ -40,6 +40,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         prefManager = new PrefManager(this);
 
+
 //        if (!prefManager.isFirstTimeLaunch()) {
 //            launchHomeScreen();
 //            finish();
