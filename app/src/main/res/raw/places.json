@@ -3,225 +3,402 @@
     "placeId": 1,
     "category": "Monument",
     "placeName": "Statue Of Liberty",
-    "description": "lorem alksdjflkahsd",
+    "description": "The formal name of the statue is 'Liberty Enlightening the World.' It pictures a woman who has escaping the chains of tyranny (the broken chains lie at her feet). Liberty's right hand holds a torch that is a symbol of liberty. Liberty was designed by the French sculptor Frederic Auguste Bartholdi.",
     "stepNumber": 354,
     "distance": 0,
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlImg": "http://i64.tinypic.com/2ztk277.jpg",
     "badges": [
       {
         "badgeId": 1,
         "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
+        "badgeImg": "http://i68.tinypic.com/290zmug.jpg",
         "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
       },
       {
         "badgeId": 2,
         "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgeImg": "http://i66.tinypic.com/10hivzn.jpg ",
+        "badgeDesc": "Task completed.Climbed to Tower "
       }
     ]
   },
   {
     "placeId": 2,
     "category": "Monument",
-    "placeName": "Statue Of Liberty",
-    "description": "lorem alksdjflkahsd",
-    "stepNumber": 354,
+    "placeName": "Eiffel Tower",
+    "description": "The Eiffel Tower, La Tour Eiffel in French, was the main exhibit of the Paris Exposition — or World's Fair — of 1889. It was constructed to commemorate the centennial of the French Revolution and to demonstrate France's industrial prowess to the world.",
+    "stepNumber": 1920,
     "distance": 0,
     "calories": 0,
-    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlVR": "https://www.youtube.com/watch?v=sJxiPiAaB4k",
+    "urlImg": "http://i63.tinypic.com/2dlsp6g.jpg",
     "badges": [
       {
         "badgeId": 1,
-        "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "Voyaje De La tour",
+        "badgeImg": " no image ",
+        "badgeDesc": "no description "
       },
       {
         "badgeId": 2,
-        "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": " no name",
+        "badgeImg": "no image ",
+        "badgeDesc": "no description "
       }
     ]
   },
   {
     "placeId": 3,
     "category": "Monument",
-    "placeName": "Statue Of Liberty",
-    "description": "lorem alksdjflkahsd",
-    "stepNumber": 354,
+    "placeName": "Empire State Building",
+    "description": "The Empire State Building is a 102-story skyscraper located on Fifth Avenue between West 33rd and 34th Streets in Midtown, Manhattan, New York City. It has a roof height of 1,250 feet (381 m), and with its antenna included, it stands a total of 1,454 feet (443.2 m) tall.",
+    "stepNumber": 1579,
     "distance": 0,
     "calories": 0,
-    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlVR": "https://www.youtube.com/watch?v=8hgwObX3ask",
+    "urlImg": "http://i68.tinypic.com/2ro03h5.jpg",
     "badges": [
       {
         "badgeId": 1,
-        "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "Empire State of Mind Badge",
+        "badgeImg": "http://i64.tinypic.com/2zdomkz.jpg ",
+        "badgeDesc": "no description "
       },
       {
         "badgeId": 2,
-        "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": " no name",
+        "badgeImg": " no image",
+        "badgeDesc": "no description "
       }
     ]
   },
   {
     "placeId": 4,
-    "category": "Mountain",
-    "placeName": "Statue Of Liberty",
-    "description": "lorem alksdjflkahsd",
-    "stepNumber": 354,
+    "category": "Monument",
+    "placeName": "Great Wall Of China",
+    "description": "The Great Wall, one of the greatest wonders of the world, was listed as a World Heritage by UNESCO in 1987. Just like a gigantic dragon, it winds up and down across deserts, grasslands, mountains and plateaus, stretching approximately 13,170 miles (21,196 kilometers) from east to west of China",
+    "stepNumber": 11616634,
     "distance": 0,
     "calories": 0,
-    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlVR": "no video",
+    "urlImg": "http://i68.tinypic.com/o9fpmr.jpg",
     "badges": [
       {
         "badgeId": 1,
-        "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no badge name",
+        "badgeImg": "no badge img ",
+        "badgeDesc": "No description "
       },
       {
         "badgeId": 2,
-        "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no badge name",
+        "badgeImg": "no badge image ",
+        "badgeDesc": "no description "
       }
     ]
   },
   {
     "placeId": 5,
-    "category": "Mountain",
-    "placeName": "Statue Of Liberty",
+    "category": "Monument",
+    "placeName": "Christ the Redeemer",
     "description": "lorem alksdjflkahsd",
-    "stepNumber": 354,
+    "stepNumber": 300,
     "distance": 0,
     "calories": 0,
-    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlVR": "no vr",
+    "urlImg": "http://i63.tinypic.com/1relp5.jpg",
     "badges": [
       {
         "badgeId": 1,
-        "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no badge",
+        "badgeImg": " no image ",
+        "badgeDesc": "no description "
       },
       {
         "badgeId": 2,
-        "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": "no image ",
+        "badgeDesc": "no description "
       }
     ]
   },
   {
     "placeId": 6,
-    "category": "Mountain",
-    "placeName": "Statue Of Liberty",
-    "description": "lorem alksdjflkahsd",
-    "stepNumber": 354,
+    "category": "Monument",
+    "placeName": "Burj Khalifa",
+    "description": "",
+    "stepNumber": 1089,
     "distance": 0,
     "calories": 0,
-    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlVR": "no video",
+    "urlImg": "http://i65.tinypic.com/2pte2l4.jpg",
     "badges": [
       {
         "badgeId": 1,
-        "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": " no img ",
+        "badgeDesc": "no desc "
       },
       {
         "badgeId": 2,
-        "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": "no image ",
+        "badgeDesc": "no desc"
       }
     ]
   },
   {
     "placeId": 7,
-    "category": "LongDistance",
-    "placeName": "Statue Of Liberty",
-    "description": "lorem alksdjflkahsd",
-    "stepNumber": 354,
+    "category": "Mountain",
+    "placeName": "Mount Everest",
+    "description": "Reaching 29,029 feet (8,848 meters) above sea level, Mount Everest is the highest mountain on Earth. Located in the Mahalangur section of the Himalayas, the mountain's summit straddles the border separating China and Nepal.",
+    "stepNumber": 58531,
     "distance": 0,
     "calories": 0,
-    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlVR": "https://www.youtube.com/watch?v=Msjanh7VAVY",
+    "urlImg": "http://i68.tinypic.com/2rm8mfa.jpg",
     "badges": [
       {
         "badgeId": 1,
-        "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": " no image ",
+        "badgeDesc": "no descr "
       },
       {
         "badgeId": 2,
-        "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": "no img ",
+        "badgeDesc": "no descr "
       }
     ]
   },
   {
     "placeId": 8,
-    "category": "LongDistance",
-    "placeName": "Statue Of Liberty",
-    "description": "lorem alksdjflkahsd",
-    "stepNumber": 354,
+    "category": "Mountain",
+    "placeName": "Nanga Parbat",
+    "description": "Nanga Parbat (means Naked Mountain in Sanskrit) is the ninth highest mountain in the world at 8,126 metres (26,660 ft) above sea level. It is the western anchor of the Himalayas around which the Indus river skirts into the plains of Pakistan.",
+    "stepNumber": 10664,
     "distance": 0,
     "calories": 0,
-    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlVR": "no video",
+    "urlImg": "http://i63.tinypic.com/2l899g8.jpg",
     "badges": [
       {
         "badgeId": 1,
-        "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": "no img ",
+        "badgeDesc": "no descr "
       },
       {
         "badgeId": 2,
-        "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": "no img ",
+        "badgeDesc": "no descr "
       }
     ]
   },
   {
     "placeId": 9,
-    "category": "LongDistance",
-    "placeName": "Statue Of Liberty",
-    "description": "lorem alksdjflkahsd",
-    "stepNumber": 354,
+    "category": "Mountain",
+    "placeName": "K2",
+    "description": "K2, also known as Mount Godwin-Austen or Chhogori is the second highest mountain in the world, after Mount Everest, at 8,611 metres (28,251 ft) above sea level.K2 is the highest point of the Karakoram range and the highest point in both Pakistan and Xinjiang.",
+    "stepNumber": 56897,
     "distance": 0,
     "calories": 0,
-    "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
-    "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
+    "urlVR": "no video",
+    "urlImg": "http://i64.tinypic.com/9jlrwh.jpg",
     "badges": [
       {
         "badgeId": 1,
-        "badgedName": "Journey To Freedom",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
       },
       {
         "badgeId": 2,
-        "badgedName": "Victory Statue Badge",
-        "badgeImg": " ",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      }
+    ]
+  },
+  {
+    "placeId": 10,
+    "category": "Mountain",
+    "placeName": "Kilimanjaro ",
+    "description": "Mount Kilimanjaro is the tallest mountain on the African continent and the highest free-standing mountain in the world.Kilimanjaro has three volcanic cones, Mawenzi, Shira and Kibo. Mawenzi and Shira are extinct but Kibo, the highest peak, is dormant and could erupt again",
+    "stepNumber": 354,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "no vr",
+    "urlImg": "http://i66.tinypic.com/29ohpmu.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc "
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "no name",
+        "badgeImg": "no img  ",
+        "badgeDesc": "no descr "
+      }
+    ]
+  },
+  {
+    "placeId": 11,
+    "category": "Mountain",
+    "placeName": "Kangchenjunga",
+    "description": "It is the second highest mountain of the Himalayas. Kangchenjunga Main is the highest mountain in India, and the easternmost of the mountains higher than 8,000 m (26,000 ft). It is called Five Treasures of Snow after its five high peaks, and has always been worshipped by the people of Darjeeling and Sikkim.",
+    "stepNumber": 11268,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "no VR",
+    "urlImg": "http://i63.tinypic.com/21c83yf.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      }
+    ]
+  },
+
+  {
+    "placeId": 12,
+    "category": "LongDistance",
+    "placeName": "Marathon of the Midnight Sun, Norway",
+    "description": "The Midnight Sun Marathon first started in 1989 and has runners from most of the world, attracted by its special feature of running in the midnight sun. The race starts and finishes at the city centre.",
+    "stepNumber": 55335,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "no vr ",
+    "urlImg": "http://i67.tinypic.com/1qse4k.jpg ",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      }
+    ]
+  },
+  {
+    "placeId": 13,
+    "category": "LongDistance",
+    "placeName": "Great Ethiopian Run, Ethiopia",
+    "description": "Great Ethiopian Run is an annual 10-kilometre road running event which takes place in late November in Addis Ababa, Ethiopia.",
+    "stepNumber": 13123,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "no vr",
+    "urlImg": "http://i66.tinypic.com/116ubtt.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      }
+    ]
+  },
+  {
+    "placeId": 14,
+    "category": "LongDistance",
+    "placeName": "Jungle Marathon, Brazil",
+    "description": "The Jungle Marathon, the world's wildest eco race, gives competitors the opportunity to combine sport and eco tourism, while experiencing this stunning part of the world.",
+    "stepNumber": 164736,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": " no vr ",
+    "urlImg": "http://i63.tinypic.com/1zxum3c.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      }
+    ]
+  },
+  {
+    "placeId": 15,
+    "category": "LongDistance",
+    "placeName": "Ice Marathon, Antarctica",
+    "description": "The Antarctic Ice Marathon is the southernmost marathon on earth and a unique opportunity to complete a marathon that is truly worthy of the seventh continent.",
+    "stepNumber": 55335,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": " no vr",
+    "urlImg": "http://i63.tinypic.com/20hppwn.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      }
+    ]
+  },
+  {
+    "placeId": 16,
+    "category": "LongDistance",
+    "placeName": "Fujisan Marathon, Japan",
+    "description": "The Mount Fuji Marathon is an annual marathon sporting event in Yamanashi Prefecture, Japan. The first running of the event took place on November 25, 2012.",
+    "stepNumber": 27456,
+    "distance": 0,
+    "calories": 0,
+    "urlVR": "no vr",
+    "urlImg": "http://i68.tinypic.com/kdvdch.jpg",
+    "badges": [
+      {
+        "badgeId": 1,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
+      },
+      {
+        "badgeId": 2,
+        "badgedName": "no name",
+        "badgeImg": " no img",
+        "badgeDesc": "no desc"
       }
     ]
   }
+
 ]
