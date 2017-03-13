@@ -88,7 +88,7 @@
             android:id="@+id/tv_long_distances"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LONG DISATANCES"
+            android:text="LONG DISTANCES"
             android:textColor="@color/colorWhite"
             android:textSize="15dp"
             android:textStyle="bold|italic" />
