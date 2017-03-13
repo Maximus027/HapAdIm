@@ -20,13 +20,11 @@
             android:id="@+id/tv_mountains"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardViewMargin"
             android:text="MOUNTAINS"
             android:textColor="@color/colorWhite"
             android:textSize="15dp"
-            android:textStyle="bold|italic"
-            android:onClick="tvClick"
-        android:layout_marginLeft="@dimen/cardViewMargin"
-            />
+            android:textStyle="bold|italic" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_mountains"
@@ -37,6 +35,7 @@
 
 
     </LinearLayout>
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
@@ -55,13 +54,11 @@
             android:id="@+id/tv_monuments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/cardViewMargin"
             android:text="MONUMENTS"
             android:textColor="@color/colorWhite"
             android:textSize="15dp"
-            android:textStyle="bold|italic"
-            android:onClick="tvClick"
-            android:layout_marginLeft="@dimen/cardViewMargin"
-        />
+            android:textStyle="bold|italic" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_monuments"
@@ -71,13 +68,15 @@
         </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
+
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:background="@color/colorGray">
 
     </View>
-   <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/cardViewMargin"
@@ -92,8 +91,7 @@
             android:text="LONG DISATANCES"
             android:textColor="@color/colorWhite"
             android:textSize="15dp"
-            android:textStyle="bold|italic"
-            android:onClick="tvClick"/>/>
+            android:textStyle="bold|italic" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_long_distances"
@@ -107,26 +105,21 @@
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
-        android:background="@color/colorGray">
-    </View>
-
+        android:background="@color/colorGray"/>
 
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View All"
-        android:onClick="btnViewAllClick"
-        android:background="@drawable/button_change_color"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="@dimen/cardViewMargin"
         android:layout_marginRight="@dimen/cardViewMargin"
-        android:layout_marginTop="@dimen/cardViewMargin">
+        android:layout_marginTop="@dimen/cardViewMargin"
+        android:background="@drawable/button_change_color"
+        android:onClick="btnViewAllClick"
+        android:text="View All">
 
     </Button>
-       // android:background="#548fb7"
-        />
 
-
-    </LinearLayout>
+</LinearLayout>
 
