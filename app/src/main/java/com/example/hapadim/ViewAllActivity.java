@@ -1,218 +1,250 @@
 package com.example.hapadim;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.example.hapadim.adapters.ViewAllAdapter;
-import com.example.hapadim.models.Element;
+import com.example.hapadim.models.JsonEndPoint;
+import com.example.hapadim.models.Place;
+import com.nightonke.boommenu.BoomMenuButton;
+import com.nightonke.boommenu.Types.BoomType;
+import com.nightonke.boommenu.Types.ButtonType;
+import com.nightonke.boommenu.Types.PlaceType;
+import com.nightonke.boommenu.Util;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by NesadaKoca on 2/28/2017.
  */
 
-public class ViewAllActivity extends AppCompatActivity {
+public class ViewAllActivity extends AppCompatActivity
+        implements
+        BoomMenuButton.OnSubButtonClickListener,
+        BoomMenuButton.AnimatorListener,
+        View.OnClickListener {
+
+    private BoomMenuButton boomSort;
+    private View customView;
+    private boolean isInit = false;
 
     private RecyclerView viewAllRV;
     private ViewAllAdapter viewAllAdapter;
     private Bundle bundle;
+    String category;
+    private List<Place> allPlaces;
 
-    private static final String MOUNTAINS = "mountains";
-    private static final String MONUMENTS = "monuments";
-    private static final String LONGDISTANCES = "long distances";
-    private static final String VIEWALL = "view all";
-    private static final String ID = "id";
-
-    String name;
+    private List<Place> selectedList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all);
 
-//        mRvViewAll = (RecyclerView) findViewById(R.id.rv_view_all);
-//        mMountainAdapter = new LocationAdapter();
-//
-//
-//        mRvViewAll.setAdapter(mMountainAdapter);
-//        mRvViewAll.setHasFixedSize(true);
-//        mRvViewAll.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
-//                LinearLayoutManager.VERTICAL,
-//                false));
-//
-//        SecondActivity secondActivity = new SecondActivity();
-//        mMountainAdapter.giveAdapterValue(secondActivity.giveValueToAdapter(1, 10));
+        setupToolbar();
 
-        try {
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        List<Place> ld = JsonEndPoint.getInstance().getLongDistance();
+        List<Place> monuments = JsonEndPoint.getInstance().getMonuments();
+        List<Place> mountains = JsonEndPoint.getInstance().getMountains();
+
+
+        allPlaces = new ArrayList<>();
+        allPlaces.addAll(ld);
+        allPlaces.addAll(monuments);
+        allPlaces.addAll(mountains);
 
         viewAllRV = (RecyclerView) findViewById(R.id.rv_view_all);
-        viewAllAdapter = new ViewAllAdapter();
-
         bundle = getIntent().getExtras();
-        name = bundle.getString("id");
-        setupViewAllAdapter();
-    }
+        category = bundle.getString("category_key");
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+        if (category.equals("Monument")) {
+            selectedList = monuments;
+            viewAllAdapter = new ViewAllAdapter(selectedList);
 
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu, menu);
+        } else if (category.equals("LongDistance")) {
 
-        return true;
-    }
+            selectedList = ld;
+            viewAllAdapter = new ViewAllAdapter(selectedList);
 
+        } else if (category.equals("Mountain")) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+            selectedList = monuments;
+            viewAllAdapter = new ViewAllAdapter(selectedList);
 
-        ArrayList<Element> arrEl = new ArrayList<>();
-        arrEl = elementArray(name);
+        } else {
 
-        switch (item.getItemId()) {
-
-            case R.id.item_ft_asc:
-                Collections.sort(arrEl, new Comparator<Element>() {
-                    @Override
-                    public int compare(Element element1, Element element2) {
-                        return element1.getElevation() - element2.getElevation();
-                    }
-                });
-                break;
-            case R.id.item_ft_desc:
-
-                Collections.sort(arrEl, new Comparator<Element>() {
-                    @Override
-                    public int compare(Element element1, Element element2) {
-                        return element2.getElevation() - element1.getElevation();
-                    }
-                });
-
-                break;
-            case R.id.item_name_asc:
-
-                Collections.sort(arrEl, new Comparator<Element>() {
-                    @Override
-                    public int compare(Element element1, Element element2) {
-                        return element1.getName().compareTo(element2.getName());
-                    }
-                });
-
-                break;
-            case R.id.item_name_desc:
-                Collections.sort(arrEl, new Comparator<Element>() {
-                    @Override
-                    public int compare(Element element1, Element element2) {
-                        return element2.getName().compareTo(element1.getName());
-                    }
-                });
-                break;
+            selectedList = allPlaces;
+            viewAllAdapter = new ViewAllAdapter(selectedList);
         }
 
-        viewAllAdapter.giveAdapterValue(arrEl);
+        setupViewAllAdapter();
 
-        return super.onOptionsItemSelected(item);
     }
+
+
+    public void setupToolbar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar mActionBar = getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(true);
+        LayoutInflater mInflater = LayoutInflater.from(this);
+        customView = mInflater.inflate(R.layout.custom_actionbar, null);
+        mActionBar.setCustomView(customView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+        ((Toolbar) customView.getParent()).setContentInsetsAbsolute(0, 0);
+        boomSort = (BoomMenuButton) customView.findViewById(R.id.boom_sort);
+    }
+
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+
+        if (!isInit) {
+            initInfoBoom();
+        }
+        isInit = true;
+    }
+
+    private void initInfoBoom() {
+
+        Drawable[] drawables = new Drawable[4];
+        int[] drawablesResource = new int[]{
+                R.drawable.sort09,
+                R.drawable.sort90,
+                R.drawable.sortaz,
+                R.drawable.sortza
+        };
+        for (int i = 0; i < drawables.length; i++)
+            drawables[i] = ContextCompat.getDrawable(this, drawablesResource[i]);
+
+        int[][] colors = new int[4][3];
+        for (int i = 0; i < drawables.length; i++) {
+            colors[i][2] = ContextCompat.getColor(this, R.color.black);
+            colors[i][1] = ContextCompat.getColor(this, R.color.bg_screen2);
+            colors[i][0] = Util.getInstance().getPressedColor(colors[i][2]);
+        }
+
+        new BoomMenuButton.Builder()
+                .subButtons(drawables, colors, new String[]{"Sort Feet Ascending", "Sort Feet Descending", "Sort Name Ascending", "Sort Name Descending"})
+                .button(ButtonType.HAM)
+                .boom(BoomType.PARABOLA_2)
+                .place(PlaceType.HAM_4_1)
+                .subButtonsShadow(Util.getInstance().dp2px(2), Util.getInstance().dp2px(2))
+                .onSubButtonClick(new BoomMenuButton.OnSubButtonClickListener() {
+                    @Override
+                    public void onClick(int buttonIndex) {
+                        List<Place> arrEl = getSelectedList();
+
+                        if (buttonIndex == 0) {
+                            Collections.sort(arrEl, new Comparator<Place>() {
+                                @Override
+                                public int compare(Place element1, Place element2) {
+                                    return element1.getStepNumber() - element2.getStepNumber();
+                                }
+                            });
+                        } else if (buttonIndex == 1) {
+                            Collections.sort(arrEl, new Comparator<Place>() {
+                                @Override
+                                public int compare(Place element1, Place element2) {
+                                    return element2.getStepNumber() - element1.getStepNumber();
+                                }
+                            });
+                        } else if (buttonIndex == 2) {
+                            Collections.sort(arrEl, new Comparator<Place>() {
+                                @Override
+                                public int compare(Place element1, Place element2) {
+                                    return element1.getPlaceName().compareTo(element2.getPlaceName());
+                                }
+                            });
+                        } else if (buttonIndex == 3) {
+                            Collections.sort(arrEl, new Comparator<Place>() {
+                                @Override
+                                public int compare(Place element1, Place element2) {
+                                    return element2.getPlaceName().compareTo(element1.getPlaceName());
+                                }
+                            });
+                        }
+
+                        viewAllAdapter.notifyDataSetChanged();
+                    }
+                })
+                .init(boomSort);
+    }
+
 
     private void setupViewAllAdapter() {
-
         viewAllRV.setAdapter(viewAllAdapter);
         viewAllRV.setHasFixedSize(true);
-        viewAllRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),
-                LinearLayoutManager.VERTICAL,
-                false));
-        viewAllAdapter.giveAdapterValue(elementArray(name));
+        viewAllRV.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
     }
 
-    private ArrayList<Element> elementArray(String el) {
+    public List<Place> getSelectedList() {
+        return selectedList;
+    }
 
-        ArrayList<Element> arrElement = new ArrayList<>();
+    @Override
+    public void onClick(View view) {
 
-        String[] mountainsNames = getResources().getStringArray(R.array.mountains);
-        int[] elevation = getResources().getIntArray(R.array.mountainsElevation);
-        int[] images = {R.drawable.meverest, R.drawable.mk2, R.drawable.mkangchenjunga, R.drawable.mnangaparbat, R.drawable.mlhotse, R.drawable.mmakalu, R.drawable.mmanaslu, R.drawable.mchooyu, R.drawable.mkilimanjaro, R.drawable.mdenali};
+    }
 
-        String[] monumentsNames = getResources().getStringArray(R.array.monumentsNames);
-        int[] monumentsHeights = getResources().getIntArray(R.array.monumentsHeights);
-        int[] monumentsImages = {R.drawable.statueofliberty, R.drawable.eiffeltower, R.drawable.christtheredeemer, R.drawable.greatpyramidofgiza, R.drawable.tajmahal, R.drawable.stonehenge, R.drawable.acropolisofathens, R.drawable.greatwallofchina, R.drawable.burjkhalifa, R.drawable.colosseum};
+    @Override
+    public void toShow() {
 
-        String[] longDistancesNames = getResources().getStringArray(R.array.longDistancesNames);
-        int[] longDistancesLengths = getResources().getIntArray(R.array.longDistancesLengths);
-        int[] longDistancesImages = {R.drawable.atacamacrossingchile, R.drawable.marathonofthemidnightsunnorway, R.drawable.greatethiopianrunethiopia, R.drawable.comradesmarathonsouthafrica, R.drawable.junglemarathonbrazil, R.drawable.twooceansmarathonsouthafrica, R.drawable.bagantemplemarathonmyanmar, R.drawable.icemarathonantarctica, R.drawable.tenzinhillaryeverestmarathonnepal, R.drawable.fujisanmarathonjapan};
+    }
 
-        switch (el) {
+    @Override
+    public void showing(float v) {
 
-            case MOUNTAINS:
-                for (int i = 0; i < mountainsNames.length; i++) {
-                    Element obj = new Element();
-                    obj.setName(mountainsNames[i]);
-                    obj.setElevation(elevation[i]);
-                    obj.setImages(images[i]);
-                    arrElement.add(obj);
-                }
-                break;
-            case MONUMENTS:
-                for (int i = 0; i < monumentsNames.length; i++) {
-                    Element obj = new Element();
-                    obj.setName(monumentsNames[i]);
-                    obj.setElevation(monumentsHeights[i]);
-                    obj.setImages(monumentsImages[i]);
-                    arrElement.add(obj);
-                }
-                break;
+    }
 
-            case LONGDISTANCES:
-                for (int i = 0; i < longDistancesNames.length; i++) {
-                    Element obj = new Element();
-                    obj.setName(longDistancesNames[i]);
-                    obj.setElevation(longDistancesLengths[i]);
-                    obj.setImages(longDistancesImages[i]);
-                    arrElement.add(obj);
-                }
-                break;
+    @Override
+    public void showed() {
 
-            case VIEWALL:
-                ArrayList<String> viewAllNames = new ArrayList<String>(Arrays.asList(mountainsNames));
-                viewAllNames.addAll(Arrays.asList(monumentsNames));
-                viewAllNames.addAll(Arrays.asList(longDistancesNames));
+    }
 
-                ArrayList<Integer> viewAllHeights = new ArrayList<>();
-                for (int mElevation : elevation) viewAllHeights.add(mElevation);
-                for (int mMonumentsHeight : monumentsHeights) viewAllHeights.add(mMonumentsHeight);
-                for (int mLongDistancesLength : longDistancesLengths)
-                    viewAllHeights.add(mLongDistancesLength);
+    @Override
+    public void toHide() {
 
-                ArrayList<Integer> viewAllImages = new ArrayList<>();
-                for (int mImages : images) viewAllImages.add(mImages);
-                for (int mMonumentsImages : monumentsImages) viewAllImages.add(mMonumentsImages);
-                for (int mLongDistancesImages : longDistancesImages)
-                    viewAllImages.add(mLongDistancesImages);
+    }
 
-                for (int i = 0; i < viewAllNames.size(); i++) {
-                    Element obj = new Element();
-                    obj.setName(viewAllNames.get(i));
-                    obj.setElevation(viewAllHeights.get(i));
-                    obj.setImages(viewAllImages.get(i));
-                    arrElement.add(obj);
-                }
-                break;
+    @Override
+    public void hiding(float v) {
+
+    }
+
+    @Override
+    public void hided() {
+
+    }
+
+    @Override
+    public void onClick(int i) {
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (boomSort.isClosed()) {
+            super.onBackPressed();
+
+        } else {
+            boomSort.dismiss();
         }
-        return arrElement;
+    }
+
+    public void onArrowClick(View view) {
+        super.onBackPressed();
     }
 }
