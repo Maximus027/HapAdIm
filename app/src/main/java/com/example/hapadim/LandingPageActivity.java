@@ -33,6 +33,7 @@ public class LandingPageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         JsonEndPoint.getInstance().populateLocations(this);
 
         setContentView(R.layout.landingpage);
