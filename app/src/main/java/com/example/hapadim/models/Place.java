@@ -1,5 +1,7 @@
 package com.example.hapadim.models;
 
+import org.parceler.Parcel;
+
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ import java.util.List;
  "badges": []
  },
  */
-
+@Parcel(Parcel.Serialization.BEAN)
 public class Place {
 
     private int placeId;
