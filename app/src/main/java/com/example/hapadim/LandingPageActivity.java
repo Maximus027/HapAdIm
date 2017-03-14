@@ -27,8 +27,8 @@ public class LandingPageActivity extends AppCompatActivity {
     private static final String CATEGORY_KEY = "category_key";
 
     private LandMarksAdapter mountainsAdapater;
-    private LandMarksAdapter monuments;
-    private LandMarksAdapter longDist;
+    private LandMarksAdapter monumentsAdapter;
+    private LandMarksAdapter longDistAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +44,13 @@ public class LandingPageActivity extends AppCompatActivity {
 
         endPoint = JsonEndPoint.getInstance();
 
-        Log.d("json", "monuments size b4: " + endPoint.getMonuments().size());
+        Log.d("json", "monumentsAdapter size b4: " + endPoint.getMonuments().size());
         Log.d("json", "long dist size b4: " + endPoint.getLongDistance().size());
         Log.d("json", "mountains size b4: " + endPoint.getMountains().size());
 
         mountainsAdapater = new LandMarksAdapter(endPoint.getMountains());
-        monuments = new LandMarksAdapter(endPoint.getMonuments());
-        longDist = new LandMarksAdapter(endPoint.getLongDistance());
+        monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments());
+        longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance());
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
@@ -75,16 +75,16 @@ public class LandingPageActivity extends AppCompatActivity {
     }
 
     public void setUpMonumentsAdapter() {
-        monumentsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
-        monumentsRV.setAdapter(monuments);
-        monuments.notifyDataSetChanged();
+        monumentsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        monumentsRV.setAdapter(monumentsAdapter);
+        monumentsAdapter.notifyDataSetChanged();
         Log.e("Adapters Monuments: ", endPoint.getMountains().size() + "");
     }
 
     public void setUpLongDistancesAdapter() {
-        longDistancesRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false));
-        longDistancesRV.setAdapter(longDist);
-        longDist.notifyDataSetChanged();
+        longDistancesRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        longDistancesRV.setAdapter(longDistAdapter);
+        longDistAdapter.notifyDataSetChanged();
         Log.e("Adapters Long Dist: ", endPoint.getLongDistance().size() + "");
     }
 

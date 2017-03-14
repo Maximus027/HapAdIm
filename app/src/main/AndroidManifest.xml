@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".WelcomeActivity">
-
         </activity>
         <activity
             android:name=".LandingPageActivity"
@@ -28,6 +27,7 @@
                 android:value=".LandingPageActivity" />
         </activity>
 
+        <activity android:name=".StartPageActivity"/>
         <service
             android:name=".googlefit.GoogleFitService"
             android:enabled="true" />

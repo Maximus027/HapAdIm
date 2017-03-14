@@ -25,7 +25,6 @@ public class JsonEndPoint {
     private ArrayList<Place> mountains;
     private ArrayList<Place> monuments;
     private ArrayList<Place> longDistance;
-    public JSONArray badges;
     private final static String TAG = "json parser";
 
     private static JsonEndPoint instance;
@@ -74,15 +73,22 @@ public class JsonEndPoint {
                 place.setUrlImg(jsonObject1.getString("urlImg"));
                 place.setStepNumber(jsonObject1.getInt("stepNumber"));
                 place.setUrlVR(jsonObject1.getString("urlVR"));
-                badges = jsonObject1.getJSONArray("badges");
 
-                for (int j = 0; j < badges.length(); j++) {
-                    JSONObject getBadge = badges.getJSONObject(j);
+
+                JSONArray jsonBadges = jsonObject1.getJSONArray("badges");
+                List<Badge> badges = new ArrayList<>();
+
+                for (int j = 0; j < jsonBadges.length(); j++) {
+                    JSONObject getBadge = jsonBadges.getJSONObject(j);
                     Badge badge = new Badge();
                     badge.setBadgeDesc(getBadge.getString("badgeDesc"));
                     badge.setBadgedName(getBadge.getString("badgedName"));
                     badge.setBadgeImg(getBadge.getString("badgeImg"));
+
+                    badges.add(badge);
                 }
+
+                place.setBadges(badges);
 
                 if (place.getCategory().equals("Mountain")) {
                     mountains.add(place);
