@@ -4,6 +4,10 @@ package com.example.hapadim.models;
  * Created by meltemyildirim on 3/7/17.
  */
 
+import org.parceler.Parcel;
+
+import java.io.Serializable;
+
 /**
  * "badges": [
  {
@@ -13,8 +17,8 @@ package com.example.hapadim.models;
  "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
  }
  */
-
-public class Badge {
+@Parcel
+public class Badge implements Serializable{
     private int badgeId;
     private String badgedName;
     private String badgeImg;

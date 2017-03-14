@@ -3,6 +3,7 @@ package com.example.hapadim.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +17,8 @@ import com.example.hapadim.StartPageActivity;
 import com.example.hapadim.ViewAllActivity;
 import com.example.hapadim.models.Place;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,15 +105,17 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             images = (ImageView) itemView.findViewById(R.id.images);
         }
 
-        private void bind(Place place) {
+        private void bind(final Place place) {
             tvName.setText(place.getPlaceName());
             tvElevation.setText(String.valueOf(place.getStepNumber()));
             Picasso.with(context).load(place.getUrlImg()).into(images);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Activity activity = (Activity) v.getContext();
+                    Activity activity = (Activity) itemView.getContext();
                     Intent intent = new Intent(activity, StartPageActivity.class);
+                    Parcelable placeParcel = Parcels.wrap(place);
+                    intent.putExtra("chosen_place", placeParcel);
                     activity.startActivity(intent);
                 }
             });
