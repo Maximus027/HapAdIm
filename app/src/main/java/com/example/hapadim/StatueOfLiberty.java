@@ -20,7 +20,7 @@ public class StatueOfLiberty extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mockpage);
+        setContentView(R.layout.activity_startpage);
         imageView = (ImageView) findViewById(R.id.locationSlideImages);
 
 

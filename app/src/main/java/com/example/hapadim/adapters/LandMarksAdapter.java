@@ -1,8 +1,9 @@
 package com.example.hapadim.adapters;
 
-
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,12 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.hapadim.R;
+import com.example.hapadim.StartPageActivity;
 import com.example.hapadim.ViewAllActivity;
 import com.example.hapadim.models.Place;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,93 +53,74 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemViewType(int position) {
-
         if (position < landmarkList.size()) {
             //reg viewholder
-            return 1;
+            return HOLDER;
         } else {
             //footer
-            return 0;
+            return FOOTER;
         }
-
     }
 
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
-        if (viewType == 0) {
+        if (viewType == FOOTER) {
             View view = LayoutInflater.from(context).inflate(R.layout.footer_recyclerview, parent, false);
             return new Footer(view);
         } else {
             View view = LayoutInflater.from(context).inflate(R.layout.landingpageviewholder, parent, false);
             return new Holder(view);
         }
-
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-
         int type = holder.getItemViewType();
 
-        if (type == 1) {
-            Holder mHolder = (Holder) holder;
-            int stepNumber = landmarkList.get(position).getStepNumber();
-            String newStepNumber = stepNumber + " ";
-            String catergory = landmarkList.get(position).getCategory();
-            if (catergory.equals("Mountain")) {
-                Picasso.with(context).load(mountIcon).into(catIcon);
-            } else if (catergory.equals("Monument")) {
-                Picasso.with(context).load(monumentIcon).into(catIcon);
-            } else {
-                Picasso.with(context).load(distanceIcon).into(catIcon);
-            }
-
-            mHolder.tvName.setText(landmarkList.get(position).getPlaceName());
-            mHolder.tvElevation.setText(newStepNumber);
-            Picasso.with(context).load(landmarkList.get(position).getUrlImg()).into(mHolder.images);
-            mHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Toast.makeText(context, " landmarks ", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-        } else if (type == 0) {
+        if (type == HOLDER) {
+            Holder defaultHolder = (Holder) holder;
+            defaultHolder.bind(landmarkList.get(position));
+        } else if (type == FOOTER) {
+            //we get this position to pass in the category onto the viewAll activity
             ((Footer) holder).bind(landmarkList.get(position - 1));
         }
 
     }
-
-    private class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvName, tvElevation;
-        ImageView images;
-
-        private Holder(View itemView) {
-            super(itemView);
-
-            tvName = (TextView) itemView.findViewById(R.id.tv_name);
-            tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
-            images = (ImageView) itemView.findViewById(R.id.images);
-            catIcon = (ImageView) itemView.findViewById(R.id.catergoryIcon);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-
-        }
-
-    }
-
 
     @Override
     public int getItemCount() {
         return landmarkList.size() + 1;
     }
 
+    private class Holder extends RecyclerView.ViewHolder {
+        TextView tvName, tvElevation;
+        ImageView images;
+
+        private Holder(View itemView) {
+            super(itemView);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name);
+            tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
+            images = (ImageView) itemView.findViewById(R.id.images);
+        }
+
+        private void bind(final Place place) {
+            tvName.setText(place.getPlaceName());
+            tvElevation.setText(String.valueOf(place.getStepNumber()));
+            Picasso.with(context).load(place.getUrlImg()).into(images);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Activity activity = (Activity) itemView.getContext();
+                    Intent intent = new Intent(activity, StartPageActivity.class);
+                    Parcelable placeParcel = Parcels.wrap(place);
+                    intent.putExtra("chosen_place", placeParcel);
+                    activity.startActivity(intent);
+                }
+            });
+        }
+    }
 
     private class Footer extends RecyclerView.ViewHolder {
 
@@ -144,7 +128,7 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             super(itemView);
         }
 
-        public void bind(final Place place) {
+        private void bind(final Place place) {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

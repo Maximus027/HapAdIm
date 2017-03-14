@@ -14,6 +14,6 @@ public class YoutubePlayer extends YouTubeBaseActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.mockpage);
+        setContentView(R.layout.activity_startpage);
     }
 }
