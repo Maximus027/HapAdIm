@@ -27,6 +27,8 @@ import com.google.android.gms.fitness.result.DataSourcesResult;
 
 import java.util.concurrent.TimeUnit;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by maxrosado on 3/9/17.
  */
@@ -39,6 +41,7 @@ public class GoogleFitService extends Service implements OnDataPointListener,
     private static final String AUTH_PENDING = "auth_state_pending";
     private boolean authInProgress = false;
     private GoogleApiClient googleApiClient;
+    private OnDataPointListener onDataPointListener;
 
 
 
@@ -48,6 +51,7 @@ public class GoogleFitService extends Service implements OnDataPointListener,
 
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Fitness.SENSORS_API)
+                .addApi(Fitness.HISTORY_API)
                 .addScope(new Scope(Scopes.FITNESS_ACTIVITY_READ_WRITE))
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -84,12 +88,12 @@ public class GoogleFitService extends Service implements OnDataPointListener,
 
     @Override
     public void onConnectionSuspended(int i) {
-
+        Log.d("GoogleFit", "onConnectionSuspended");
     }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        Log.d("GoogleFit", "onConnectionFailed");
     }
 
     @Override
@@ -120,6 +124,26 @@ public class GoogleFitService extends Service implements OnDataPointListener,
                     public void onResult(Status status) {
                         if (status.isSuccess()) {
                             Log.e( "GoogleFit", "SensorApi successfully added" );
+                        }
+                    }
+                });
+    }
+
+    private void unregisterFitnessDataListener() {
+        if (onDataPointListener == null) {
+            return;
+        }
+
+        Fitness.SensorsApi.remove(
+                googleApiClient,
+                onDataPointListener)
+                .setResultCallback(new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        if (status.isSuccess()) {
+                            Log.i(TAG, "Listener was removed!");
+                        } else {
+                            Log.i(TAG, "Listener was not removed.");
                         }
                     }
                 });
