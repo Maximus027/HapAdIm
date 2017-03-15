@@ -20,7 +20,6 @@ public class MockGoogleFit extends AppCompatActivity implements View.OnClickList
     private GoogleApiClient googleApiClient;
     private TextView stepTextView;
     private Button stopStepsButton;
-
     private GoogleFitService googleFitService;
 
     private ServiceConnection serviceConnection = new ServiceConnection() {
@@ -35,6 +34,24 @@ public class MockGoogleFit extends AppCompatActivity implements View.OnClickList
             googleFitService.unbindActivity();
         }
     };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mock_google_fit);
+
+        stepTextView = (TextView) findViewById(R.id.count_of_steps);
+        stopStepsButton = (Button) findViewById(R.id.stop_step_count_mock_button);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Bind to LocalService
+        Intent intent = new Intent(this, GoogleFitService.class);
+        bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+    }
 
     @Override
     protected void onStop() {
@@ -52,28 +69,8 @@ public class MockGoogleFit extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mock_google_fit);
-
-        stepTextView = (TextView) findViewById(R.id.count_of_steps);
-        stopStepsButton = (Button) findViewById(R.id.stop_step_count_mock_button);
-    }
-
-    private void startGoogleFitService() {
-        Intent intent = new Intent(this, GoogleFitService.class);
-        startService(intent);
-    }
-
-    @Override
     public void onClick(View v) {
 
-    }
-
-    private void displaySteps () {
-        if (googleApiClient != null) {
-
-        }
     }
 
     public void startService(View view) {
