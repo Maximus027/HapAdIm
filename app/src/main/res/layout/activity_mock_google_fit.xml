@@ -26,5 +26,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="stopService"/>
+    <Button
+        android:id="@+id/get_steps_button"
+        android:text="Get Steps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="getCurrentSteps"/>
 
 </LinearLayout>

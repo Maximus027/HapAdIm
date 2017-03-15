@@ -42,7 +42,6 @@ public class MockGoogleFit extends AppCompatActivity implements View.OnClickList
 
         stepTextView = (TextView) findViewById(R.id.count_of_steps);
         stopStepsButton = (Button) findViewById(R.id.stop_step_count_mock_button);
-
     }
 
     @Override
@@ -85,5 +84,9 @@ public class MockGoogleFit extends AppCompatActivity implements View.OnClickList
         unbindService(serviceConnection);
         stopService(service);
         
+    }
+
+    public void getCurrentSteps(View view) {
+        stepTextView.setText(googleFitService.getSteps());
     }
 }

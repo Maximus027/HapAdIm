@@ -49,7 +49,7 @@ public class GoogleFitService extends Service implements OnDataPointListener,
     public static final int REQUEST_RESOLVE_ERROR = 1001;
     private boolean resolvingError = false;
     private Activity activity;
-    private int steps;
+    private String steps;
 
     @Override
     public void onCreate() {
@@ -120,7 +120,8 @@ public class GoogleFitService extends Service implements OnDataPointListener,
     @Override
     public void onDataPoint(DataPoint dataPoint) {
         for (final Field field : dataPoint.getDataType().getFields()) {
-            final Value value = dataPoint.getValue(field);
+            Value value = dataPoint.getValue(field);
+            steps = value.toString();
         }
     }
 
@@ -177,7 +178,7 @@ public class GoogleFitService extends Service implements OnDataPointListener,
         return binder;
     }
 
-    public int getSteps() {
+    public String getSteps() {
         return steps;
     }
 
