@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/cardViewMargin"
             android:text="MOUNTAINS"
+            android:layout_gravity=""
             android:textColor="@color/colorWhite"
             android:textSize="15dp"
             android:textStyle="bold|italic" />

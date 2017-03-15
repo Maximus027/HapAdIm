@@ -31,6 +31,8 @@ import java.util.List;
 public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     ImageView catIcon;
+    ImageView feetIcon;
+    Activity activity1;
     int mountIcon = R.drawable.mountainicon;
     int monumentIcon = R.drawable.monumenticon;
     int distanceIcon = R.drawable.walkicon;
@@ -100,23 +102,33 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         private Holder(View itemView) {
             super(itemView);
+            feetIcon = (ImageView) itemView.findViewById(R.id.stepsIcon);
             tvName = (TextView) itemView.findViewById(R.id.tv_name);
             tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
             images = (ImageView) itemView.findViewById(R.id.images);
+            catIcon = (ImageView) itemView.findViewById(R.id.catergoryIcon);
         }
 
         private void bind(final Place place) {
+            if (place.getCategory().equals("Mountain")) {
+                Picasso.with(context).load(mountIcon).into(catIcon);
+            } else if (place.getCategory().equals("Monument")) {
+                Picasso.with(context).load(monumentIcon).into(catIcon);
+            } else {
+                Picasso.with(context).load(distanceIcon).into(catIcon);
+            }
             tvName.setText(place.getPlaceName());
             tvElevation.setText(String.valueOf(place.getStepNumber()));
             Picasso.with(context).load(place.getUrlImg()).into(images);
+            Picasso.with(context).load(R.drawable.feet).into(feetIcon);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Activity activity = (Activity) itemView.getContext();
-                    Intent intent = new Intent(activity, StartPageActivity.class);
+                    Activity activity1 = (Activity) itemView.getContext();
+                    Intent intent = new Intent(activity1, StartPageActivity.class);
                     Parcelable placeParcel = Parcels.wrap(place);
                     intent.putExtra("chosen_place", placeParcel);
-                    activity.startActivity(intent);
+                    activity1.startActivity(intent);
                 }
             });
         }

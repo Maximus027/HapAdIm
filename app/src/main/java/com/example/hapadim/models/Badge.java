@@ -19,10 +19,10 @@ import java.io.Serializable;
  */
 @Parcel
 public class Badge implements Serializable{
-    private int badgeId;
-    private String badgedName;
-    private String badgeImg;
-    private String badgeDesc;
+    public int badgeId;
+    public String badgedName;
+    public String badgeImg;
+    public String badgeDesc;
 
     public int getBadgeId() {
         return badgeId;

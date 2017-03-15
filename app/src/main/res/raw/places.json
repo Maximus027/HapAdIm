@@ -9,18 +9,20 @@
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
     "urlImg": "http://i64.tinypic.com/2ztk277.jpg",
+    "urlImg2": "http://i67.tinypic.com/11manly.jpg",
+    "urlImg3": "http://i67.tinypic.com/21membo.jpg",
     "badges": [
       {
         "badgeId": 1,
         "badgedName": "Journey To Freedom",
         "badgeImg": "http://i68.tinypic.com/290zmug.jpg",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgeDesc": "Let us Begin the Journey to Freedom !"
       },
       {
         "badgeId": 2,
         "badgedName": "Victory Statue Badge",
         "badgeImg": "http://i66.tinypic.com/10hivzn.jpg ",
-        "badgeDesc": "Task completed.Climbed to Tower "
+        "badgeDesc": "Task completed.Climbed to Statue "
       }
     ]
   },
@@ -34,12 +36,14 @@
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=sJxiPiAaB4k",
     "urlImg": "http://i63.tinypic.com/2dlsp6g.jpg",
+    "urlImg2": "http://i66.tinypic.com/s1kgp2.jpg",
+    "urlImg3": "http://i63.tinypic.com/2rens5h.jpg",
     "badges": [
       {
         "badgeId": 1,
         "badgedName": "Voyaje De La tour",
         "badgeImg": " no image ",
-        "badgeDesc": "no description "
+        "badgeDesc": "Congratulations on "
       },
       {
         "badgeId": 2,
@@ -59,6 +63,8 @@
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=8hgwObX3ask",
     "urlImg": "http://i68.tinypic.com/2ro03h5.jpg",
+    "urlImg2": "http://i68.tinypic.com/n5hu12.jpg",
+    "urlImg3": "http://i68.tinypic.com/2dbph0i.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -84,6 +90,8 @@
     "calories": 0,
     "urlVR": "no video",
     "urlImg": "http://i68.tinypic.com/o9fpmr.jpg",
+    "urlImg2": "http://i66.tinypic.com/2zq68u1.jpg",
+    "urlImg3": "http://i67.tinypic.com/t6qq9k.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -109,6 +117,8 @@
     "calories": 0,
     "urlVR": "no vr",
     "urlImg": "http://i63.tinypic.com/1relp5.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -134,6 +144,8 @@
     "calories": 0,
     "urlVR": "no video",
     "urlImg": "http://i65.tinypic.com/2pte2l4.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -159,6 +171,8 @@
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=Msjanh7VAVY",
     "urlImg": "http://i68.tinypic.com/2rm8mfa.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -184,6 +198,8 @@
     "calories": 0,
     "urlVR": "no video",
     "urlImg": "http://i63.tinypic.com/2l899g8.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -209,6 +225,8 @@
     "calories": 0,
     "urlVR": "no video",
     "urlImg": "http://i64.tinypic.com/9jlrwh.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -234,6 +252,8 @@
     "calories": 0,
     "urlVR": "no vr",
     "urlImg": "http://i66.tinypic.com/29ohpmu.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -259,6 +279,8 @@
     "calories": 0,
     "urlVR": "no VR",
     "urlImg": "http://i63.tinypic.com/21c83yf.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -274,7 +296,6 @@
       }
     ]
   },
-
   {
     "placeId": 12,
     "category": "LongDistance",
@@ -285,6 +306,8 @@
     "calories": 0,
     "urlVR": "no vr ",
     "urlImg": "http://i67.tinypic.com/1qse4k.jpg ",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -310,6 +333,8 @@
     "calories": 0,
     "urlVR": "no vr",
     "urlImg": "http://i66.tinypic.com/116ubtt.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -335,6 +360,8 @@
     "calories": 0,
     "urlVR": " no vr ",
     "urlImg": "http://i63.tinypic.com/1zxum3c.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -360,6 +387,8 @@
     "calories": 0,
     "urlVR": " no vr",
     "urlImg": "http://i63.tinypic.com/20hppwn.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
@@ -385,6 +414,8 @@
     "calories": 0,
     "urlVR": "no vr",
     "urlImg": "http://i68.tinypic.com/kdvdch.jpg",
+    "urlImg2": "",
+    "urlImg3": "",
     "badges": [
       {
         "badgeId": 1,
