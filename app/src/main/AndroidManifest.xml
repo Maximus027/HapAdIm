@@ -36,7 +36,8 @@
             android:name=".googlefit.GoogleFitService"
             android:enabled="true" />
 
-        <activity android:name=".MockGoogleFit"></activity>
+        <activity android:name=".MockGoogleFit">
+        </activity>
     </application>
 
 </manifest>
