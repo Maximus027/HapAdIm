@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dots_height"
         android:gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/dots_margin_bottom"
+        android:layout_marginBottom="@dimen/cardViewMargin"
         android:layout_marginTop="205dp"
         android:orientation="horizontal"></LinearLayout>
 
@@ -50,7 +50,8 @@
 
             <android.support.v7.widget.CardView
                 android:id="@+id/locationCard"
-                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_width="270dp"
                 android:layout_height="47dp"
                 android:elevation="30dp"
                 android:layout_below="@id/locationName"
@@ -82,22 +83,22 @@
                         android:layout_toRightOf="@id/catergoryIcon"
                         android:background="@color/colorBlack" />
 
+                    <TextView
+                        android:id="@+id/numberOfSteps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignLeft="@+id/cardDivider"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_horizontal"
+                        android:textSize="30dp" />
                     <ImageView
                         android:id="@+id/stepsIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_toRightOf="@+id/cardDivider"
+                        android:layout_toRightOf="@+id/numberOfSteps"
                         android:src="@drawable/feet" />
 
-                    <TextView
-                        android:id="@+id/numberOfSteps"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignLeft="@+id/stepsIcon"
-                        android:layout_marginLeft="50dp"
-                        android:gravity="center_horizontal"
-                        android:textSize="30dp" />
 
                 </RelativeLayout>
 
@@ -129,6 +130,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_below="@id/locationFactsCard"
+                android:layout_marginBottom="@dimen/cardViewMargin"
                 android:layout_marginLeft="@dimen/cardViewMargin"
                 android:layout_marginRight="@dimen/cardViewMargin"
                 android:layout_marginTop="@dimen/cardViewMargin">

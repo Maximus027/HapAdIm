@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
 import android.support.v7.widget.CardView;
 import android.text.Html;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -56,9 +55,6 @@ public class StartPageActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startpage);
-        int mountback = R.color.layoutmountBack;
-        int longback = R.color.layoutlongBack;
-        int monoback = R.color.layoutmonoBack;
         locationName = (TextView) findViewById(R.id.locationName);
         catergoryIcon = (ImageView) findViewById(R.id.catergoryIcon);
         panoImage = (ImageView) findViewById(R.id.pano_view);
@@ -98,6 +94,9 @@ public class StartPageActivity extends AppCompatActivity {
     }
 
     private void setLocationInformation(Place example) {
+        int mountback = R.color.layoutmountBack;
+        int longback = R.color.layoutlongBack;
+        int monoback = R.color.layoutmonoBack;
         String placename = example.getPlaceName();
         String catergory = example.getCategory();
         if (catergory.equals("Mountain")) {
