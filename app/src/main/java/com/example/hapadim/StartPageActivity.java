@@ -15,8 +15,6 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
-import static com.example.hapadim.R.id.locationFacts;
-
 /**
  * Created by meltemyildirim on 3/13/17.
  */
@@ -44,13 +42,13 @@ public class StartPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_startpage);
         locationName = (TextView) findViewById(R.id.locationName);
         catergoryIcon = (ImageView) findViewById(R.id.catergoryIcon);
-        locationDesciption = (TextView) findViewById(locationFacts);
+        locationDesciption = (TextView)findViewById(R.id.locationStartPageFactsInfo);
         stepNum = (TextView) findViewById(R.id.numberOfSteps);
 
         Place example = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
 //        List<Badge> badges = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place_badges"));
 
-        Log.d(TAG, "onCreate: imgUrl: " + example.getUrlImg());
+        Log.d(TAG3, "onCreate: imgUrl: " + example.getUrlImg());
         Log.d(TAG, "onCreate: imgUrl2: " + example.getUrlImg2());
         Log.d(TAG, "onCreate: imgUrl3: " + example.getUrlImg3());
 
@@ -71,7 +69,6 @@ public class StartPageActivity extends AppCompatActivity {
         } else {
             Picasso.with(this).load(R.drawable.walkicon).into(catergoryIcon);
         }
-
 
         String locationFacts = example.getDescription();
         int stepNumber = example.getStepNumber();

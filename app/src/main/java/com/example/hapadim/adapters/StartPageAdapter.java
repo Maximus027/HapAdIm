@@ -21,6 +21,7 @@ public class StartPageAdapter extends PagerAdapter {
     String[] urlPhoto;
 
 
+
     public StartPageAdapter(Context context, String[] photos) {
         urlPhoto=photos;
         adaptercontext = context;
@@ -30,7 +31,7 @@ public class StartPageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return urlPhoto.length;
     }
 
     @Override

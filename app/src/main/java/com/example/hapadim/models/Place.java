@@ -18,9 +18,9 @@ public class Place {
     private int distance;
     private int calories;
     private String urlVR;
-    private String urlImg;
-    private String urlImg2;
-    private String urlImg3;
+    public String urlImg;
+    public String urlImg2;
+    public String urlImg3;
 
     public void setUrlImg2(String urlImg2) {
         this.urlImg2 = urlImg2;

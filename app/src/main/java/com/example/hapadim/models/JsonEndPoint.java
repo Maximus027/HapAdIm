@@ -70,6 +70,7 @@ public class JsonEndPoint {
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                 place.setCategory(jsonObject1.getString("category"));
                 place.setPlaceName(jsonObject1.getString("placeName"));
+                place.setDescription(jsonObject1.getString("description"));
                 place.setUrlImg(jsonObject1.getString("urlImg"));
                 place.setUrlImg2(jsonObject1.getString("urlImg2"));
                 place.setUrlImg3(jsonObject1.getString("urlImg3"));
