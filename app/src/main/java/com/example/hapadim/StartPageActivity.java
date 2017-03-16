@@ -5,8 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
+import android.text.Html;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hapadim.adapters.StartPageAdapter;
@@ -22,12 +26,18 @@ import org.parceler.Parcels;
 public class StartPageActivity extends AppCompatActivity {
     Intent startPage;
     StartPageAdapter startPageAdapter;
+    RelativeLayout relativeLayout;
     StartPageActivity startPageActivity;
+    LinearLayout dotsLayout;
     ViewPager viewPager;
     TextView locationName;
     TextView locationDesciption;
     TextView stepNum;
     ImageView catergoryIcon;
+    CardView cardView;
+    CardView cardView2;
+    TextView[] dots;
+    int[] layouts;
     Intent pageIntent;
 
 
@@ -40,10 +50,20 @@ public class StartPageActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startpage);
+        int mountback = R.color.layoutmountBack;
+        int longback = R.color.layoutlongBack;
+        int monoback = R.color.layoutmonoBack;
         locationName = (TextView) findViewById(R.id.locationName);
         catergoryIcon = (ImageView) findViewById(R.id.catergoryIcon);
-        locationDesciption = (TextView)findViewById(R.id.locationStartPageFactsInfo);
+        locationDesciption = (TextView) findViewById(R.id.locationStartPageFactsInfo);
+        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
+        relativeLayout = (RelativeLayout)findViewById(R.id.startLayout);
         stepNum = (TextView) findViewById(R.id.numberOfSteps);
+        cardView = (CardView)findViewById(R.id.locationCard);
+        cardView.setElevation(30);
+        cardView2 = (CardView)findViewById(R.id.locationFactsCard);
+        cardView2.setElevation(30);
+
 
         Place example = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
 //        List<Badge> badges = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place_badges"));
@@ -64,9 +84,13 @@ public class StartPageActivity extends AppCompatActivity {
         String catergory = example.getCategory();
         if (catergory.equals("Mountain")) {
             Picasso.with(this).load(R.drawable.mountainicon).into(catergoryIcon);
+            relativeLayout.setBackgroundColor(getResources().getColor(mountback));
+
         } else if (catergory.equals("Monument")) {
             Picasso.with(this).load(R.drawable.monumenticon).into(catergoryIcon);
+            relativeLayout.setBackgroundColor(getResources().getColor(monoback));
         } else {
+            relativeLayout.setBackgroundColor(getResources().getColor(longback));
             Picasso.with(this).load(R.drawable.walkicon).into(catergoryIcon);
         }
 
@@ -76,6 +100,25 @@ public class StartPageActivity extends AppCompatActivity {
         locationName.setText(placename);
         locationDesciption.setText(locationFacts);
 
+        addBottomDots(viewPager.getCurrentItem());
+    }
 
+
+    private void addBottomDots(int currentPage) {
+        dots = new TextView[3];
+
+        int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
+        int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
+
+        for (int i = 0; i < dots.length; i++) {
+            dots[i] = new TextView(this);
+            dots[i].setText(Html.fromHtml("&#8226;"));
+            dots[i].setTextSize(35);
+            dots[i].setTextColor(colorsInactive[currentPage]);
+            dotsLayout.addView(dots[i]);
+        }
+
+        if (dots.length > 0)
+            dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 }
