@@ -13,12 +13,31 @@ public class Place {
     private int placeId;
     private String category;
     private String placeName;
-    private String description;
+    public String description;
     private int stepNumber;
     private int distance;
     private int calories;
     private String urlVR;
     private String urlImg;
+    private String urlImg2;
+    private String urlImg3;
+
+    public void setUrlImg2(String urlImg2) {
+        this.urlImg2 = urlImg2;
+    }
+
+    public void setUrlImg3(String urlImg3) {
+        this.urlImg3 = urlImg3;
+    }
+
+    public String getUrlImg2() {
+        return urlImg2;
+    }
+
+    public String getUrlImg3() {
+        return urlImg3;
+    }
+
     private List<Badge> badges;
 
     public int getPlaceId() {

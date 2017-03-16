@@ -71,6 +71,8 @@ public class JsonEndPoint {
                 place.setCategory(jsonObject1.getString("category"));
                 place.setPlaceName(jsonObject1.getString("placeName"));
                 place.setUrlImg(jsonObject1.getString("urlImg"));
+                place.setUrlImg2(jsonObject1.getString("urlImg2"));
+                place.setUrlImg3(jsonObject1.getString("urlImg3"));
                 place.setStepNumber(jsonObject1.getInt("stepNumber"));
                 place.setUrlVR(jsonObject1.getString("urlVR"));
 
@@ -94,7 +96,7 @@ public class JsonEndPoint {
                     mountains.add(place);
                 } else if (place.getCategory().equals("Monument")) {
                     monuments.add(place);
-                } else if (place.getCategory().equals("LongDistance")){
+                } else if (place.getCategory().equals("LongDistance")) {
                     longDistance.add(place);
                 }
             }

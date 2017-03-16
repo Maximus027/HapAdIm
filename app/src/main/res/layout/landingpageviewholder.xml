@@ -10,9 +10,14 @@
     <LinearLayout
         android:id="@+id/cardViewLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/firstLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/imageMargin"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/tv_name"
@@ -45,20 +50,35 @@
             />
 
         <View
-            android:layout_marginLeft="25dp"
+            android:id="@+id/cardDivider"
             android:layout_width="2dp"
             android:layout_height="fill_parent"
-            android:background="@color/colorGray"/>
+            android:layout_alignRight="@id/catergoryIcon"
+            android:layout_below="@id/images"
+            android:layout_marginLeft="20dp"
+            android:background="@color/colorGray" />
+
         <TextView
             android:id="@+id/tv_elevation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/cardDivider"
+            android:layout_below="@+id/images"
+            android:layout_marginLeft="7dp"
             android:layout_marginBottom="@dimen/imageMargin"
-            android:singleLine="true"
-            android:text="elevation"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+            android:singleLine="true"/>
         </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/stepsIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/images"
+            android:layout_toRightOf="@id/tv_elevation" />
+
+
+    </LinearLayout>
 
     </LinearLayout>
 
