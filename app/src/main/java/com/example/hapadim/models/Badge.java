@@ -4,21 +4,18 @@ package com.example.hapadim.models;
  * Created by meltemyildirim on 3/7/17.
  */
 
-/**
- * "badges": [
- {
- "badgeId": 1,
- "badgedName": "Journey To Freedom",
- "badgeImg": " ",
- "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
- }
- */
+import org.parceler.Parcel;
 
-public class Badge {
-    private int badgeId;
-    private String badgedName;
-    private String badgeImg;
-    private String badgeDesc;
+import java.io.Serializable;
+
+/****/
+
+@Parcel
+public class Badge implements Serializable{
+    public int badgeId;
+    public String badgedName;
+    public String badgeImg;
+    public String badgeDesc;
 
     public int getBadgeId() {
         return badgeId;
