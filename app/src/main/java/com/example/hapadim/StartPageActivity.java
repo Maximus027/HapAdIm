@@ -28,8 +28,8 @@ public class StartPageActivity extends AppCompatActivity {
     ViewPager viewPager;
     TextView locationName;
     TextView locationDesciption;
-    ImageView catergoryIcon;
     TextView stepNum;
+    ImageView catergoryIcon;
     Intent pageIntent;
 
 
@@ -46,14 +46,18 @@ public class StartPageActivity extends AppCompatActivity {
         catergoryIcon = (ImageView) findViewById(R.id.catergoryIcon);
         locationDesciption = (TextView) findViewById(locationFacts);
         stepNum = (TextView) findViewById(R.id.numberOfSteps);
-        pageIntent = getIntent();
-        startPageAdapter = new StartPageAdapter(getApplicationContext(), getIntent());
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        viewPager.setAdapter(startPageAdapter);
-
 
         Place example = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
 //        List<Badge> badges = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place_badges"));
+
+        Log.d(TAG, "onCreate: imgUrl: " + example.getUrlImg());
+        Log.d(TAG, "onCreate: imgUrl2: " + example.getUrlImg2());
+        Log.d(TAG, "onCreate: imgUrl3: " + example.getUrlImg3());
+
+        String[] array = {example.getUrlImg(), example.getUrlImg2(), example.getUrlImg3()};
+        startPageAdapter = new StartPageAdapter(getApplicationContext(), array);
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager.setAdapter(startPageAdapter);
 
         Log.d(TAG, "onCreate: chosenName: " + example.getPlaceName());
         Log.d(TAG, "onCreate: firstBadge " + example.getBadges().get(0).getBadgedName());
@@ -67,7 +71,11 @@ public class StartPageActivity extends AppCompatActivity {
         } else {
             Picasso.with(this).load(R.drawable.walkicon).into(catergoryIcon);
         }
+
+
         String locationFacts = example.getDescription();
+        int stepNumber = example.getStepNumber();
+        stepNum.setText(String.valueOf(stepNumber));
         locationName.setText(placename);
         locationDesciption.setText(locationFacts);
 

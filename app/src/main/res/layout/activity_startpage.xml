@@ -150,9 +150,10 @@
 
             <Button
                 android:id="@+id/startButton"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
                 android:layout_below="@+id/playVideoBtn"
+                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/cardViewMargin"
                 android:layout_marginLeft="@dimen/cardViewMargin"
                 android:layout_marginRight="@dimen/cardViewMargin"
