@@ -141,16 +141,18 @@
 
                     <ImageView
                         android:layout_width="@dimen/iconWidth"
-                        android:layout_height="@dimen/iconWidth" />
+                        android:layout_height="match_parent" />
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
 
-            <Button
-                android:id="@+id/playVideoBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+
+            <ImageView
+                android:id="@+id/pano_view"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="fitXY"
                 android:layout_below="@+id/badgesCard"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/cardViewMargin"
@@ -161,7 +163,7 @@
                 android:id="@+id/startButton"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
-                android:layout_below="@+id/playVideoBtn"
+                android:layout_below="@+id/pano_view"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/cardViewMargin"
                 android:layout_marginLeft="@dimen/cardViewMargin"

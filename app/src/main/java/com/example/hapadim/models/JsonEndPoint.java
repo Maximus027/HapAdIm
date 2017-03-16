@@ -74,6 +74,7 @@ public class JsonEndPoint {
                 place.setUrlImg(jsonObject1.getString("urlImg"));
                 place.setUrlImg2(jsonObject1.getString("urlImg2"));
                 place.setUrlImg3(jsonObject1.getString("urlImg3"));
+                place.setPanoImg(jsonObject1.getString("panoImg"));
                 place.setStepNumber(jsonObject1.getInt("stepNumber"));
                 place.setUrlVR(jsonObject1.getString("urlVR"));
 

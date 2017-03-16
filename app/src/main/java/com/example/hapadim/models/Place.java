@@ -21,6 +21,15 @@ public class Place {
     public String urlImg;
     public String urlImg2;
     public String urlImg3;
+    public String panoImg;
+
+    public String getPanoImg() {
+        return panoImg;
+    }
+
+    public void setPanoImg(String panoImg) {
+        this.panoImg = panoImg;
+    }
 
     public void setUrlImg2(String urlImg2) {
         this.urlImg2 = urlImg2;
