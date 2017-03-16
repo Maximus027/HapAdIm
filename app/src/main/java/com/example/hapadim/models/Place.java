@@ -6,20 +6,6 @@ import java.util.List;
 
 /**
  * Created by meltemyildirim on 3/7/17.
- * <p>
- * <p>
- * {
- * "placeId": 1,
- * "category": "Monument",
- * "placeName": "Statue Of Liberty",
- * "description": "lorem alksdjflkahsd",
- * "stepNumber": 354,
- * "distance": 0,
- * "calories": 0,
- * "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
- * "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
- * "badges": []
- * },
  */
 @Parcel(Parcel.Serialization.BEAN)
 public class Place {

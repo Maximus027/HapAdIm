@@ -8,15 +8,8 @@ import org.parceler.Parcel;
 
 import java.io.Serializable;
 
-/**
- * "badges": [
- {
- "badgeId": 1,
- "badgedName": "Journey To Freedom",
- "badgeImg": " ",
- "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
- }
- */
+/****/
+
 @Parcel
 public class Badge implements Serializable{
     public int badgeId;

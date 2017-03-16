@@ -9,7 +9,8 @@
     <RelativeLayout
         android:id="@+id/achievementCardLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/bg_screen9">
 
         <ImageView
             android:id="@+id/badgeIcon"
@@ -22,7 +23,7 @@
             android:layout_width="1dp"
             android:layout_height="65dp"
             android:layout_toRightOf="@id/badgeIcon"
-            android:background="@color/colorBlack" />
+            android:background="@color/material_white" />
 
         <TextView
             android:id="@+id/badgeDescription"
@@ -30,6 +31,8 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginLeft="@dimen/badgeMarginCardView" />
+            android:layout_marginLeft="@dimen/badgeMarginCardView"
+            android:layout_toRightOf="@id/cardDivider"
+            android:textColor="@color/material_white"/>
     </RelativeLayout>
 </android.support.v7.widget.CardView>

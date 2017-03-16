@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-
 import com.example.hapadim.adapters.ViewAllAdapter;
 import com.example.hapadim.models.JsonEndPoint;
 import com.example.hapadim.models.Place;
@@ -182,7 +181,6 @@ public class ViewAllActivity extends AppCompatActivity
                 })
                 .init(boomSort);
     }
-
 
     private void setupViewAllAdapter() {
         viewAllRV.setAdapter(viewAllAdapter);

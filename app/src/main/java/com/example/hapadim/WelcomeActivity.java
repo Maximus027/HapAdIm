@@ -40,6 +40,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         prefManager = new PrefManager(this);
 
+// Checking for first time launch - before calling launchHomeScreen();
 //        if (!prefManager.isFirstTimeLaunch()) {
 //            launchHomeScreen();
 //            finish();

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import com.example.hapadim.adapters.DrawerAdapter;
 import com.example.hapadim.adapters.LandMarksAdapter;
 import com.example.hapadim.models.JsonEndPoint;
 
@@ -20,7 +21,7 @@ import com.example.hapadim.models.JsonEndPoint;
 public class LandingPageActivity extends AppCompatActivity {
 
 
-    private RecyclerView mountainsRV, monumentsRV, longDistancesRV;
+    private RecyclerView mountainsRV, monumentsRV, longDistancesRV, drawerRV;
     private JsonEndPoint endPoint;
 
     private static final String VIEWALL = "view all";
@@ -29,6 +30,7 @@ public class LandingPageActivity extends AppCompatActivity {
     private LandMarksAdapter mountainsAdapater;
     private LandMarksAdapter monumentsAdapter;
     private LandMarksAdapter longDistAdapter;
+    private DrawerAdapter drawerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mountainsRV = (RecyclerView) findViewById(R.id.rv_mountains);
         monumentsRV = (RecyclerView) findViewById(R.id.rv_monuments);
         longDistancesRV = (RecyclerView) findViewById(R.id.rv_long_distances);
+        drawerRV = (RecyclerView)findViewById(R.id.rv_drawer);
 
         endPoint = JsonEndPoint.getInstance();
 
@@ -51,11 +54,20 @@ public class LandingPageActivity extends AppCompatActivity {
         mountainsAdapater = new LandMarksAdapter(endPoint.getMountains());
         monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments());
         longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance());
+        drawerAdapter= new DrawerAdapter(endPoint.getMonuments()); // need to be changed the entry data - this is only for testing purpose
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
         setUpLongDistancesAdapter();
+        setUpDrawerAdapter();
     }
+
+    private void setUpDrawerAdapter() {
+        drawerRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        drawerRV.setAdapter(drawerAdapter);
+        drawerAdapter.notifyDataSetChanged();
+    }
+
 
     private void setUpNotification() {
         Resources resources = getResources();
