@@ -50,6 +50,7 @@ public class InProgressActivity extends Activity {
         toolbarTransparent();
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.andes);
+        vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
 
     }
 
@@ -140,14 +141,6 @@ public class InProgressActivity extends Activity {
 
             return true;
 
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            if (istr != null && panoOptions != null) {
-                vrPanoramaView.loadImageFromBitmap(BitmapFactory.decodeStream(istr), panoOptions);
-            }
-            super.onPostExecute(aBoolean);
         }
 
 
