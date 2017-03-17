@@ -25,7 +25,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-
 /**
  * Created by queenabergen on 3/16/17.
  */
@@ -47,10 +46,10 @@ public class InProgressActivity extends Activity {
         super.onCreate(bundle);
         setContentView(R.layout.inprogressscreen);
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
-        toolbarTransparent();
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.andes);
         vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
+        toolbarTransparent();
 
     }
 
@@ -159,11 +158,12 @@ public class InProgressActivity extends Activity {
                     InProgressActivity.this, "Error loading pano: " + errorMessage, Toast.LENGTH_LONG)
                     .show();
             Log.e(TAG2, "Error loading pano: " + errorMessage);
+
         }
 
     }
 
-    private void toolbarTransparent() {
+    private void toolbarTransparent(){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
