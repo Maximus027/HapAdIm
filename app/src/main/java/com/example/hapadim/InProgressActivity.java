@@ -3,6 +3,7 @@ package com.example.hapadim;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
@@ -33,6 +34,7 @@ public class InProgressActivity extends Activity {
     VrPanoramaView.Options panoOptions1 = null;
     public boolean loadImageSuccessful;
     private Uri fileUri;
+    Bitmap panoImage;
     InputStream istr = null;
     private VrPanoramaView.Options panoOptions = new VrPanoramaView.Options();
     private ImageLoaderTask backgroundImageLoaderTask;
@@ -44,8 +46,11 @@ public class InProgressActivity extends Activity {
         super.onCreate(bundle);
         setContentView(R.layout.inprogressscreen);
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
-
+        panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                R.drawable.andes);
+        vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
         toolbarTransparent();
+
     }
 
     @Override
@@ -61,8 +66,10 @@ public class InProgressActivity extends Activity {
 
             fileUri = intent.getData();
             if (fileUri == null) {
+
                 Log.w(TAG2, "No data uri specified. Use \"-d /path/filename\".");
             } else {
+                vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
                 Log.i(TAG2, "Using file " + fileUri.toString());
             }
 
@@ -135,14 +142,6 @@ public class InProgressActivity extends Activity {
 
         }
 
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            if (istr != null && panoOptions != null) {
-                vrPanoramaView.loadImageFromBitmap(BitmapFactory.decodeStream(istr), panoOptions);
-            }
-            super.onPostExecute(aBoolean);
-        }
-
 
     }
 
@@ -161,8 +160,8 @@ public class InProgressActivity extends Activity {
             Log.e(TAG2, "Error loading pano: " + errorMessage);
 
         }
-    }
 
+    }
 
     private void toolbarTransparent(){
 
