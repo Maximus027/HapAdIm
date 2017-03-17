@@ -4,11 +4,16 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
@@ -18,14 +23,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import android.graphics.Color;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 /**
  * Created by queenabergen on 3/16/17.
@@ -48,6 +45,7 @@ public class InProgressActivity extends Activity {
         setContentView(R.layout.inprogressscreen);
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
 
+        toolbarTransparent();
     }
 
     @Override
@@ -161,13 +159,11 @@ public class InProgressActivity extends Activity {
                     InProgressActivity.this, "Error loading pano: " + errorMessage, Toast.LENGTH_LONG)
                     .show();
             Log.e(TAG2, "Error loading pano: " + errorMessage);
+
         }
     }
 
 
-        toolbarTransparent();
-
-    }
     private void toolbarTransparent(){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
