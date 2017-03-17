@@ -3,12 +3,18 @@ package com.example.hapadim;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
@@ -29,6 +35,7 @@ public class InProgressActivity extends Activity {
     VrPanoramaView.Options panoOptions1 = null;
     public boolean loadImageSuccessful;
     private Uri fileUri;
+    Bitmap panoImage;
     InputStream istr = null;
     private VrPanoramaView.Options panoOptions = new VrPanoramaView.Options();
     private ImageLoaderTask backgroundImageLoaderTask;
@@ -40,6 +47,9 @@ public class InProgressActivity extends Activity {
         super.onCreate(bundle);
         setContentView(R.layout.inprogressscreen);
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
+        toolbarTransparent();
+        panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                R.drawable.andes);
 
     }
 
@@ -56,8 +66,10 @@ public class InProgressActivity extends Activity {
 
             fileUri = intent.getData();
             if (fileUri == null) {
+
                 Log.w(TAG2, "No data uri specified. Use \"-d /path/filename\".");
             } else {
+                vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
                 Log.i(TAG2, "Using file " + fileUri.toString());
             }
 
@@ -155,7 +167,18 @@ public class InProgressActivity extends Activity {
                     .show();
             Log.e(TAG2, "Error loading pano: " + errorMessage);
         }
+
     }
 
+    private void toolbarTransparent() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
 
 }
+
