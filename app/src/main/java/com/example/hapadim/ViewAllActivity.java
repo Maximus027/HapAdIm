@@ -40,6 +40,7 @@ public class ViewAllActivity extends AppCompatActivity
         View.OnClickListener {
 
     private BoomMenuButton boomSort;
+    private LinearLayoutManager linearLayoutManager;
     private View customView;
     private boolean isInit = false;
 

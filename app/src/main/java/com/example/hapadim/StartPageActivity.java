@@ -65,25 +65,29 @@ public class StartPageActivity extends AppCompatActivity {
         locationDesciption = (TextView) findViewById(R.id.locationStartPageFactsInfo);
         stepNum = (TextView) findViewById(R.id.numberOfSteps);
         startBTN = (Button) findViewById(R.id.startButton);
+        locationDesciption = (TextView) findViewById(R.id.locationStartPageFactsInfo);
+        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
+        relativeLayout = (RelativeLayout) findViewById(R.id.startLayout);
+        stepNum = (TextView) findViewById(R.id.numberOfSteps);
+        cardView = (CardView) findViewById(R.id.locationCard);
+        cardView.setElevation(30);
+        cardView2 = (CardView) findViewById(R.id.locationFactsCard);
+        cardView2.setElevation(30);
+
+        final Place example = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
+        List<Badge> badges = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place_badges"));
+
         startBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), InProgressActivity.class);
-                startActivity(intent);
+                if (example.getPlaceName().equals("Statue of Liberty")) {
+
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), InProgressActivity.class);
+                    startActivity(intent);
+                }
             }
         });
-        locationDesciption = (TextView) findViewById(R.id.locationStartPageFactsInfo);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        relativeLayout = (RelativeLayout)findViewById(R.id.startLayout);
-        stepNum = (TextView) findViewById(R.id.numberOfSteps);
-        cardView = (CardView)findViewById(R.id.locationCard);
-        cardView.setElevation(30);
-        cardView2 = (CardView)findViewById(R.id.locationFactsCard);
-        cardView2.setElevation(30);
-
-        Place example = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
-        List<Badge> badges = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place_badges"));
-
         initializeAdapter(example);
         setLocationInformation(example);
 
@@ -129,7 +133,7 @@ public class StartPageActivity extends AppCompatActivity {
         int stepNumber = example.getStepNumber();
         stepNum.setText(String.valueOf(stepNumber));
         locationName.setText(placename);
-        locationDesciption.setText(locationFacts);
+        locationDesciption.setText("Location Facts : " + locationFacts);
         Picasso.with(getApplicationContext()).load(example.getPanoImg()).into(panoImage);
 
         addBottomDots(viewPager.getCurrentItem());

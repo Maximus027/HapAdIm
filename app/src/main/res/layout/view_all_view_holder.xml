@@ -1,42 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:layout_marginTop="@dimen/cardViewMargin"
-    android:layout_marginBottom="@dimen/cardViewMargin"
+    android:layout_height="180dp"
+    android:layout_marginBottom="15dp"
     android:layout_marginLeft="@dimen/cardViewMargin"
     android:layout_marginRight="@dimen/cardViewMargin"
-    android:background="@color/bg_screen1"
+    android:layout_marginTop="@dimen/cardViewMargin"
+    android:background="#548fb7"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/img_view_all"
+    <RelativeLayout
+        android:id="@+id/viewAllLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:scaleType="fitXY" />
+        android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:gravity="center_horizontal">
+        <ImageView
+            android:id="@+id/img_view_all"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:scaleType="fitXY" />
 
-        <TextView
-            android:id="@+id/tv_name_view_all"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:singleLine="true"
-            android:text="Name"
-            android:textColor="@color/colorWhite" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="3dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_elevation_view_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Elevation"
-            android:textColor="@color/colorWhite" />
-    </LinearLayout>
-</LinearLayout>
+            <TextView
+                android:id="@+id/tv_name_view_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:text="Name"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/cardDivider"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/tv_elevation_view_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/cardViewMargin"
+                android:text="Elevation"
+                android:textColor="@color/colorBlack" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
