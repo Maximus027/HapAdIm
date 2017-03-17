@@ -6,7 +6,7 @@
     android:layout_marginBottom="@dimen/cardViewMargin"
     android:layout_marginLeft="@dimen/cardViewMargin"
     android:layout_marginRight="@dimen/cardViewMargin"
-    android:background="#548fb7"
+    android:background="@color/bg_screen1"
     android:orientation="vertical">
 
     <ImageView
