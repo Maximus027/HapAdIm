@@ -109,14 +109,12 @@
 
     </android.support.v7.widget.RecyclerView>
 
-
-    <!--<com.google.vr.sdk.widgets.pano.VrPanoramaView-->
-        <!--android:id="@+id/pano_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="150dip"-->
-        <!--android:layout_margin="5dip"-->
-        <!--android:scrollbars="@null" />-->
-
+    <com.google.vr.sdk.widgets.pano.VrPanoramaView
+        android:id="@+id/pano_view"
+        android:layout_margin="5dip"
+        android:layout_width="match_parent"
+        android:scrollbars="@null"
+        android:layout_height="250dip"/>
 
     <Button
         android:id="@+id/playVideoBtn"
