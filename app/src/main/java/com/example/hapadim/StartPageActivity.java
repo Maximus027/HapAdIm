@@ -64,13 +64,6 @@ public class StartPageActivity extends AppCompatActivity {
         locationDesciption = (TextView) findViewById(R.id.locationStartPageFactsInfo);
         stepNum = (TextView) findViewById(R.id.numberOfSteps);
         startBTN = (Button) findViewById(R.id.startButton);
-        startBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), InProgressActivity.class);
-                startActivity(intent);
-            }
-        });
         locationDesciption = (TextView) findViewById(R.id.locationStartPageFactsInfo);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         relativeLayout = (RelativeLayout) findViewById(R.id.startLayout);
@@ -100,7 +93,8 @@ public class StartPageActivity extends AppCompatActivity {
         toolbarTransparent();
 
     }
-    private void toolbarTransparent(){
+
+    private void toolbarTransparent() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
