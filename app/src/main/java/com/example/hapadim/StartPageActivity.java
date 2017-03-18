@@ -42,6 +42,8 @@ public class StartPageActivity extends AppCompatActivity {
     TextView stepNum;
     ImageView catergoryIcon;
     ImageView panoImage;
+    ImageView badge1;
+    ImageView badge2;
     Button startBTN;
     CardView cardView;
     CardView cardView2;
@@ -69,9 +71,16 @@ public class StartPageActivity extends AppCompatActivity {
         relativeLayout = (RelativeLayout) findViewById(R.id.startLayout);
         stepNum = (TextView) findViewById(R.id.numberOfSteps);
         cardView = (CardView) findViewById(R.id.locationCard);
-        cardView.setElevation(30);
         cardView2 = (CardView) findViewById(R.id.locationFactsCard);
-        cardView2.setElevation(30);
+        badge1 = (ImageView)findViewById(R.id.badge1);
+        badge2 = (ImageView)findViewById(R.id.badge2);
+
+        Picasso.with(getApplicationContext()).load("http://i68.tinypic.com/11kh46f.jpg").into(badge1);
+        Picasso.with(getApplicationContext()).load("http://i63.tinypic.com/2s8pm6p.jpg").into(badge2);
+
+
+
+
 
         final Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.CHOSEN_PLACE));
 

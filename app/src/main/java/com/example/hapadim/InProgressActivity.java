@@ -15,8 +15,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -70,6 +68,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
     private TextView stepsLeft;
     private TextView stepsTaken;
+    private TextView healthTips;
 
     private int totalSteps;
     private int initialDemoCounter = 334;
@@ -99,8 +98,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         stepsLeft.setText(String.valueOf(totalSteps - initialDemoCounter));
         stepsTaken.setText(String.valueOf(initialDemoCounter));
 
-
-        setUpBadgeRecyclerView(place);
+        healthTips = (TextView) findViewById(R.id.healthtips);
 
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         threesixty = (Button) findViewById(R.id.VR_Btn);
@@ -114,28 +112,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         tips.add(0, "Let's take the steps instead of the elevator ");
         tips.add(1, "Did you know that walking releases nature's pain reliving hormone called endoprhins ");
         tips.add(2, "Why not come off the bus or train a stop early and get some extra steps !");
-
-    }
-
-
-    private void setUpBadgeRecyclerView(Place place) {
-        RecyclerView earnedBadgesRV = (RecyclerView) findViewById(R.id.earned_badges_ip);
-        earnedBadgesRV.setLayoutManager(
-                new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-        List<Badge> userBadges = getEarnedBadges();
-        List<Badge> badgesEarnedForThisChallenge = new ArrayList<>();
-
-        for (int i = 0; i < userBadges.size(); i++) {
-            for (int j = 0; j < place.getBadges().size(); j++) {
-                if (userBadges.get(i).getBadgedName().equals(place.getBadges().get(j).getBadgedName())) {
-                    badgesEarnedForThisChallenge.add(place.getBadges().get(j));
-                }
-            }
-        }
-
-        adapter = new BadgesEarnedAdapter(badgesEarnedForThisChallenge);
-        earnedBadgesRV.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        healthTips.setText(tips.get(2));
     }
 
 

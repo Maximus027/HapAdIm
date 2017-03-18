@@ -16,10 +16,10 @@
             android:layout_height="@dimen/img_width_height"
             android:src="@drawable/hapadim_logo" />
 
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/slide_1_title"
+            android:layout_height="90dp"
+            android:src="@drawable/haptext"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
