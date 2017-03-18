@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/startLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="20dp"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
@@ -18,14 +20,22 @@
             android:layout_height="200dp">
 
         </android.support.v4.view.ViewPager>
-
     </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/layoutDots"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dots_height"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/cardViewMargin"
+        android:layout_marginTop="205dp"
+        android:orientation="horizontal"/>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nestedScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/locationSlideCard">
+        android:layout_below="@id/layoutDots">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -36,14 +46,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/cardViewMargin"
-                android:layout_marginTop="@dimen/cardViewMargin"
                 android:gravity="center_horizontal"
                 android:textStyle="bold" />
 
             <android.support.v7.widget.CardView
                 android:id="@+id/locationCard"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="270dp"
+                android:layout_height="47dp"
+                android:elevation="30dp"
                 android:layout_below="@id/locationName"
                 android:layout_marginLeft="@dimen/cardViewMargin"
                 android:layout_marginRight="@dimen/cardViewMargin">
@@ -73,22 +84,22 @@
                         android:layout_toRightOf="@id/catergoryIcon"
                         android:background="@color/colorBlack" />
 
+                    <TextView
+                        android:id="@+id/numberOfSteps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignLeft="@+id/cardDivider"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center_horizontal"
+                        android:textSize="30dp" />
                     <ImageView
                         android:id="@+id/stepsIcon"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
-                        android:layout_toRightOf="@+id/cardDivider"
+                        android:layout_toRightOf="@+id/numberOfSteps"
                         android:src="@drawable/feet" />
 
-                    <TextView
-                        android:id="@+id/numberOfSteps"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignLeft="@+id/stepsIcon"
-                        android:layout_marginLeft="50dp"
-                        android:gravity="center_horizontal"
-                        android:textSize="30dp" />
 
                 </RelativeLayout>
 
@@ -105,7 +116,7 @@
                 android:layout_marginTop="@dimen/cardViewMargin">
 
                 <TextView
-                    android:id="@+id/locationFacts"
+                    android:id="@+id/locationStartPageFactsInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/locationCard"
@@ -118,8 +129,9 @@
             <android.support.v7.widget.CardView
                 android:id="@+id/badgesCard"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
                 android:layout_below="@id/locationFactsCard"
+                android:layout_marginBottom="@dimen/cardViewMargin"
                 android:layout_marginLeft="@dimen/cardViewMargin"
                 android:layout_marginRight="@dimen/cardViewMargin"
                 android:layout_marginTop="@dimen/cardViewMargin">
@@ -132,16 +144,18 @@
 
                     <ImageView
                         android:layout_width="@dimen/iconWidth"
-                        android:layout_height="@dimen/iconWidth" />
+                        android:layout_height="match_parent" />
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
 
-            <Button
-                android:id="@+id/playVideoBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
+
+            <ImageView
+                android:id="@+id/pano_view"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:scaleType="fitXY"
                 android:layout_below="@+id/badgesCard"
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/cardViewMargin"
@@ -150,9 +164,10 @@
 
             <Button
                 android:id="@+id/startButton"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@+id/playVideoBtn"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/pano_view"
+                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/cardViewMargin"
                 android:layout_marginLeft="@dimen/cardViewMargin"
                 android:layout_marginRight="@dimen/cardViewMargin"

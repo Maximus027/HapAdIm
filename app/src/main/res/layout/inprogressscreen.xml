@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="20dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/inprogressStats"
@@ -32,6 +33,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/steps_taken"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -63,6 +65,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/steps_left"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -104,40 +107,50 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/earned_badges_ip"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"/>
 
-    </android.support.v7.widget.RecyclerView>
-
-
-    <com.google.vr.sdk.widgets.pano.VrPanoramaView
-        android:id="@+id/pano_view"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="150dip"
-        android:layout_margin="5dip"
-        android:scrollbars="@null" />
+        android:layout_height="match_parent"
+        android:isScrollContainer="true">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.vr.sdk.widgets.pano.VrPanoramaView
+                android:id="@+id/pano_view"
+                android:layout_width="match_parent"
+                android:layout_height="250dip"
+                android:scrollbars="@null"
+                android:layout_margin="5dip" />
 
     <Button
-        android:id="@+id/playVideoBtn"
+        android:id="@+id/VR_Btn"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_below="@+id/VR_previewBox"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/cardViewMargin"
         android:layout_marginRight="@dimen/cardViewMargin"
-        android:text="Play Video " />
+        android:text="360 VIEW" />
 
 
-    <Button
-        android:id="@+id/endChallenge"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/VR_previewBox"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/cardViewMargin"
-        android:layout_marginRight="@dimen/cardViewMargin"
-        android:text="End Challenge " />
+            <Button
+                android:id="@+id/endChallenge"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/VR_previewBox"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/cardViewMargin"
+                android:layout_marginRight="@dimen/cardViewMargin"
+                android:text="End Challenge " />
 
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

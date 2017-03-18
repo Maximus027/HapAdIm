@@ -4,23 +4,26 @@
     "category": "Monument",
     "placeName": "Statue Of Liberty",
     "description": "The formal name of the statue is 'Liberty Enlightening the World.' It pictures a woman who has escaping the chains of tyranny (the broken chains lie at her feet). Liberty's right hand holds a torch that is a symbol of liberty. Liberty was designed by the French sculptor Frederic Auguste Bartholdi.",
-    "stepNumber": 354,
+    "stepNumber": 20,
     "distance": 0,
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
     "urlImg": "http://i64.tinypic.com/2ztk277.jpg",
+    "urlImg2": "http://i67.tinypic.com/11manly.jpg",
+    "urlImg3": "http://i67.tinypic.com/21membo.jpg",
+    "panoImg": "http://i67.tinypic.com/9u11zp.jpg",
     "badges": [
       {
         "badgeId": 1,
         "badgedName": "Journey To Freedom",
         "badgeImg": "http://i68.tinypic.com/290zmug.jpg",
-        "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
+        "badgeDesc": "Let us Begin the Journey to Freedom !"
       },
       {
         "badgeId": 2,
         "badgedName": "Victory Statue Badge",
         "badgeImg": "http://i66.tinypic.com/10hivzn.jpg ",
-        "badgeDesc": "Task completed.Climbed to Tower "
+        "badgeDesc": "Task completed.Climbed to Statue "
       }
     ]
   },
@@ -34,12 +37,15 @@
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=sJxiPiAaB4k",
     "urlImg": "http://i63.tinypic.com/2dlsp6g.jpg",
+    "urlImg2": "http://i66.tinypic.com/s1kgp2.jpg",
+    "urlImg3": "http://i63.tinypic.com/2rens5h.jpg",
+    "panoImg": "http://i65.tinypic.com/zvc5zt.jpg",
     "badges": [
       {
         "badgeId": 1,
         "badgedName": "Voyaje De La tour",
         "badgeImg": " no image ",
-        "badgeDesc": "no description "
+        "badgeDesc": "Congratulations on "
       },
       {
         "badgeId": 2,
@@ -59,6 +65,9 @@
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=8hgwObX3ask",
     "urlImg": "http://i68.tinypic.com/2ro03h5.jpg",
+    "urlImg2": "http://i68.tinypic.com/n5hu12.jpg",
+    "urlImg3": "http://i68.tinypic.com/2dbph0i.jpg",
+    "panoImg": "http://i67.tinypic.com/t89m4n.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -84,6 +93,9 @@
     "calories": 0,
     "urlVR": "no video",
     "urlImg": "http://i68.tinypic.com/o9fpmr.jpg",
+    "urlImg2": "http://i66.tinypic.com/2zq68u1.jpg",
+    "urlImg3": "http://i67.tinypic.com/t6qq9k.jpg",
+    "panoImg": "http://i67.tinypic.com/2j1kf2q.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -103,12 +115,15 @@
     "placeId": 5,
     "category": "Monument",
     "placeName": "Christ the Redeemer",
-    "description": "lorem alksdjflkahsd",
+    "description": "Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by the Brazilian engineer Heitor da Silva Costa, in collaboration with the French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face. The statue is 30 metres (98 ft) tall, not including its 8-metre (26 ft) pedestal, and its arms stretch 28 metres (92 ft) wide",
     "stepNumber": 300,
     "distance": 0,
     "calories": 0,
     "urlVR": "no vr",
     "urlImg": "http://i63.tinypic.com/1relp5.jpg",
+    "urlImg2": "http://i65.tinypic.com/2e0l1u1.jpg",
+    "urlImg3": "http://i68.tinypic.com/359foew.jpg",
+    "panoImg": "http://i64.tinypic.com/dbl2s6.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -128,12 +143,15 @@
     "placeId": 6,
     "category": "Monument",
     "placeName": "Burj Khalifa",
-    "description": "",
+    "description": "The Burj Khalifa known as the Burj Dubai before its inauguration, is a megatall skyscraper in Dubai, United Arab Emirates. It has a roof height of 828 m (2,717 ft), and with its antenna included, it stands a total height of 829.8 m (2,722 ft), making it the tallest building and the tallest structure in the world.",
     "stepNumber": 1089,
     "distance": 0,
     "calories": 0,
     "urlVR": "no video",
     "urlImg": "http://i65.tinypic.com/2pte2l4.jpg",
+    "urlImg2": "http://i63.tinypic.com/686c1c.jpg",
+    "urlImg3": "http://i66.tinypic.com/w01d1e.jpg",
+    "panoImg": "http://i63.tinypic.com/b99aa8.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -159,6 +177,9 @@
     "calories": 0,
     "urlVR": "https://www.youtube.com/watch?v=Msjanh7VAVY",
     "urlImg": "http://i68.tinypic.com/2rm8mfa.jpg",
+    "urlImg2": "http://i63.tinypic.com/imq7et.jpg",
+    "urlImg3": "http://i65.tinypic.com/okr7d5.jpg",
+    "panoImg": "http://i66.tinypic.com/11w6838.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -184,6 +205,9 @@
     "calories": 0,
     "urlVR": "no video",
     "urlImg": "http://i63.tinypic.com/2l899g8.jpg",
+    "urlImg2": "http://i67.tinypic.com/30s99og.jpg",
+    "urlImg3": "http://i63.tinypic.com/2qtd5ia.jpg",
+    "panoImg": "http://i66.tinypic.com/24qif6v.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -209,6 +233,9 @@
     "calories": 0,
     "urlVR": "no video",
     "urlImg": "http://i64.tinypic.com/9jlrwh.jpg",
+    "urlImg2": "http://i63.tinypic.com/25ujiwx.jpg",
+    "urlImg3": "http://i63.tinypic.com/6plpco.jpg",
+    "panoImg": "http://i68.tinypic.com/qojbk4.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -234,6 +261,9 @@
     "calories": 0,
     "urlVR": "no vr",
     "urlImg": "http://i66.tinypic.com/29ohpmu.jpg",
+    "urlImg2": "http://i66.tinypic.com/10wmut5.jpg",
+    "urlImg3": "http://i64.tinypic.com/nce4v7.jpg",
+    "panoImg": "http://i68.tinypic.com/qojbk4.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -259,6 +289,9 @@
     "calories": 0,
     "urlVR": "no VR",
     "urlImg": "http://i63.tinypic.com/21c83yf.jpg",
+    "urlImg2": "http://i66.tinypic.com/2zdriu9.jpg",
+    "urlImg3": "http://i67.tinypic.com/34etgzp.jpg",
+    "panoImg": "http://i68.tinypic.com/qojbk4.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -274,7 +307,6 @@
       }
     ]
   },
-
   {
     "placeId": 12,
     "category": "LongDistance",
@@ -285,6 +317,9 @@
     "calories": 0,
     "urlVR": "no vr ",
     "urlImg": "http://i67.tinypic.com/1qse4k.jpg ",
+    "urlImg2": "http://i64.tinypic.com/2nhj6zo.jpg",
+    "urlImg3": "http://i65.tinypic.com/29546j5.jpg",
+    "panoImg": "http://i68.tinypic.com/257fx1y.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -310,6 +345,9 @@
     "calories": 0,
     "urlVR": "no vr",
     "urlImg": "http://i66.tinypic.com/116ubtt.jpg",
+    "urlImg2": "http://i65.tinypic.com/23hx4bc.jpg",
+    "urlImg3": "http://i64.tinypic.com/jgkyvq.jpg",
+    "panoImg": "http://i68.tinypic.com/257fx1y.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -335,6 +373,9 @@
     "calories": 0,
     "urlVR": " no vr ",
     "urlImg": "http://i63.tinypic.com/1zxum3c.jpg",
+    "urlImg2": "http://i67.tinypic.com/154zfir.jpg",
+    "urlImg3": "http://i67.tinypic.com/34fi81d.jpg",
+    "panoImg": "http://i68.tinypic.com/257fx1y.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -360,6 +401,9 @@
     "calories": 0,
     "urlVR": " no vr",
     "urlImg": "http://i63.tinypic.com/20hppwn.jpg",
+    "urlImg2": "http://i65.tinypic.com/16gyb87.jpg",
+    "urlImg3": "http://i65.tinypic.com/qx409l.jpg",
+    "panoImg": "http://i68.tinypic.com/257fx1y.jpg",
     "badges": [
       {
         "badgeId": 1,
@@ -385,6 +429,9 @@
     "calories": 0,
     "urlVR": "no vr",
     "urlImg": "http://i68.tinypic.com/kdvdch.jpg",
+    "urlImg2": "http://i66.tinypic.com/2nk45ue.jpg",
+    "urlImg3": "http://i67.tinypic.com/xaufqq.jpg",
+    "panoImg": "http://i68.tinypic.com/257fx1y.jpg",
     "badges": [
       {
         "badgeId": 1,

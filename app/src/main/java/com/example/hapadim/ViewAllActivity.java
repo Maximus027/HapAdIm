@@ -1,6 +1,8 @@
 package com.example.hapadim;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -10,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.hapadim.adapters.ViewAllAdapter;
 import com.example.hapadim.models.JsonEndPoint;
@@ -36,13 +40,14 @@ public class ViewAllActivity extends AppCompatActivity
         View.OnClickListener {
 
     private BoomMenuButton boomSort;
+    private LinearLayoutManager linearLayoutManager;
     private View customView;
     private boolean isInit = false;
 
     private RecyclerView viewAllRV;
     private ViewAllAdapter viewAllAdapter;
     private Bundle bundle;
-    String category;
+    private String category;
     private List<Place> allPlaces;
 
     private List<Place> selectedList;
@@ -66,7 +71,7 @@ public class ViewAllActivity extends AppCompatActivity
 
         viewAllRV = (RecyclerView) findViewById(R.id.rv_view_all);
         bundle = getIntent().getExtras();
-        category = bundle.getString("category_key");
+        category = bundle.getString(Constants.CHOSEN_CATEGORY, "");
 
         if (category.equals("Monument")) {
             selectedList = monuments;
@@ -90,8 +95,18 @@ public class ViewAllActivity extends AppCompatActivity
 
         setupViewAllAdapter();
 
-    }
+        toolbarTransparent();
 
+    }
+    private void toolbarTransparent() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
 
     public void setupToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -132,7 +147,7 @@ public class ViewAllActivity extends AppCompatActivity
         int[][] colors = new int[4][3];
         for (int i = 0; i < drawables.length; i++) {
             colors[i][2] = ContextCompat.getColor(this, R.color.black);
-            colors[i][1] = ContextCompat.getColor(this, R.color.bg_screen2);
+            colors[i][1] = ContextCompat.getColor(this, R.color.bg_screen6);
             colors[i][0] = Util.getInstance().getPressedColor(colors[i][2]);
         }
 
@@ -182,7 +197,6 @@ public class ViewAllActivity extends AppCompatActivity
                 })
                 .init(boomSort);
     }
-
 
     private void setupViewAllAdapter() {
         viewAllRV.setAdapter(viewAllAdapter);

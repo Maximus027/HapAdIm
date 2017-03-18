@@ -3,15 +3,25 @@ package com.example.hapadim;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.example.hapadim.adapters.DrawerAdapter;
 import com.example.hapadim.adapters.LandMarksAdapter;
+import com.example.hapadim.complexsharedprefs.ComplexPreferences;
+import com.example.hapadim.models.Badge;
 import com.example.hapadim.models.JsonEndPoint;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by NesadaKoca on 2/28/2017.
@@ -20,7 +30,7 @@ import com.example.hapadim.models.JsonEndPoint;
 public class LandingPageActivity extends AppCompatActivity {
 
 
-    private RecyclerView mountainsRV, monumentsRV, longDistancesRV;
+    private RecyclerView mountainsRV, monumentsRV, longDistancesRV, drawerRV;
     private JsonEndPoint endPoint;
 
     private static final String VIEWALL = "view all";
@@ -29,6 +39,7 @@ public class LandingPageActivity extends AppCompatActivity {
     private LandMarksAdapter mountainsAdapater;
     private LandMarksAdapter monumentsAdapter;
     private LandMarksAdapter longDistAdapter;
+    private DrawerAdapter drawerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mountainsRV = (RecyclerView) findViewById(R.id.rv_mountains);
         monumentsRV = (RecyclerView) findViewById(R.id.rv_monuments);
         longDistancesRV = (RecyclerView) findViewById(R.id.rv_long_distances);
+        drawerRV = (RecyclerView)findViewById(R.id.rv_drawer);
 
         endPoint = JsonEndPoint.getInstance();
 
@@ -48,14 +60,37 @@ public class LandingPageActivity extends AppCompatActivity {
         Log.d("json", "long dist size b4: " + endPoint.getLongDistance().size());
         Log.d("json", "mountains size b4: " + endPoint.getMountains().size());
 
+
+        List<Badge> badgesEarnedByUser = getEarnedBadges();
+
         mountainsAdapater = new LandMarksAdapter(endPoint.getMountains());
         monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments());
         longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance());
+        drawerAdapter= new DrawerAdapter(badgesEarnedByUser); // need to be changed the entry data - this is only for testing purpose
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
         setUpLongDistancesAdapter();
+        setUpDrawerAdapter();
+        toolbarTransparent();
+
     }
+    private void toolbarTransparent(){
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
+    private void setUpDrawerAdapter() {
+        drawerRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        drawerRV.setAdapter(drawerAdapter);
+        drawerAdapter.notifyDataSetChanged();
+    }
+
 
     private void setUpNotification() {
         Resources resources = getResources();
@@ -92,5 +127,28 @@ public class LandingPageActivity extends AppCompatActivity {
         Intent viewAll = new Intent(this, ViewAllActivity.class);
         viewAll.putExtra(CATEGORY_KEY, VIEWALL);
         this.startActivity(viewAll);
+    }
+
+    public List<Badge> getEarnedBadges() {
+        ComplexPreferences complexPreferences = ComplexPreferences
+                .getComplexPreferences(this, Constants.SHARED_PREFS_KEY, MODE_PRIVATE);
+        ListComplexBadge complexObject = complexPreferences
+                .getObject(Constants.SHARED_PREFS_BADGES_KEY, ListComplexBadge.class);
+
+        List<Badge> userEarnedBadges = new ArrayList<>();
+        if (complexObject != null) {
+            for (Badge item : complexObject.getBadges()) {
+                userEarnedBadges.add(item);
+            }
+        }
+        return userEarnedBadges;
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        List<Badge> badges = getEarnedBadges();
+        drawerAdapter.setNewData(badges);
     }
 }

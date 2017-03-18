@@ -6,20 +6,6 @@ import java.util.List;
 
 /**
  * Created by meltemyildirim on 3/7/17.
- *
- *
- * {
- "placeId": 1,
- "category": "Monument",
- "placeName": "Statue Of Liberty",
- "description": "lorem alksdjflkahsd",
- "stepNumber": 354,
- "distance": 0,
- "calories": 0,
- "urlVR": "https://www.youtube.com/watch?v=HDe0WErg5UQ",
- "urlImg": "http://i67.tinypic.com/mcaj4l.jpg",
- "badges": []
- },
  */
 @Parcel(Parcel.Serialization.BEAN)
 public class Place {
@@ -27,12 +13,40 @@ public class Place {
     private int placeId;
     private String category;
     private String placeName;
-    private String description;
+    public String description;
     private int stepNumber;
     private int distance;
     private int calories;
     private String urlVR;
-    private String urlImg;
+    public String urlImg;
+    public String urlImg2;
+    public String urlImg3;
+    public String panoImg;
+
+    public String getPanoImg() {
+        return panoImg;
+    }
+
+    public void setPanoImg(String panoImg) {
+        this.panoImg = panoImg;
+    }
+
+    public void setUrlImg2(String urlImg2) {
+        this.urlImg2 = urlImg2;
+    }
+
+    public void setUrlImg3(String urlImg3) {
+        this.urlImg3 = urlImg3;
+    }
+
+    public String getUrlImg2() {
+        return urlImg2;
+    }
+
+    public String getUrlImg3() {
+        return urlImg3;
+    }
+
     private List<Badge> badges;
 
     public int getPlaceId() {

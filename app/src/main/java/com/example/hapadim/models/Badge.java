@@ -8,21 +8,14 @@ import org.parceler.Parcel;
 
 import java.io.Serializable;
 
-/**
- * "badges": [
- {
- "badgeId": 1,
- "badgedName": "Journey To Freedom",
- "badgeImg": " ",
- "badgeDesc": "Come off the bus one stop before yours to get some extra steps "
- }
- */
+/****/
+
 @Parcel
 public class Badge implements Serializable{
-    private int badgeId;
-    private String badgedName;
-    private String badgeImg;
-    private String badgeDesc;
+    public int badgeId;
+    public String badgedName;
+    public String badgeImg;
+    public String badgeDesc;
 
     public int getBadgeId() {
         return badgeId;
