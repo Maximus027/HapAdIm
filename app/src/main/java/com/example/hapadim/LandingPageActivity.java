@@ -132,7 +132,6 @@ public class LandingPageActivity extends AppCompatActivity {
     public List<Badge> getEarnedBadges() {
         ComplexPreferences complexPreferences = ComplexPreferences
                 .getComplexPreferences(this, Constants.SHARED_PREFS_KEY, MODE_PRIVATE);
-
         ListComplexBadge complexObject = complexPreferences
                 .getObject(Constants.SHARED_PREFS_BADGES_KEY, ListComplexBadge.class);
 

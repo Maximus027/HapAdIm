@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="20dp">
 
     <android.support.v7.widget.CardView
         android:id="@+id/inprogressStats"
@@ -112,32 +112,45 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <com.google.vr.sdk.widgets.pano.VrPanoramaView
-        android:id="@+id/pano_view"
-        android:layout_margin="5dip"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="250dip"/>
+        android:layout_height="match_parent"
+        android:isScrollContainer="true">
 
-    <Button
-        android:id="@+id/playVideoBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/VR_previewBox"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/cardViewMargin"
-        android:layout_marginRight="@dimen/cardViewMargin"
-        android:text="Play Video " />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.vr.sdk.widgets.pano.VrPanoramaView
+                android:id="@+id/pano_view"
+                android:layout_width="match_parent"
+                android:layout_height="250dip"
+                android:layout_margin="5dip" />
+
+            <Button
+                android:id="@+id/playVideoBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/VR_previewBox"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/cardViewMargin"
+                android:layout_marginRight="@dimen/cardViewMargin"
+                android:text="Play Video " />
 
 
-    <Button
-        android:id="@+id/endChallenge"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/VR_previewBox"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/cardViewMargin"
-        android:layout_marginRight="@dimen/cardViewMargin"
-        android:text="End Challenge " />
+            <Button
+                android:id="@+id/endChallenge"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/VR_previewBox"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/cardViewMargin"
+                android:layout_marginRight="@dimen/cardViewMargin"
+                android:text="End Challenge " />
 
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

@@ -18,6 +18,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hapadim.complexsharedprefs.ComplexPreferences;
+import com.example.hapadim.models.Badge;
 import com.example.hapadim.models.Place;
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
@@ -28,6 +30,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.example.hapadim.adapters.LandMarksAdapter.TAG;
 
 /**
  * Created by queenabergen on 3/16/17.
@@ -42,7 +48,7 @@ public class InProgressActivity extends Activity {
     InputStream istr = null;
     private VrPanoramaView.Options panoOptions = new VrPanoramaView.Options();
     private ImageLoaderTask backgroundImageLoaderTask;
-    private static final String TAG2 = "HERE IS LOG STATEMENT: ";
+    private static final String TAG2 = "In Progress LOG: ";
     InputStream assetManager;
 
     @Override
@@ -58,13 +64,59 @@ public class InProgressActivity extends Activity {
         stepsLeft.setText(String.valueOf(place.getStepNumber() - takenSteps));
         stepsTaken.setText(String.valueOf(takenSteps));
 
+        for (int i = 0; i < place.getBadges().size(); i++) {
+            if (takenSteps >= (place.getStepNumber() / 2)) {
+                saveToUserBadges(place.getBadges().get(0));
+            } else if (takenSteps >= (place.getStepNumber())) {
+                saveToUserBadges(place.getBadges().get(1));
+            }
+        }
 
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.andes);
         vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
         toolbarTransparent();
+    }
 
+
+    private void saveToUserBadges(Badge newBadge) {
+        boolean containsBadge = false;
+        List<Badge> userEarnedBadges = getEarnedBadges();
+
+        for (int i = 0; i < userEarnedBadges.size(); i++) {
+            if (userEarnedBadges.get(i).getBadgedName().equals(newBadge.getBadgedName())) {
+                containsBadge = true;
+            }
+        }
+
+        if (containsBadge) {
+            Log.d(TAG, "saveToUserBadges: User already has badge");
+        } else {
+            userEarnedBadges.add(newBadge);
+        }
+
+        ListComplexBadge complexObject = new ListComplexBadge();
+        complexObject.setBadges(userEarnedBadges);
+
+        ComplexPreferences complexPreferences = ComplexPreferences.getComplexPreferences(this, Constants.SHARED_PREFS_KEY, MODE_PRIVATE);
+        complexPreferences.putObject(Constants.SHARED_PREFS_BADGES_KEY, complexObject);
+        complexPreferences.commit();
+    }
+
+    public List<Badge> getEarnedBadges() {
+        ComplexPreferences complexPreferences = ComplexPreferences
+                .getComplexPreferences(this, Constants.SHARED_PREFS_KEY, MODE_PRIVATE);
+        ListComplexBadge complexObject = complexPreferences
+                .getObject(Constants.SHARED_PREFS_BADGES_KEY, ListComplexBadge.class);
+
+        List<Badge> userEarnedBadges = new ArrayList<>();
+        if (complexObject != null) {
+            for (Badge item : complexObject.getBadges()) {
+                userEarnedBadges.add(item);
+            }
+        }
+        return userEarnedBadges;
     }
 
     @Override
@@ -180,7 +232,7 @@ public class InProgressActivity extends Activity {
 
     }
 
-    private void toolbarTransparent(){
+    private void toolbarTransparent() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
