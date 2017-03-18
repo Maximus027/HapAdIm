@@ -143,4 +143,12 @@ public class LandingPageActivity extends AppCompatActivity {
         }
         return userEarnedBadges;
     }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        List<Badge> badges = getEarnedBadges();
+        drawerAdapter.setNewData(badges);
+    }
 }

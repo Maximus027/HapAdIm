@@ -41,6 +41,7 @@
             android:enabled="true" />
 
         <activity android:name=".MockGoogleFit">
+
         </activity>
         <activity android:name=".InProgressActivity">
         </activity>
