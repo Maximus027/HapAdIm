@@ -49,6 +49,7 @@ public class InProgressActivity extends Activity {
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.andes);
         vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
+
         toolbarTransparent();
 
     }
@@ -107,6 +108,15 @@ public class InProgressActivity extends Activity {
             backgroundImageLoaderTask.cancel(true);
         }
         super.onDestroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        finish();
+        Intent intent = new Intent(this, LandingPageActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     class ImageLoaderTask extends AsyncTask<Pair<Uri, VrPanoramaView.Options>, Void, Boolean> {

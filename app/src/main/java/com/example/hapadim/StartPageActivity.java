@@ -83,8 +83,10 @@ public class StartPageActivity extends AppCompatActivity {
                 if (example.getPlaceName().equals("Statue of Liberty")) {
 
                 } else {
+                    finish();
                     Intent intent = new Intent(getApplicationContext(), InProgressActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
             }
         });
@@ -156,5 +158,11 @@ public class StartPageActivity extends AppCompatActivity {
 
         if (dots.length > 0)
             dots[currentPage].setTextColor(colorsActive[currentPage]);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

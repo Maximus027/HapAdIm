@@ -252,6 +252,7 @@ public class ViewAllActivity extends AppCompatActivity
     public void onBackPressed() {
         if (boomSort.isClosed()) {
             super.onBackPressed();
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
         } else {
             boomSort.dismiss();
@@ -260,5 +261,6 @@ public class ViewAllActivity extends AppCompatActivity
 
     public void onArrowClick(View view) {
         super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

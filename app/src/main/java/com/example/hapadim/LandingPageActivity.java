@@ -1,6 +1,7 @@
 package com.example.hapadim;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -55,9 +56,11 @@ public class LandingPageActivity extends AppCompatActivity {
         Log.d("json", "long dist size b4: " + endPoint.getLongDistance().size());
         Log.d("json", "mountains size b4: " + endPoint.getMountains().size());
 
-        mountainsAdapater = new LandMarksAdapter(endPoint.getMountains());
-        monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments());
-        longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance());
+        Activity activity = (Activity)this;
+
+        mountainsAdapater = new LandMarksAdapter(endPoint.getMountains(), activity);
+        monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments(), activity);
+        longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance(),activity);
         drawerAdapter= new DrawerAdapter(endPoint.getMonuments()); // need to be changed the entry data - this is only for testing purpose
 
         setUpMountainsAdapter();
@@ -119,5 +122,6 @@ public class LandingPageActivity extends AppCompatActivity {
         Intent viewAll = new Intent(this, ViewAllActivity.class);
         viewAll.putExtra(CATEGORY_KEY, VIEWALL);
         this.startActivity(viewAll);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }
