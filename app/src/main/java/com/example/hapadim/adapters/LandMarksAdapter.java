@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hapadim.Constants;
 import com.example.hapadim.R;
 import com.example.hapadim.StartPageActivity;
 import com.example.hapadim.ViewAllActivity;
@@ -127,7 +128,7 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     Activity activity1 = (Activity) itemView.getContext();
                     Intent intent = new Intent(activity1, StartPageActivity.class);
                     Parcelable placeParcel = Parcels.wrap(place);
-                    intent.putExtra("chosen_place", placeParcel);
+                    intent.putExtra(Constants.CHOSEN_PLACE, placeParcel);
                     activity1.startActivity(intent);
                 }
             });
@@ -145,7 +146,7 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                 @Override
                 public void onClick(View v) {
                     Intent viewAll = new Intent(v.getContext(), ViewAllActivity.class);
-                    viewAll.putExtra("category_key", place.getCategory());
+                    viewAll.putExtra(Constants.CHOSEN_CATEGORY, place.getCategory());
                     v.getContext().startActivity(viewAll);
                 }
             });

@@ -1,9 +1,11 @@
 package com.example.hapadim;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -19,13 +21,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hapadim.adapters.StartPageAdapter;
-import com.example.hapadim.models.Badge;
 import com.example.hapadim.models.Place;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
-
-import java.util.List;
 
 /**
  * Created by meltemyildirim on 3/13/17.
@@ -81,22 +80,22 @@ public class StartPageActivity extends AppCompatActivity {
         cardView2 = (CardView) findViewById(R.id.locationFactsCard);
         cardView2.setElevation(30);
 
-        final Place example = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
-        List<Badge> badges = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place_badges"));
+        final Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.CHOSEN_PLACE));
 
         startBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (example.getPlaceName().equals("Statue of Liberty")) {
+                Activity activity = (Activity) v.getContext();
+                Intent intent = new Intent(activity, InProgressActivity.class);
+                Parcelable placeParcel = Parcels.wrap(place);
+                intent.putExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY, placeParcel);
+                activity.startActivity(intent);
+                startActivity(intent);
 
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), InProgressActivity.class);
-                    startActivity(intent);
-                }
             }
         });
-        initializeAdapter(example);
-        setLocationInformation(example);
+        initializeAdapter(place);
+        setLocationInformation(place);
 
         toolbarTransparent();
 

@@ -71,7 +71,7 @@ public class ViewAllActivity extends AppCompatActivity
 
         viewAllRV = (RecyclerView) findViewById(R.id.rv_view_all);
         bundle = getIntent().getExtras();
-        category = bundle.getString("category_key");
+        category = bundle.getString(Constants.CHOSEN_CATEGORY);
 
         if (category.equals("Monument")) {
             selectedList = monuments;

@@ -15,10 +15,14 @@ import android.util.Pair;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hapadim.models.Place;
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
+
+import org.parceler.Parcels;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,6 +49,16 @@ public class InProgressActivity extends Activity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.inprogressscreen);
+
+        TextView stepsLeft = (TextView) findViewById(R.id.steps_left);
+        TextView stepsTaken = (TextView) findViewById(R.id.steps_taken);
+
+        Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
+        int takenSteps = 500;
+        stepsLeft.setText(String.valueOf(place.getStepNumber() - takenSteps));
+        stepsTaken.setText(String.valueOf(takenSteps));
+
+
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.andes);
@@ -101,6 +115,11 @@ public class InProgressActivity extends Activity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onDestroy() {
         vrPanoramaView.shutdown();
         if (backgroundImageLoaderTask != null) {
@@ -141,8 +160,6 @@ public class InProgressActivity extends Activity {
             return true;
 
         }
-
-
     }
 
     private class ActivityEventListener extends VrPanoramaEventListener {

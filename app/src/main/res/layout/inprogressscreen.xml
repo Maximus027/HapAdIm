@@ -33,6 +33,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/steps_taken"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -64,6 +65,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/steps_left"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -114,7 +116,6 @@
         android:id="@+id/pano_view"
         android:layout_margin="5dip"
         android:layout_width="match_parent"
-        android:scrollbars="@null"
         android:layout_height="250dip"/>
 
     <Button
