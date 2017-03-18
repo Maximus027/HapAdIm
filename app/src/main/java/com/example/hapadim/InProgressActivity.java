@@ -1,11 +1,16 @@
 package com.example.hapadim;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -39,7 +44,7 @@ import static com.example.hapadim.adapters.LandMarksAdapter.TAG;
  * Created by queenabergen on 3/16/17.
  */
 
-public class InProgressActivity extends Activity {
+public class InProgressActivity extends Activity implements SensorEventListener{
     VrPanoramaView vrPanoramaView;
     VrPanoramaView.Options panoOptions1 = null;
     public boolean loadImageSuccessful;
@@ -51,17 +56,36 @@ public class InProgressActivity extends Activity {
     private static final String TAG2 = "In Progress LOG: ";
     InputStream assetManager;
 
+    private SensorManager mSensorManager;
+    private Sensor mStepCounterSensor;
+    private Sensor mStepDetectorSensor;
+
+    private TextView stepsLeft;
+    private TextView stepsTaken;
+
+    private int totalSteps;
+    private int initialDemoCounter = 0;
+
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.inprogressscreen);
 
-        TextView stepsLeft = (TextView) findViewById(R.id.steps_left);
-        TextView stepsTaken = (TextView) findViewById(R.id.steps_taken);
+        mSensorManager = (SensorManager)
+                getSystemService(Context.SENSOR_SERVICE);
+        mStepCounterSensor = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        mStepDetectorSensor = mSensorManager
+                .getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+
+        stepsLeft = (TextView) findViewById(R.id.steps_left);
+        stepsTaken = (TextView) findViewById(R.id.steps_taken);
 
         Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
         int takenSteps = 500;
-        stepsLeft.setText(String.valueOf(place.getStepNumber() - takenSteps));
+
+        totalSteps = place.getStepNumber();
+        stepsLeft.setText(String.valueOf(totalSteps - takenSteps));
         stepsTaken.setText(String.valueOf(takenSteps));
 
         for (int i = 0; i < place.getBadges().size(); i++) {
@@ -164,6 +188,12 @@ public class InProgressActivity extends Activity {
     protected void onResume() {
         super.onResume();
         vrPanoramaView.resumeRendering();
+        mSensorManager.registerListener(this, mStepCounterSensor,
+
+                SensorManager.SENSOR_DELAY_FASTEST);
+        mSensorManager.registerListener(this, mStepDetectorSensor,
+
+                SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     @Override
@@ -178,6 +208,42 @@ public class InProgressActivity extends Activity {
             backgroundImageLoaderTask.cancel(true);
         }
         super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mSensorManager.unregisterListener(this, mStepCounterSensor);
+        mSensorManager.unregisterListener(this, mStepDetectorSensor);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        Sensor sensor = event.sensor;
+        float[] values = event.values;
+        int value = -1;
+
+        if (values.length > 0) {
+            value = (int) values[0];
+        }
+
+        if (sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
+            stepsTaken.setText(String.valueOf(value));
+            stepsLeft.setText(String.valueOf(value - totalSteps));
+        } else if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
+            // For test/demo only. Only allowed value is 1.0 i.e. for step taken
+            if (value == 1.0) {
+                initialDemoCounter++;
+                int newVal = initialDemoCounter;
+                stepsTaken.setText(String.valueOf(newVal));
+                stepsLeft.setText(String.valueOf(totalSteps - newVal));
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 
     class ImageLoaderTask extends AsyncTask<Pair<Uri, VrPanoramaView.Options>, Void, Boolean> {
