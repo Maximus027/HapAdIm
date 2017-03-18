@@ -2,7 +2,6 @@ package com.example.hapadim.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,14 +43,17 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Holder> {
     @Override
     public void onBindViewHolder(DrawerAdapter.Holder holder, int position) {
         Badge badge = listBadges.get(position);
-        holder.tvBadgeDescription.setText(badge.getBadgedName()); //this is only for testing purpose
+        holder.tvBadgeName.setText(badge.getBadgedName());
+        Picasso.with(context).load(badge.getBadgeImg()).into(holder.imgBadgeIcon);
 
-        if (badge.getBadgeImg().contains("no image") || badge.getBadgeImg().isEmpty()){
-            Picasso.with(context).load(R.drawable.ideadicon).into(holder.imgBadgeIcon);
-        } else {
-            Log.d("adapter", "onBindViewHolder: " + badge.getBadgeImg());
-            Picasso.with(context).load(badge.getBadgeImg()).into(holder.imgBadgeIcon);
-        }
+
+
+//        if (badge.getBadgeImg().contains("no image") || badge.getBadgeImg().isEmpty()){
+//            Picasso.with(context).load(R.drawable.ideadicon).into(holder.imgBadgeIcon);
+//        } else {
+//            Log.d("adapter", "onBindViewHolder: " + badge.getBadgeImg());
+//            Picasso.with(context).load(badge.getBadgeImg()).into(holder.imgBadgeIcon);
+//        }
     }
 
     @Override
@@ -67,13 +69,13 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Holder> {
 
     public class Holder extends RecyclerView.ViewHolder {
 
-        TextView tvBadgeDescription;
+        TextView tvBadgeName;
         ImageView imgBadgeIcon;
 
 
         public Holder(View itemView) {
             super(itemView);
-            tvBadgeDescription = (TextView) itemView.findViewById(R.id.badgeDescription);
+            tvBadgeName = (TextView) itemView.findViewById(R.id.badgeName);
             imgBadgeIcon = (ImageView) itemView.findViewById(R.id.badgeIcon);
 
         }
