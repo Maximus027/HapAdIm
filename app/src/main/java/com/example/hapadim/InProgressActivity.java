@@ -27,7 +27,6 @@ import android.widget.Toast;
 import com.example.hapadim.complexsharedprefs.ComplexPreferences;
 import com.example.hapadim.models.Badge;
 import com.example.hapadim.models.Place;
-import com.example.hapadim.models.Place;
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
 
@@ -53,12 +52,11 @@ public class InProgressActivity extends Activity implements SensorEventListener{
     Button threesixty;
     private Uri fileUri;
     Bitmap panoImage;
+    ArrayList<String> tips ;
     InputStream istr = null;
     private VrPanoramaView.Options panoOptions = new VrPanoramaView.Options();
     private ImageLoaderTask backgroundImageLoaderTask;
     private static final String TAG2 = "In Progress LOG: ";
-    InputStream assetManager;
-
     private SensorManager mSensorManager;
     private Sensor mStepCounterSensor;
     private Sensor mStepDetectorSensor;
@@ -83,6 +81,8 @@ public class InProgressActivity extends Activity implements SensorEventListener{
 
         stepsLeft = (TextView) findViewById(R.id.steps_left);
         stepsTaken = (TextView) findViewById(R.id.steps_taken);
+        setRandomTips();
+
 
         Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
 
@@ -111,6 +111,14 @@ public class InProgressActivity extends Activity implements SensorEventListener{
 
         Place location = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
         toolbarTransparent();
+    }
+
+    private void setRandomTips() {
+        tips = new ArrayList<>();
+        tips.add(0, "Let's take the steps instead of the elevator ");
+        tips.add(1, "Did you know that walking releases nature's pain reliving hormone called endoprhins ");
+        tips.add(2, "Why not come off the bus or train a stop early and get some extra steps !");
+
     }
 
 
@@ -204,11 +212,6 @@ public class InProgressActivity extends Activity implements SensorEventListener{
         mSensorManager.registerListener(this, mStepDetectorSensor,
 
                 SensorManager.SENSOR_DELAY_FASTEST);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @Override
