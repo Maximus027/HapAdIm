@@ -15,10 +15,14 @@ import android.util.Pair;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.hapadim.models.Place;
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
+
+import org.parceler.Parcels;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,6 +37,7 @@ public class InProgressActivity extends Activity {
     VrPanoramaView vrPanoramaView;
     VrPanoramaView.Options panoOptions1 = null;
     public boolean loadImageSuccessful;
+    Button threesixty;
     private Uri fileUri;
     Bitmap panoImage;
     InputStream istr = null;
@@ -46,9 +51,17 @@ public class InProgressActivity extends Activity {
         super.onCreate(bundle);
         setContentView(R.layout.inprogressscreen);
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
+        threesixty = (Button) findViewById(R.id.VR_Btn);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.drawable.andes);
-        vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
+                R.drawable.libetythree);
+        threesixty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
+            }
+        });
+
+        Place location = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
         toolbarTransparent();
 
     }
@@ -163,7 +176,7 @@ public class InProgressActivity extends Activity {
 
     }
 
-    private void toolbarTransparent(){
+    private void toolbarTransparent() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);

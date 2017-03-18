@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -80,12 +81,10 @@ public class StartPageActivity extends AppCompatActivity {
         startBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (example.getPlaceName().equals("Statue of Liberty")) {
-
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), InProgressActivity.class);
-                    startActivity(intent);
-                }
+                Parcelable placeParcel = Parcels.wrap(example);
+                Intent intent = new Intent(getApplicationContext(), InProgressActivity.class);
+                intent.putExtra("chosen_place", placeParcel);
+                startActivity(intent);
             }
         });
         initializeAdapter(example);
@@ -94,7 +93,8 @@ public class StartPageActivity extends AppCompatActivity {
         toolbarTransparent();
 
     }
-    private void toolbarTransparent(){
+
+    private void toolbarTransparent() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
