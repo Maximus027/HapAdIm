@@ -57,7 +57,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     Button threesixty;
     private Uri fileUri;
     Bitmap panoImage;
-    ArrayList<String> tips ;
+    ArrayList<String> tips;
     int newVal;
 
     InputStream istr = null;
@@ -106,13 +106,6 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         threesixty = (Button) findViewById(R.id.VR_Btn);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.libetythree);
-        threesixty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
-            }
-        });
-
         toolbarTransparent();
     }
 
@@ -269,7 +262,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
             // For test/demo only. Only allowed value is 1.0 i.e. for step taken
             if (value == 1.0) {
-                if (newVal <= 353){
+                if (newVal <= 353) {
                     newVal = initialDemoCounter++;
                 }
 
@@ -279,6 +272,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
                             , Toast.LENGTH_SHORT).show();
                     stepsTaken.setText(statueofLibertyNum);
                     stepsLeft.setText(statueStepLeft);
+                    vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
                 } else {
                     stepsTaken.setText(String.valueOf(newVal));
                     int newTotal = totalSteps - newVal;
@@ -357,6 +351,13 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), LandingPageActivity.class);
+        startActivity(intent);
+    }
+
     private void toolbarTransparent() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -365,6 +366,8 @@ public class InProgressActivity extends Activity implements SensorEventListener 
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+
+
     }
 
 }
