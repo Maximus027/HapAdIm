@@ -82,16 +82,15 @@ public class InProgressActivity extends Activity implements SensorEventListener{
         stepsTaken = (TextView) findViewById(R.id.steps_taken);
 
         Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
-        int takenSteps = 500;
 
         totalSteps = place.getStepNumber();
-        stepsLeft.setText(String.valueOf(totalSteps - takenSteps));
-        stepsTaken.setText(String.valueOf(takenSteps));
+        stepsLeft.setText(String.valueOf(totalSteps - initialDemoCounter));
+        stepsTaken.setText(String.valueOf(initialDemoCounter));
 
         for (int i = 0; i < place.getBadges().size(); i++) {
-            if (takenSteps >= (place.getStepNumber() / 2)) {
+            if (initialDemoCounter >= (place.getStepNumber() / 2)) {
                 saveToUserBadges(place.getBadges().get(0));
-            } else if (takenSteps >= (place.getStepNumber())) {
+            } else if (initialDemoCounter >= (place.getStepNumber())) {
                 saveToUserBadges(place.getBadges().get(1));
             }
         }
@@ -227,16 +226,13 @@ public class InProgressActivity extends Activity implements SensorEventListener{
             value = (int) values[0];
         }
 
-        if (sensor.getType() == Sensor.TYPE_STEP_COUNTER) {
-            stepsTaken.setText(String.valueOf(value));
-            stepsLeft.setText(String.valueOf(value - totalSteps));
-        } else if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
+        if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
             // For test/demo only. Only allowed value is 1.0 i.e. for step taken
             if (value == 1.0) {
-                initialDemoCounter++;
-                int newVal = initialDemoCounter;
+                int newVal = initialDemoCounter++;
                 stepsTaken.setText(String.valueOf(newVal));
-                stepsLeft.setText(String.valueOf(totalSteps - newVal));
+                int newTotal = totalSteps - newVal;
+                stepsLeft.setText(String.valueOf(newTotal));
             }
         }
     }
