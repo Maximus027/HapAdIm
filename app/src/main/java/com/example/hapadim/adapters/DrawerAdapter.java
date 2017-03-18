@@ -2,6 +2,7 @@ package com.example.hapadim.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hapadim.R;
-import com.example.hapadim.models.Place;
+import com.example.hapadim.models.Badge;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,10 +21,16 @@ import java.util.List;
 
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Holder> {
 
-    private List<Place> listBadges;
+    private List<Badge> listBadges;
     private Context context;
 
-    public DrawerAdapter(List<Place> badges) {
+    public DrawerAdapter(List<Badge> badges) {
+        if (badges.size() == 0){
+            Badge badge = new Badge();
+            badge.setBadgedName("No badges yet. Start a challenge to begin earning some!");
+            badge.setBadgeImg("");
+            badges.add(badge);
+        }
         this.listBadges = badges;
     }
 
@@ -36,10 +43,15 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Holder> {
 
     @Override
     public void onBindViewHolder(DrawerAdapter.Holder holder, int position) {
+        Badge badge = listBadges.get(position);
+        holder.tvBadgeDescription.setText(badge.getBadgedName()); //this is only for testing purpose
 
-        holder.tvBadgeDescription.setText(listBadges.get(position).getBadges().get(0).getBadgeDesc()); //this is only for testing purpose
-        Picasso.with(context).load(listBadges.get(position).getBadges().get(0).getBadgeImg()).into(holder.imgBadgeIcon);
-
+        if (badge.getBadgeImg().contains("no image") || badge.getBadgeImg().isEmpty()){
+            Picasso.with(context).load(R.drawable.ideadicon).into(holder.imgBadgeIcon);
+        } else {
+            Log.d("adapter", "onBindViewHolder: " + badge.getBadgeImg());
+            Picasso.with(context).load(badge.getBadgeImg()).into(holder.imgBadgeIcon);
+        }
     }
 
     @Override
@@ -56,8 +68,8 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Holder> {
 
         public Holder(View itemView) {
             super(itemView);
-            tvBadgeDescription = (TextView)itemView.findViewById(R.id.badgeDescription);
-            imgBadgeIcon = (ImageView)itemView.findViewById(R.id.badgeIcon);
+            tvBadgeDescription = (TextView) itemView.findViewById(R.id.badgeDescription);
+            imgBadgeIcon = (ImageView) itemView.findViewById(R.id.badgeIcon);
 
         }
     }

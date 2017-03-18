@@ -16,7 +16,12 @@ import android.view.WindowManager;
 
 import com.example.hapadim.adapters.DrawerAdapter;
 import com.example.hapadim.adapters.LandMarksAdapter;
+import com.example.hapadim.complexsharedprefs.ComplexPreferences;
+import com.example.hapadim.models.Badge;
 import com.example.hapadim.models.JsonEndPoint;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by NesadaKoca on 2/28/2017.
@@ -55,10 +60,13 @@ public class LandingPageActivity extends AppCompatActivity {
         Log.d("json", "long dist size b4: " + endPoint.getLongDistance().size());
         Log.d("json", "mountains size b4: " + endPoint.getMountains().size());
 
+
+        List<Badge> badgesEarnedByUser = getEarnedBadges();
+
         mountainsAdapater = new LandMarksAdapter(endPoint.getMountains());
         monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments());
         longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance());
-        drawerAdapter= new DrawerAdapter(endPoint.getMonuments()); // need to be changed the entry data - this is only for testing purpose
+        drawerAdapter= new DrawerAdapter(badgesEarnedByUser); // need to be changed the entry data - this is only for testing purpose
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
@@ -119,5 +127,21 @@ public class LandingPageActivity extends AppCompatActivity {
         Intent viewAll = new Intent(this, ViewAllActivity.class);
         viewAll.putExtra(CATEGORY_KEY, VIEWALL);
         this.startActivity(viewAll);
+    }
+
+    public List<Badge> getEarnedBadges() {
+        ComplexPreferences complexPreferences = ComplexPreferences
+                .getComplexPreferences(this, Constants.SHARED_PREFS_KEY, MODE_PRIVATE);
+
+        ListComplexBadge complexObject = complexPreferences
+                .getObject(Constants.SHARED_PREFS_BADGES_KEY, ListComplexBadge.class);
+
+        List<Badge> userEarnedBadges = new ArrayList<>();
+        if (complexObject != null) {
+            for (Badge item : complexObject.getBadges()) {
+                userEarnedBadges.add(item);
+            }
+        }
+        return userEarnedBadges;
     }
 }
