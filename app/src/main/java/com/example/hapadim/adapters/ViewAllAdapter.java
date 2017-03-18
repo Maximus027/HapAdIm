@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hapadim.Constants;
 import com.example.hapadim.R;
 import com.example.hapadim.StartPageActivity;
 import com.example.hapadim.models.Place;
@@ -78,7 +79,7 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
                     Activity activity = (Activity) itemView.getContext();
                     Intent intent = new Intent(activity, StartPageActivity.class);
                     Parcelable placeParcel = Parcels.wrap(place);
-                    intent.putExtra("chosen_place", placeParcel);
+                    intent.putExtra(Constants.CHOSEN_PLACE, placeParcel);
                     activity.startActivity(intent);
                 }
             });

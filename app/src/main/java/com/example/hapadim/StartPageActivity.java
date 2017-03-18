@@ -1,5 +1,6 @@
 package com.example.hapadim;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -20,13 +21,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hapadim.adapters.StartPageAdapter;
-import com.example.hapadim.models.Badge;
 import com.example.hapadim.models.Place;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
-
-import java.util.List;
 
 /**
  * Created by meltemyildirim on 3/13/17.
@@ -44,6 +42,8 @@ public class StartPageActivity extends AppCompatActivity {
     TextView stepNum;
     ImageView catergoryIcon;
     ImageView panoImage;
+    ImageView badge1;
+    ImageView badge2;
     Button startBTN;
     CardView cardView;
     CardView cardView2;
@@ -71,24 +71,33 @@ public class StartPageActivity extends AppCompatActivity {
         relativeLayout = (RelativeLayout) findViewById(R.id.startLayout);
         stepNum = (TextView) findViewById(R.id.numberOfSteps);
         cardView = (CardView) findViewById(R.id.locationCard);
-        cardView.setElevation(30);
         cardView2 = (CardView) findViewById(R.id.locationFactsCard);
-        cardView2.setElevation(30);
+        badge1 = (ImageView)findViewById(R.id.badge1);
+        badge2 = (ImageView)findViewById(R.id.badge2);
 
-        final Place example = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
-        List<Badge> badges = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place_badges"));
+        Picasso.with(getApplicationContext()).load("http://i68.tinypic.com/11kh46f.jpg").into(badge1);
+        Picasso.with(getApplicationContext()).load("http://i63.tinypic.com/2s8pm6p.jpg").into(badge2);
+
+
+
+
+
+        final Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.CHOSEN_PLACE));
 
         startBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Parcelable placeParcel = Parcels.wrap(example);
-                Intent intent = new Intent(getApplicationContext(), InProgressActivity.class);
-                intent.putExtra("chosen_place", placeParcel);
+                Activity activity = (Activity) v.getContext();
+                Intent intent = new Intent(activity, InProgressActivity.class);
+                Parcelable placeParcel = Parcels.wrap(place);
+                intent.putExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY, placeParcel);
+                activity.startActivity(intent);
                 startActivity(intent);
+
             }
         });
-        initializeAdapter(example);
-        setLocationInformation(example);
+        initializeAdapter(place);
+        setLocationInformation(place);
 
         toolbarTransparent();
 

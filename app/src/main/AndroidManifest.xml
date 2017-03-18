@@ -3,6 +3,9 @@
     package="com.example.hapadim">
 
     <uses-feature android:name="android.hardware.sensor.stepcounter" />
+    <uses-feature android:name="android.hardware.sensor.stepdetector" />
+
+
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -38,6 +41,7 @@
             android:enabled="true" />
 
         <activity android:name=".MockGoogleFit">
+
         </activity>
         <activity android:name=".InProgressActivity">
         </activity>
