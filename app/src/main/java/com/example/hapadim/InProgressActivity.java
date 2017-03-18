@@ -49,12 +49,15 @@ import static com.example.hapadim.adapters.LandMarksAdapter.TAG;
  */
 
 public class InProgressActivity extends Activity implements SensorEventListener {
+    final String statueofLibertyNum = "354";
+    final String statueStepLeft = "0";
     VrPanoramaView vrPanoramaView;
     VrPanoramaView.Options panoOptions1 = null;
     public boolean loadImageSuccessful;
     Button threesixty;
     private Uri fileUri;
     Bitmap panoImage;
+    int newVal;
     InputStream istr = null;
     private VrPanoramaView.Options panoOptions = new VrPanoramaView.Options();
     private ImageLoaderTask backgroundImageLoaderTask;
@@ -69,7 +72,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     private TextView stepsTaken;
 
     private int totalSteps;
-    private int initialDemoCounter = 0;
+    private int initialDemoCounter = 334;
     private Place place;
     private BadgesEarnedAdapter adapter;
 
@@ -89,8 +92,11 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
         place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
         totalSteps = place.getStepNumber();
+
+
         stepsLeft.setText(String.valueOf(totalSteps - initialDemoCounter));
         stepsTaken.setText(String.valueOf(initialDemoCounter));
+
 
         setUpBadgeRecyclerView(place);
 
@@ -148,7 +154,6 @@ public class InProgressActivity extends Activity implements SensorEventListener 
                 userEarnedBadges.add(newBadge);
             }
         }
-
 
 
         ListComplexBadge complexObject = new ListComplexBadge();
@@ -250,7 +255,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     public void onSensorChanged(SensorEvent event) {
         Sensor sensor = event.sensor;
         float[] values = event.values;
-        int value = -1;
+        int value = 1;
 
         if (values.length > 0) {
             value = (int) values[0];
@@ -259,13 +264,16 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
             // For test/demo only. Only allowed value is 1.0 i.e. for step taken
             if (value == 1.0) {
+                if (newVal <= 353){
+                    newVal = initialDemoCounter++;
+                }
 
-                int newVal = initialDemoCounter++;
-
-                if (newVal == place.getStepNumber()){
+                if (newVal == place.getStepNumber()) {
                     Toast.makeText(this
                             , "Great Job, you conquered " + place.getPlaceName() + " !"
                             , Toast.LENGTH_SHORT).show();
+                    stepsTaken.setText(statueofLibertyNum);
+                    stepsLeft.setText(statueStepLeft);
                 } else {
                     stepsTaken.setText(String.valueOf(newVal));
                     int newTotal = totalSteps - newVal;

@@ -83,7 +83,6 @@ public class MockGoogleFit extends AppCompatActivity implements View.OnClickList
         Toast.makeText(this, "Unbinding service", Toast.LENGTH_SHORT).show();
         unbindService(serviceConnection);
         stopService(service);
-        
     }
 
     public void getCurrentSteps(View view) {
