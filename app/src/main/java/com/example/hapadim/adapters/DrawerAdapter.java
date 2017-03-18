@@ -46,8 +46,6 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Holder> {
     public int getItemCount() {
         return listBadges.size();
     }
-
-
     public class Holder extends RecyclerView.ViewHolder {
 
         TextView tvBadgeDescription;
