@@ -107,10 +107,9 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/earned_badges_ip"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="60dp"/>
 
     <ScrollView
         android:layout_width="match_parent"

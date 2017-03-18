@@ -59,6 +59,11 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.Holder> {
         return listBadges.size();
     }
 
+    public void setNewData(List<Badge> newData) {
+        listBadges.addAll(newData);
+        notifyDataSetChanged();
+    }
+
 
     public class Holder extends RecyclerView.ViewHolder {
 

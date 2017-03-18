@@ -15,6 +15,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -24,9 +26,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hapadim.adapters.BadgesEarnedAdapter;
 import com.example.hapadim.complexsharedprefs.ComplexPreferences;
 import com.example.hapadim.models.Badge;
-import com.example.hapadim.models.Place;
 import com.example.hapadim.models.Place;
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
@@ -46,7 +48,7 @@ import static com.example.hapadim.adapters.LandMarksAdapter.TAG;
  * Created by queenabergen on 3/16/17.
  */
 
-public class InProgressActivity extends Activity implements SensorEventListener{
+public class InProgressActivity extends Activity implements SensorEventListener {
     VrPanoramaView vrPanoramaView;
     VrPanoramaView.Options panoOptions1 = null;
     public boolean loadImageSuccessful;
@@ -68,6 +70,8 @@ public class InProgressActivity extends Activity implements SensorEventListener{
 
     private int totalSteps;
     private int initialDemoCounter = 0;
+    private Place place;
+    private BadgesEarnedAdapter adapter;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -80,23 +84,15 @@ public class InProgressActivity extends Activity implements SensorEventListener{
                 .getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         mStepDetectorSensor = mSensorManager
                 .getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
-
         stepsLeft = (TextView) findViewById(R.id.steps_left);
         stepsTaken = (TextView) findViewById(R.id.steps_taken);
 
-        Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
-
+        place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
         totalSteps = place.getStepNumber();
         stepsLeft.setText(String.valueOf(totalSteps - initialDemoCounter));
         stepsTaken.setText(String.valueOf(initialDemoCounter));
 
-        for (int i = 0; i < place.getBadges().size(); i++) {
-            if (initialDemoCounter >= (place.getStepNumber() / 2)) {
-                saveToUserBadges(place.getBadges().get(0));
-            } else if (initialDemoCounter >= (place.getStepNumber())) {
-                saveToUserBadges(place.getBadges().get(1));
-            }
-        }
+        setUpBadgeRecyclerView(place);
 
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         threesixty = (Button) findViewById(R.id.VR_Btn);
@@ -109,8 +105,28 @@ public class InProgressActivity extends Activity implements SensorEventListener{
             }
         });
 
-        Place location = Parcels.unwrap(getIntent().getParcelableExtra("chosen_place"));
         toolbarTransparent();
+    }
+
+
+    private void setUpBadgeRecyclerView(Place place) {
+        RecyclerView earnedBadgesRV = (RecyclerView) findViewById(R.id.earned_badges_ip);
+        earnedBadgesRV.setLayoutManager(
+                new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+        List<Badge> userBadges = getEarnedBadges();
+        List<Badge> badgesEarnedForThisChallenge = new ArrayList<>();
+
+        for (int i = 0; i < userBadges.size(); i++) {
+            for (int j = 0; j < place.getBadges().size(); j++) {
+                if (userBadges.get(i).getBadgedName().equals(place.getBadges().get(j).getBadgedName())) {
+                    badgesEarnedForThisChallenge.add(place.getBadges().get(j));
+                }
+            }
+        }
+
+        adapter = new BadgesEarnedAdapter(badgesEarnedForThisChallenge);
+        earnedBadgesRV.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
 
@@ -119,16 +135,21 @@ public class InProgressActivity extends Activity implements SensorEventListener{
         List<Badge> userEarnedBadges = getEarnedBadges();
 
         for (int i = 0; i < userEarnedBadges.size(); i++) {
+
             if (userEarnedBadges.get(i).getBadgedName().equals(newBadge.getBadgedName())) {
                 containsBadge = true;
+            } else {
+                containsBadge = false;
+            }
+
+            if (containsBadge) {
+                Log.d(TAG, "saveToUserBadges: User already has badge");
+            } else {
+                userEarnedBadges.add(newBadge);
             }
         }
 
-        if (containsBadge) {
-            Log.d(TAG, "saveToUserBadges: User already has badge");
-        } else {
-            userEarnedBadges.add(newBadge);
-        }
+
 
         ListComplexBadge complexObject = new ListComplexBadge();
         complexObject.setBadges(userEarnedBadges);
@@ -199,10 +220,8 @@ public class InProgressActivity extends Activity implements SensorEventListener{
         super.onResume();
         vrPanoramaView.resumeRendering();
         mSensorManager.registerListener(this, mStepCounterSensor,
-
                 SensorManager.SENSOR_DELAY_FASTEST);
         mSensorManager.registerListener(this, mStepDetectorSensor,
-
                 SensorManager.SENSOR_DELAY_FASTEST);
     }
 
@@ -240,10 +259,30 @@ public class InProgressActivity extends Activity implements SensorEventListener{
         if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
             // For test/demo only. Only allowed value is 1.0 i.e. for step taken
             if (value == 1.0) {
+
                 int newVal = initialDemoCounter++;
-                stepsTaken.setText(String.valueOf(newVal));
-                int newTotal = totalSteps - newVal;
-                stepsLeft.setText(String.valueOf(newTotal));
+
+                if (newVal == place.getStepNumber()){
+                    Toast.makeText(this
+                            , "Great Job, you conquered " + place.getPlaceName() + " !"
+                            , Toast.LENGTH_SHORT).show();
+                } else {
+                    stepsTaken.setText(String.valueOf(newVal));
+                    int newTotal = totalSteps - newVal;
+                    stepsLeft.setText(String.valueOf(newTotal));
+                    checkForEarnedBadges(place);
+                }
+            }
+        }
+    }
+
+
+    private void checkForEarnedBadges(Place place) {
+        for (int i = 0; i < place.getBadges().size(); i++) {
+            if (initialDemoCounter >= (place.getStepNumber() / 2)) {
+                saveToUserBadges(place.getBadges().get(0));
+            } else if (initialDemoCounter >= (place.getStepNumber())) {
+                saveToUserBadges(place.getBadges().get(1));
             }
         }
     }
