@@ -104,6 +104,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         threesixty = (Button) findViewById(R.id.VR_Btn);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.libetythree);
+
         toolbarTransparent();
     }
 
@@ -331,8 +332,10 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(getApplicationContext(), LandingPageActivity.class);
+        finish();
+        Intent intent = new Intent(this, LandingPageActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
     private void toolbarTransparent() {

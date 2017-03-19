@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hapadim.Constants;
+import com.example.hapadim.AnimationUtil;
 import com.example.hapadim.R;
 import com.example.hapadim.StartPageActivity;
 import com.example.hapadim.models.Place;
@@ -30,6 +31,8 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
 
     private List<Place> listAll;
     private Context context;
+    private int previousPosition = 0;
+
 
     public ViewAllAdapter(List<Place> all) {
         this.listAll = all;
@@ -45,6 +48,13 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         holder.bind(listAll.get(position));
+
+        if (position > previousPosition){
+            AnimationUtil.animate(holder, true);
+        }else{
+            AnimationUtil.animate(holder, false);
+        }
+        previousPosition = position;
     }
 
     @Override
@@ -81,6 +91,7 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
                     Parcelable placeParcel = Parcels.wrap(place);
                     intent.putExtra(Constants.CHOSEN_PLACE, placeParcel);
                     activity.startActivity(intent);
+                    activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
             });
         }
