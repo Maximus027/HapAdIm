@@ -6,9 +6,40 @@
     android:paddingTop="20dp">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/inprogressStats"
+        android:id="@+id/tipsCard"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginBottom="@dimen/cardViewMargin"
+        android:layout_marginLeft="@dimen/cardViewMargin"
+        android:layout_marginRight="@dimen/cardViewMargin"
+        android:layout_marginTop="@dimen/cardViewMargin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/tipicon" />
+
+            <TextView
+                android:id="@+id/healthtips"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/inprogressStats"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_marginLeft="@dimen/cardViewMargin"
         android:layout_marginRight="@dimen/cardViewMargin"
         android:layout_marginTop="@dimen/cardViewMargin">
@@ -39,7 +70,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text=" 2788"
-                    android:textSize="40sp" />
+                    android:textSize="50sp" />
             </LinearLayout>
 
             <TextView
@@ -71,45 +102,19 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="58,934"
-                    android:textSize="40sp" />
+                    android:textSize="50sp" />
             </LinearLayout>
 
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/tipsCard"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginLeft="@dimen/cardViewMargin"
-        android:layout_marginRight="@dimen/cardViewMargin"
-        android:layout_marginTop="@dimen/cardViewMargin">
+        android:layout_height="60dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="2dp"
-                android:src="@drawable/ideadicon" />
-
-            <TextView
-                android:id="@+id/healthtips"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/earned_badges_ip"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -125,18 +130,18 @@
                 android:id="@+id/pano_view"
                 android:layout_width="match_parent"
                 android:layout_height="250dip"
-                android:scrollbars="@null"
-                android:layout_margin="5dip" />
+                android:layout_margin="5dip"
+                android:scrollbars="@null" />
 
-    <Button
-        android:id="@+id/VR_Btn"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/VR_previewBox"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="@dimen/cardViewMargin"
-        android:layout_marginRight="@dimen/cardViewMargin"
-        android:text="360 VIEW" />
+            <Button
+                android:id="@+id/VR_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@+id/VR_previewBox"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="@dimen/cardViewMargin"
+                android:layout_marginRight="@dimen/cardViewMargin"
+                android:text="360 VIEW" />
 
 
             <Button
