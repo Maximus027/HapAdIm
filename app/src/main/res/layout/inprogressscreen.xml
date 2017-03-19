@@ -6,9 +6,40 @@
     android:paddingTop="20dp">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/inprogressStats"
+        android:id="@+id/tipsCard"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginBottom="@dimen/cardViewMargin"
+        android:layout_marginLeft="@dimen/cardViewMargin"
+        android:layout_marginRight="@dimen/cardViewMargin"
+        android:layout_marginTop="@dimen/cardViewMargin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:src="@drawable/tipicon" />
+
+            <TextView
+                android:id="@+id/healthtips"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/inprogressStats"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_marginLeft="@dimen/cardViewMargin"
         android:layout_marginRight="@dimen/cardViewMargin"
         android:layout_marginTop="@dimen/cardViewMargin">
@@ -39,7 +70,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text=" 2788"
-                    android:textSize="40sp" />
+                    android:textSize="50sp" />
             </LinearLayout>
 
             <TextView
@@ -71,40 +102,13 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:text="58,934"
-                    android:textSize="40sp" />
+                    android:textSize="50sp" />
             </LinearLayout>
 
 
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/tipsCard"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginLeft="@dimen/cardViewMargin"
-        android:layout_marginRight="@dimen/cardViewMargin"
-        android:layout_marginTop="@dimen/cardViewMargin">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="2dp"
-                android:src="@drawable/tipicon" />
-
-            <TextView
-                android:id="@+id/healthtips"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
