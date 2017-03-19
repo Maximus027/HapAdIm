@@ -101,7 +101,6 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
 
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
-        threesixty = (Button) findViewById(R.id.VR_Btn);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.libetythree);
 
