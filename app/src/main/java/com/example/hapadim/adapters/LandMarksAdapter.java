@@ -7,8 +7,11 @@ import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,7 +36,7 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     ImageView catIcon;
     ImageView feetIcon;
-    Activity activity1;
+    Activity activity;
     int mountIcon = R.drawable.mountainicon;
     int monumentIcon = R.drawable.monumenticon;
     int distanceIcon = R.drawable.walkicon;
@@ -45,7 +48,8 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     public static final String TAG = LandMarksAdapter.class.getName();
 
-    public LandMarksAdapter(List<Place> landmarks) {
+    public LandMarksAdapter(List<Place> landmarks, Activity activity) {
+        this.activity = activity;
         Log.d(TAG, "Monuments size " + landmarks.size());
         if (landmarks.size() == 0) {
             this.landmarkList = new ArrayList<>();
@@ -97,9 +101,10 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         return landmarkList.size() + 1;
     }
 
-    private class Holder extends RecyclerView.ViewHolder {
+    private class Holder extends RecyclerView.ViewHolder implements View.OnTouchListener {
         TextView tvName, tvElevation;
         ImageView images;
+        private Place placeValue;
 
         private Holder(View itemView) {
             super(itemView);
@@ -108,9 +113,11 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             tvElevation = (TextView) itemView.findViewById(R.id.tv_elevation);
             images = (ImageView) itemView.findViewById(R.id.images);
             catIcon = (ImageView) itemView.findViewById(R.id.catergoryIcon);
+            itemView.setOnTouchListener(this);
         }
 
         private void bind(final Place place) {
+            placeValue = place;
             if (place.getCategory().equals("Mountain")) {
                 Picasso.with(context).load(mountIcon).into(catIcon);
             } else if (place.getCategory().equals("Monument")) {
@@ -122,16 +129,41 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             tvElevation.setText(String.valueOf(place.getStepNumber()));
             Picasso.with(context).load(place.getUrlImg()).into(images);
             Picasso.with(context).load(R.drawable.feet).into(feetIcon);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+
+        }
+
+        @Override
+        public boolean onTouch(View view, MotionEvent event) {
+
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    Animation animationZoomIn = AnimationUtils.loadAnimation(activity,R.anim.zoom_in);
+                    animationZoomIn.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) { }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            itemView.clearAnimation();
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) { }
+                    });
+                    itemView.startAnimation(animationZoomIn);
+                    return true;
+                case MotionEvent.ACTION_UP:
                     Activity activity1 = (Activity) itemView.getContext();
                     Intent intent = new Intent(activity1, StartPageActivity.class);
-                    Parcelable placeParcel = Parcels.wrap(place);
+                    Parcelable placeParcel = Parcels.wrap(placeValue);
                     intent.putExtra(Constants.CHOSEN_PLACE, placeParcel);
                     activity1.startActivity(intent);
-                }
-            });
+                    activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    return true;
+
+                default:
+                    return false;
+            }
         }
     }
 
@@ -148,6 +180,7 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     Intent viewAll = new Intent(v.getContext(), ViewAllActivity.class);
                     viewAll.putExtra(Constants.CHOSEN_CATEGORY, place.getCategory());
                     v.getContext().startActivity(viewAll);
+                    activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
             });
 

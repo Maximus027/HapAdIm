@@ -1,6 +1,7 @@
 package com.example.hapadim;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -52,7 +53,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mountainsRV = (RecyclerView) findViewById(R.id.rv_mountains);
         monumentsRV = (RecyclerView) findViewById(R.id.rv_monuments);
         longDistancesRV = (RecyclerView) findViewById(R.id.rv_long_distances);
-        drawerRV = (RecyclerView)findViewById(R.id.rv_drawer);
+        drawerRV = (RecyclerView) findViewById(R.id.rv_drawer);
 
         endPoint = JsonEndPoint.getInstance();
 
@@ -60,22 +61,27 @@ public class LandingPageActivity extends AppCompatActivity {
         Log.d("json", "long dist size b4: " + endPoint.getLongDistance().size());
         Log.d("json", "mountains size b4: " + endPoint.getMountains().size());
 
+        Activity activity = (Activity)this;
+
+        mountainsAdapater = new LandMarksAdapter(endPoint.getMountains(), activity);
+        monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments(), activity);
+        longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance(),activity);
 
         List<Badge> badgesEarnedByUser = getEarnedBadges();
 
-        mountainsAdapater = new LandMarksAdapter(endPoint.getMountains());
-        monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments());
-        longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance());
-        drawerAdapter= new DrawerAdapter(badgesEarnedByUser); // need to be changed the entry data - this is only for testing purpose
+        mountainsAdapater = new LandMarksAdapter(endPoint.getMountains(), activity);
+        monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments(), activity);
+        longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance(), activity);
+        // Need to be changed the entry data - this is only for testing purpose
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
         setUpLongDistancesAdapter();
-        setUpDrawerAdapter();
         toolbarTransparent();
 
     }
-    private void toolbarTransparent(){
+
+    private void toolbarTransparent() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -87,8 +93,12 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private void setUpDrawerAdapter() {
         drawerRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        List<Badge> demoBadges = new ArrayList<>();
+        demoBadges.add(endPoint.getMonuments().get(0).getBadges().get(0));
+        demoBadges.add(endPoint.getMonuments().get(0).getBadges().get(1));
+        drawerAdapter = new DrawerAdapter(demoBadges);
         drawerRV.setAdapter(drawerAdapter);
-        drawerAdapter.notifyDataSetChanged();
+//        drawerAdapter.notifyDataSetChanged();
     }
 
 
@@ -127,6 +137,7 @@ public class LandingPageActivity extends AppCompatActivity {
         Intent viewAll = new Intent(this, ViewAllActivity.class);
         viewAll.putExtra(CATEGORY_KEY, VIEWALL);
         this.startActivity(viewAll);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     public List<Badge> getEarnedBadges() {
@@ -148,7 +159,8 @@ public class LandingPageActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        List<Badge> badges = getEarnedBadges();
-        drawerAdapter.setNewData(badges);
+        setUpDrawerAdapter();
+//        List<Badge> badges = getEarnedBadges();
+//        drawerAdapter.setNewData(badges);
     }
 }
