@@ -133,16 +133,6 @@
                 android:layout_margin="5dip"
                 android:scrollbars="@null" />
 
-            <Button
-                android:id="@+id/VR_Btn"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_below="@+id/VR_previewBox"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="@dimen/cardViewMargin"
-                android:layout_marginRight="@dimen/cardViewMargin"
-                android:text="360 VIEW" />
-
 
             <Button
                 android:id="@+id/endChallenge"
