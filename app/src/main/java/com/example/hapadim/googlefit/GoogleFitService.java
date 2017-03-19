@@ -1,7 +1,10 @@
 package com.example.hapadim.googlefit;
 
+import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.NonNull;
@@ -35,20 +38,23 @@ import static android.content.ContentValues.TAG;
 
 public class GoogleFitService extends Service implements OnDataPointListener,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener{
+        GoogleApiClient.OnConnectionFailedListener {
 
     private static final int REQUEST_OAUTH = 1;
     private static final String AUTH_PENDING = "auth_state_pending";
     private boolean authInProgress = false;
     private GoogleApiClient googleApiClient;
     private OnDataPointListener onDataPointListener;
-
-
+    private final LocalBinder binder = new LocalBinder();
+    public static final int REQUEST_RESOLVE_ERROR = 1001;
+    private boolean resolvingError = false;
+    private Activity activity;
+    private String steps;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        Log.d(TAG, "onCreate");
         googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Fitness.SENSORS_API)
                 .addApi(Fitness.HISTORY_API)
@@ -60,22 +66,24 @@ public class GoogleFitService extends Service implements OnDataPointListener,
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "onStartCommand: ");
         googleApiClient.connect();
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        Log.d(TAG, "onConnected: ");
         DataSourcesRequest dataSourceRequest = new DataSourcesRequest.Builder()
-                .setDataTypes( DataType.TYPE_STEP_COUNT_CUMULATIVE )
-                .setDataSourceTypes( DataSource.TYPE_RAW )
+                .setDataTypes(DataType.TYPE_STEP_COUNT_CUMULATIVE)
+                .setDataSourceTypes(DataSource.TYPE_RAW)
                 .build();
 
         ResultCallback<DataSourcesResult> dataSourcesResultCallback = new ResultCallback<DataSourcesResult>() {
             @Override
             public void onResult(DataSourcesResult dataSourcesResult) {
-                for( DataSource dataSource : dataSourcesResult.getDataSources() ) {
-                    if( DataType.TYPE_STEP_COUNT_CUMULATIVE.equals( dataSource.getDataType() ) ) {
+                for (DataSource dataSource : dataSourcesResult.getDataSources()) {
+                    if (DataType.TYPE_STEP_COUNT_CUMULATIVE.equals(dataSource.getDataType())) {
                         registerFitnessDataListener(dataSource, DataType.TYPE_STEP_COUNT_CUMULATIVE);
                     }
                 }
@@ -94,36 +102,43 @@ public class GoogleFitService extends Service implements OnDataPointListener,
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.d("GoogleFit", "onConnectionFailed");
+        if (resolvingError) {
+            return;
+        } else if (connectionResult.hasResolution()) {
+            try {
+                resolvingError = true;
+                connectionResult.startResolutionForResult(activity, REQUEST_RESOLVE_ERROR);
+            } catch (IntentSender.SendIntentException e) {
+                googleApiClient.connect();
+            }
+        } else {
+            resolvingError = true;
+        }
+
     }
 
     @Override
     public void onDataPoint(DataPoint dataPoint) {
-        for( final Field field : dataPoint.getDataType().getFields() ) {
-            final Value value = dataPoint.getValue(field);
-//            Toast.makeText(this, field.getName() + " " + value, Toast.LENGTH_SHORT).show();
-//            runOnUiThread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    Toast.makeText(getApplicationContext(), field.getName() + " " + value, Toast.LENGTH_SHORT).show();
-//                }
-//            });
+        for (final Field field : dataPoint.getDataType().getFields()) {
+            Value value = dataPoint.getValue(field);
+            steps = value.toString();
         }
     }
 
     private void registerFitnessDataListener(DataSource dataSource, DataType dataType) {
 
         SensorRequest request = new SensorRequest.Builder()
-                .setDataSource( dataSource )
-                .setDataType( dataType )
-                .setSamplingRate( 3, TimeUnit.SECONDS )
+                .setDataSource(dataSource)
+                .setDataType(dataType)
+                .setSamplingRate(3, TimeUnit.SECONDS)
                 .build();
 
-        Fitness.SensorsApi.add( googleApiClient, request, this )
+        Fitness.SensorsApi.add(googleApiClient, request, this)
                 .setResultCallback(new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
                         if (status.isSuccess()) {
-                            Log.e( "GoogleFit", "SensorApi successfully added" );
+                            Log.e("GoogleFit", "SensorApi successfully added");
                         }
                     }
                 });
@@ -149,9 +164,34 @@ public class GoogleFitService extends Service implements OnDataPointListener,
                 });
     }
 
+    public class LocalBinder extends Binder {
+
+        public GoogleFitService getService() {
+            return GoogleFitService.this;
+        }
+    }
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        Log.d(TAG, "onBind: ");
+        return binder;
+    }
+
+    public String getSteps() {
+        return steps;
+    }
+
+    public void connect() {
+        resolvingError = false;
+        googleApiClient.connect();
+    }
+
+    public void bindActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    public void unbindActivity() {
+        this.activity = null;
     }
 }

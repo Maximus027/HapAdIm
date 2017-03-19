@@ -15,6 +15,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.hapadim.Constants;
 import com.example.hapadim.R;
 import com.example.hapadim.StartPageActivity;
 import com.example.hapadim.ViewAllActivity;
@@ -152,10 +153,11 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     itemView.startAnimation(animationZoomIn);
                     return true;
                 case MotionEvent.ACTION_UP:
-                    Intent intent = new Intent(activity, StartPageActivity.class);
+                    Activity activity1 = (Activity) itemView.getContext();
+                    Intent intent = new Intent(activity1, StartPageActivity.class);
                     Parcelable placeParcel = Parcels.wrap(placeValue);
-                    intent.putExtra("chosen_place", placeParcel);
-                    activity.startActivity(intent);
+                    intent.putExtra(Constants.CHOSEN_PLACE, placeParcel);
+                    activity1.startActivity(intent);
                     activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     return true;
 
@@ -175,9 +177,9 @@ public class LandMarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent viewAll = new Intent(activity, ViewAllActivity.class);
-                    viewAll.putExtra("category_key", place.getCategory());
-                    activity.startActivity(viewAll);
+                    Intent viewAll = new Intent(v.getContext(), ViewAllActivity.class);
+                    viewAll.putExtra(Constants.CHOSEN_CATEGORY, place.getCategory());
+                    v.getContext().startActivity(viewAll);
                     activity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
             });

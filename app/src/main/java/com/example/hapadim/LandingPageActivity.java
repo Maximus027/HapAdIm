@@ -17,7 +17,12 @@ import android.view.WindowManager;
 
 import com.example.hapadim.adapters.DrawerAdapter;
 import com.example.hapadim.adapters.LandMarksAdapter;
+import com.example.hapadim.complexsharedprefs.ComplexPreferences;
+import com.example.hapadim.models.Badge;
 import com.example.hapadim.models.JsonEndPoint;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by NesadaKoca on 2/28/2017.
@@ -48,7 +53,7 @@ public class LandingPageActivity extends AppCompatActivity {
         mountainsRV = (RecyclerView) findViewById(R.id.rv_mountains);
         monumentsRV = (RecyclerView) findViewById(R.id.rv_monuments);
         longDistancesRV = (RecyclerView) findViewById(R.id.rv_long_distances);
-        drawerRV = (RecyclerView)findViewById(R.id.rv_drawer);
+        drawerRV = (RecyclerView) findViewById(R.id.rv_drawer);
 
         endPoint = JsonEndPoint.getInstance();
 
@@ -61,16 +66,22 @@ public class LandingPageActivity extends AppCompatActivity {
         mountainsAdapater = new LandMarksAdapter(endPoint.getMountains(), activity);
         monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments(), activity);
         longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance(),activity);
-        drawerAdapter= new DrawerAdapter(endPoint.getMonuments()); // need to be changed the entry data - this is only for testing purpose
+
+        List<Badge> badgesEarnedByUser = getEarnedBadges();
+
+        mountainsAdapater = new LandMarksAdapter(endPoint.getMountains(), activity);
+        monumentsAdapter = new LandMarksAdapter(endPoint.getMonuments(), activity);
+        longDistAdapter = new LandMarksAdapter(endPoint.getLongDistance(), activity);
+        // Need to be changed the entry data - this is only for testing purpose
 
         setUpMountainsAdapter();
         setUpMonumentsAdapter();
         setUpLongDistancesAdapter();
-        setUpDrawerAdapter();
         toolbarTransparent();
 
     }
-    private void toolbarTransparent(){
+
+    private void toolbarTransparent() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
@@ -82,8 +93,12 @@ public class LandingPageActivity extends AppCompatActivity {
 
     private void setUpDrawerAdapter() {
         drawerRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        List<Badge> demoBadges = new ArrayList<>();
+        demoBadges.add(endPoint.getMonuments().get(0).getBadges().get(0));
+        demoBadges.add(endPoint.getMonuments().get(0).getBadges().get(1));
+        drawerAdapter = new DrawerAdapter(demoBadges);
         drawerRV.setAdapter(drawerAdapter);
-        drawerAdapter.notifyDataSetChanged();
+//        drawerAdapter.notifyDataSetChanged();
     }
 
 
@@ -123,5 +138,29 @@ public class LandingPageActivity extends AppCompatActivity {
         viewAll.putExtra(CATEGORY_KEY, VIEWALL);
         this.startActivity(viewAll);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public List<Badge> getEarnedBadges() {
+        ComplexPreferences complexPreferences = ComplexPreferences
+                .getComplexPreferences(this, Constants.SHARED_PREFS_KEY, MODE_PRIVATE);
+        ListComplexBadge complexObject = complexPreferences
+                .getObject(Constants.SHARED_PREFS_BADGES_KEY, ListComplexBadge.class);
+
+        List<Badge> userEarnedBadges = new ArrayList<>();
+        if (complexObject != null) {
+            for (Badge item : complexObject.getBadges()) {
+                userEarnedBadges.add(item);
+            }
+        }
+        return userEarnedBadges;
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpDrawerAdapter();
+//        List<Badge> badges = getEarnedBadges();
+//        drawerAdapter.setNewData(badges);
     }
 }
