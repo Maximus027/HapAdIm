@@ -15,8 +15,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.util.Pair;
 import android.view.View;
@@ -57,7 +55,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     Button threesixty;
     private Uri fileUri;
     Bitmap panoImage;
-    ArrayList<String> tips ;
+    ArrayList<String> tips;
     int newVal;
 
     InputStream istr = null;
@@ -70,6 +68,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
     private TextView stepsLeft;
     private TextView stepsTaken;
+    private TextView healthTips;
 
     private int totalSteps;
     private int initialDemoCounter = 334;
@@ -89,6 +88,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
                 .getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         stepsLeft = (TextView) findViewById(R.id.steps_left);
         stepsTaken = (TextView) findViewById(R.id.steps_taken);
+        healthTips = (TextView) findViewById(R.id.healthtips);
         setRandomTips();
 
 
@@ -100,19 +100,10 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         stepsTaken.setText(String.valueOf(initialDemoCounter));
 
 
-        setUpBadgeRecyclerView(place);
-
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         threesixty = (Button) findViewById(R.id.VR_Btn);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.libetythree);
-        threesixty.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
-            }
-        });
-
         toolbarTransparent();
     }
 
@@ -121,28 +112,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         tips.add(0, "Let's take the steps instead of the elevator ");
         tips.add(1, "Did you know that walking releases nature's pain reliving hormone called endoprhins ");
         tips.add(2, "Why not come off the bus or train a stop early and get some extra steps !");
-
-    }
-
-
-    private void setUpBadgeRecyclerView(Place place) {
-        RecyclerView earnedBadgesRV = (RecyclerView) findViewById(R.id.earned_badges_ip);
-        earnedBadgesRV.setLayoutManager(
-                new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-        List<Badge> userBadges = getEarnedBadges();
-        List<Badge> badgesEarnedForThisChallenge = new ArrayList<>();
-
-        for (int i = 0; i < userBadges.size(); i++) {
-            for (int j = 0; j < place.getBadges().size(); j++) {
-                if (userBadges.get(i).getBadgedName().equals(place.getBadges().get(j).getBadgedName())) {
-                    badgesEarnedForThisChallenge.add(place.getBadges().get(j));
-                }
-            }
-        }
-
-        adapter = new BadgesEarnedAdapter(badgesEarnedForThisChallenge);
-        earnedBadgesRV.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        healthTips.setText(tips.get(2));
     }
 
 
@@ -269,7 +239,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
             // For test/demo only. Only allowed value is 1.0 i.e. for step taken
             if (value == 1.0) {
-                if (newVal <= 353){
+                if (newVal <= 353) {
                     newVal = initialDemoCounter++;
                 }
 
@@ -279,6 +249,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
                             , Toast.LENGTH_SHORT).show();
                     stepsTaken.setText(statueofLibertyNum);
                     stepsLeft.setText(statueStepLeft);
+                    vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
                 } else {
                     stepsTaken.setText(String.valueOf(newVal));
                     int newTotal = totalSteps - newVal;
@@ -357,6 +328,13 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(), LandingPageActivity.class);
+        startActivity(intent);
+    }
+
     private void toolbarTransparent() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -365,6 +343,8 @@ public class InProgressActivity extends Activity implements SensorEventListener 
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+
+
     }
 
 }
