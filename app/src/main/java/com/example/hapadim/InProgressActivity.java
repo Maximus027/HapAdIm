@@ -20,7 +20,7 @@ import android.util.Pair;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +30,7 @@ import com.example.hapadim.models.Badge;
 import com.example.hapadim.models.Place;
 import com.google.vr.sdk.widgets.pano.VrPanoramaEventListener;
 import com.google.vr.sdk.widgets.pano.VrPanoramaView;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -52,7 +53,6 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     VrPanoramaView vrPanoramaView;
     VrPanoramaView.Options panoOptions1 = null;
     public boolean loadImageSuccessful;
-    Button threesixty;
     private Uri fileUri;
     Bitmap panoImage;
     ArrayList<String> tips;
@@ -69,6 +69,9 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     private TextView stepsLeft;
     private TextView stepsTaken;
     private TextView healthTips;
+    private ImageView blockerImage;
+    private ImageView badge1;
+    private ImageView badge2;
 
     private int totalSteps;
     private int initialDemoCounter = 344;
@@ -89,6 +92,11 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         stepsLeft = (TextView) findViewById(R.id.steps_left);
         stepsTaken = (TextView) findViewById(R.id.steps_taken);
         healthTips = (TextView) findViewById(R.id.healthtips);
+        blockerImage = (ImageView) findViewById(R.id.blockerimage);
+        badge1 = (ImageView) findViewById(R.id.badge1);
+        badge2 = (ImageView) findViewById(R.id.badge2);
+        Picasso.with(getApplicationContext()).load(R.drawable.vrlocked).into(blockerImage);
+        Picasso.with(getApplicationContext()).load(R.drawable.journey).into(badge1);
         setRandomTips();
 
 
@@ -103,6 +111,8 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
                 R.drawable.libetythree);
+        vrPanoramaView.setVisibility(View.INVISIBLE);
+
 
         toolbarTransparent();
     }
@@ -249,7 +259,16 @@ public class InProgressActivity extends Activity implements SensorEventListener 
                             , Toast.LENGTH_SHORT).show();
                     stepsTaken.setText(statueofLibertyNum);
                     stepsLeft.setText(statueStepLeft);
-                    vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
+                    Picasso.with(getApplicationContext()).load(R.drawable.vrunlocked).into(blockerImage);
+                    Picasso.with(getApplicationContext()).load(R.drawable.star).into(badge2);
+                    blockerImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            vrPanoramaView.setVisibility(View.VISIBLE);
+                            blockerImage.setVisibility(View.INVISIBLE);
+                            vrPanoramaView.loadImageFromBitmap(panoImage, panoOptions);
+                        }
+                    });
                 } else {
                     stepsTaken.setText(String.valueOf(newVal));
                     int newTotal = totalSteps - newVal;

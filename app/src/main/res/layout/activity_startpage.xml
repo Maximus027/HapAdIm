@@ -103,7 +103,7 @@
                     <Button
                         android:id="@+id/startButton"
                         android:layout_width="120dp"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
                         android:layout_toRightOf="@+id/stepsIcon"
                         android:layout_marginBottom="@dimen/cardViewMargin"
                         android:layout_marginLeft="40dp"
@@ -165,7 +165,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="1.2"
                         android:gravity="center_vertical"
-                        android:text="Total Possible Badges :"
+                        android:text="POSSIBLE BADGES :"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -193,8 +193,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginLeft="@dimen/cardViewMargin"
                 android:layout_marginRight="@dimen/cardViewMargin"
-                android:scaleType="fitXY"
-                android:text="Play Video " />
+                android:scaleType="fitXY" />
 
 
         </RelativeLayout>
