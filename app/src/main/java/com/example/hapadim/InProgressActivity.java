@@ -7,6 +7,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -20,7 +21,9 @@ import android.util.Pair;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,6 +75,8 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     private ImageView blockerImage;
     private ImageView badge1;
     private ImageView badge2;
+    private Button endChallenge;
+    private PopupWindow popupWindow;
 
     private int totalSteps;
     private int initialDemoCounter = 344;
@@ -93,6 +98,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         stepsTaken = (TextView) findViewById(R.id.steps_taken);
         healthTips = (TextView) findViewById(R.id.healthtips);
         blockerImage = (ImageView) findViewById(R.id.blockerimage);
+        endChallenge = (Button) findViewById(R.id.endChallenge);
         badge1 = (ImageView) findViewById(R.id.badge1);
         badge2 = (ImageView) findViewById(R.id.badge2);
         Picasso.with(getApplicationContext()).load(R.drawable.vrlocked).into(blockerImage);
@@ -110,11 +116,26 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.drawable.libetythree);
+                R.drawable.libertythreeone);
         vrPanoramaView.setVisibility(View.INVISIBLE);
 
 
         toolbarTransparent();
+    }
+
+    private void displayPopupWindow(View anchorView) {
+        PopupWindow popup = new PopupWindow(InProgressActivity.this);
+        View layout = getLayoutInflater().inflate(R.layout.popup_content, null);
+        popup.setContentView(layout);
+        // Set content width and height
+        popup.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        popup.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        // Closes the popup window when touch outside of it - when looses focus
+        popup.setOutsideTouchable(true);
+        popup.setFocusable(true);
+        // Show anchored to button
+        popup.setBackgroundDrawable(new BitmapDrawable());
+        popup.showAsDropDown(anchorView);
     }
 
     private void setRandomTips() {
@@ -261,6 +282,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
                     stepsLeft.setText(statueStepLeft);
                     Picasso.with(getApplicationContext()).load(R.drawable.vrunlocked).into(blockerImage);
                     Picasso.with(getApplicationContext()).load(R.drawable.star).into(badge2);
+                    endChallenge.setVisibility(View.INVISIBLE);
                     blockerImage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
