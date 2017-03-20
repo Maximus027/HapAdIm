@@ -100,23 +100,22 @@
                         android:layout_marginLeft="10dp"
                         android:layout_toRightOf="@+id/numberOfSteps"
                         android:src="@drawable/feet" />
-                    <Button
-                        android:id="@+id/startButton"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_toRightOf="@+id/stepsIcon"
-                        android:layout_marginBottom="@dimen/cardViewMargin"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginRight="@dimen/cardViewMargin"
-                        android:layout_marginTop="@dimen/cardViewMargin"
-                        android:background="@color/bg_screen10"
-                        android:text="START"
-                        android:textColor="@color/white" />
+                    <!--<Button-->
+                        <!--android:id="@+id/startButton"-->
+                        <!--android:layout_width="120dp"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_toRightOf="@+id/stepsIcon"-->
+                        <!--android:layout_marginBottom="@dimen/cardViewMargin"-->
+                        <!--android:layout_marginLeft="40dp"-->
+                        <!--android:layout_marginRight="@dimen/cardViewMargin"-->
+                        <!--android:layout_marginTop="@dimen/cardViewMargin"-->
+                        <!--android:background="@color/bg_screen10"-->
+                        <!--android:text="START"-->
+                        <!--android:textColor="@color/white" />-->
 
 
 
                 </RelativeLayout>
-
 
             </android.support.v7.widget.CardView>
 
@@ -131,15 +130,17 @@
 
                 <TextView
                     android:id="@+id/locationStartPageFactsInfo"
+                    android:scrollbars="vertical"
+                    android:fadeScrollbars="false"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/locationCard"
+                    android:layout_height="60dip"
                     android:layout_marginBottom="@dimen/cardViewMargin"
                     android:layout_marginLeft="@dimen/cardViewMargin"
                     android:layout_marginRight="@dimen/cardViewMargin"
                     android:layout_marginTop="@dimen/cardViewMargin"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="15dp"/>
+                    android:paddingStart="16dp"
+                    android:paddingEnd="15dp"/>
+
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -151,7 +152,6 @@
                 android:layout_marginLeft="@dimen/cardViewMargin"
                 android:layout_marginRight="@dimen/cardViewMargin"
                 android:layout_marginTop="@dimen/cardViewMargin">
-
                 <LinearLayout
                     android:id="@+id/badgeLayout"
                     android:layout_width="match_parent"
@@ -180,20 +180,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="2" />
+
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
+
+            <Button
+                android:id="@+id/startButton"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:text="@string/StartButton"
+                android:textStyle="bold"
+                android:textColor="#818080"
+                android:textSize="20sp"
+                android:layout_marginLeft="@dimen/cardViewMargin"
+                android:layout_marginRight="@dimen/cardViewMargin"
+                android:layout_below="@+id/badgesCard"
+                android:layout_centerHorizontal="true" />
 
 
             <ImageView
                 android:id="@+id/pano_view"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@+id/badgesCard"
+                android:layout_height="65dp"
+                android:layout_below="@+id/startButton"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/cardViewMargin"
                 android:layout_marginLeft="@dimen/cardViewMargin"
                 android:layout_marginRight="@dimen/cardViewMargin"
                 android:scaleType="fitXY" />
+
 
 
         </RelativeLayout>

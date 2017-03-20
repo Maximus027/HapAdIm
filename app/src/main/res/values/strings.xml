@@ -35,6 +35,7 @@
     <string name="walkingtip1">Park your car further back at the store and get a few more steps !</string>
     <string name="walkingtip2">Why not take the elevator and get those extra steps in !</string>
     <string name="walkingtip3">I Dare you to walk to the nearest bathroom and back</string>
+    <string name="StartButton">START</string>
 
 
 </resources>
