@@ -82,6 +82,7 @@ public class StartPageActivity extends AppCompatActivity {
 
 
 
+
         final Place place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.CHOSEN_PLACE));
 
         startBTN.setOnClickListener(new View.OnClickListener() {

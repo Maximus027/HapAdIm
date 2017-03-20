@@ -116,7 +116,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.drawable.libertythreeone);
+                R.drawable.libetythree);
         vrPanoramaView.setVisibility(View.INVISIBLE);
 
 
