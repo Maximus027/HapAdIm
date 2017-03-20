@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -79,7 +78,7 @@ public class StartPageActivity extends AppCompatActivity {
         Picasso.with(getApplicationContext()).load("http://i68.tinypic.com/11kh46f.jpg").into(badge1);
         Picasso.with(getApplicationContext()).load("http://i63.tinypic.com/2s8pm6p.jpg").into(badge2);
 
-        locationDesciption.setMovementMethod(new ScrollingMovementMethod()); // for scrollbar
+
 
 
 

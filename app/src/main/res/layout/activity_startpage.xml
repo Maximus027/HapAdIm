@@ -130,8 +130,6 @@
 
                 <TextView
                     android:id="@+id/locationStartPageFactsInfo"
-                    android:scrollbars="vertical"
-                    android:fadeScrollbars="false"
                     android:layout_width="match_parent"
                     android:layout_height="60dip"
                     android:layout_marginBottom="@dimen/cardViewMargin"
