@@ -131,7 +131,7 @@
                 <TextView
                     android:id="@+id/locationStartPageFactsInfo"
                     android:layout_width="match_parent"
-                    android:layout_height="60dip"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/cardViewMargin"
                     android:layout_marginLeft="@dimen/cardViewMargin"
                     android:layout_marginRight="@dimen/cardViewMargin"
