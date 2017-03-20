@@ -71,7 +71,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     private TextView healthTips;
 
     private int totalSteps;
-    private int initialDemoCounter = 334;
+    private int initialDemoCounter = 344;
     private Place place;
     private BadgesEarnedAdapter adapter;
 
@@ -111,7 +111,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         tips = new ArrayList<>();
         tips.add(0, "Let's take the steps instead of the elevator ");
         tips.add(1, "Did you know that walking releases nature's pain reliving hormone called endoprhins ");
-        tips.add(2, "Why not come off the bus or train a stop early and get some extra steps !");
+        tips.add(2, "Why not come off the bus or train a stop early and get some extra few extra steps !");
         healthTips.setText(tips.get(2));
     }
 
