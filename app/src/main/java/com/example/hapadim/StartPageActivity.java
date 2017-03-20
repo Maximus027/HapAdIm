@@ -144,7 +144,7 @@ public class StartPageActivity extends AppCompatActivity {
         stepNum.setText(String.valueOf(stepNumber));
         locationName.setText(placename);
         locationDesciption.setText("Location Facts : " + locationFacts);
-        Picasso.with(getApplicationContext()).load(example.getPanoImg()).into(panoImage);
+        Picasso.with(getApplicationContext()).load(R.drawable.vrlocked).into(panoImage);
 
         addBottomDots(viewPager.getCurrentItem());
     }
