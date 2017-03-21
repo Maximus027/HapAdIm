@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dots_height"
         android:layout_marginBottom="@dimen/cardViewMargin"
-        android:layout_marginTop="205dp"
+        android:layout_marginTop="196dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal" />
 
@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@id/locationName"
-                    android:layout_gravity="center_horizontal"
+                 android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="@dimen/cardViewMargin"
                     android:layout_marginLeft="@dimen/cardViewMargin"
                     android:layout_marginRight="@dimen/cardViewMargin"
@@ -101,17 +101,17 @@
                         android:layout_toRightOf="@+id/numberOfSteps"
                         android:src="@drawable/feet" />
                     <!--<Button-->
-                        <!--android:id="@+id/startButton"-->
-                        <!--android:layout_width="120dp"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_toRightOf="@+id/stepsIcon"-->
-                        <!--android:layout_marginBottom="@dimen/cardViewMargin"-->
-                        <!--android:layout_marginLeft="40dp"-->
-                        <!--android:layout_marginRight="@dimen/cardViewMargin"-->
-                        <!--android:layout_marginTop="@dimen/cardViewMargin"-->
-                        <!--android:background="@color/bg_screen10"-->
-                        <!--android:text="START"-->
-                        <!--android:textColor="@color/white" />-->
+                    <!--android:id="@+id/startButton"-->
+                    <!--android:layout_width="120dp"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_toRightOf="@+id/stepsIcon"-->
+                    <!--android:layout_marginBottom="@dimen/cardViewMargin"-->
+                    <!--android:layout_marginLeft="40dp"-->
+                    <!--android:layout_marginRight="@dimen/cardViewMargin"-->
+                    <!--android:layout_marginTop="@dimen/cardViewMargin"-->
+                    <!--android:background="@color/bg_screen10"-->
+                    <!--android:text="START"-->
+                    <!--android:textColor="@color/white" />-->
 
 
 
@@ -200,7 +200,7 @@
             <ImageView
                 android:id="@+id/pano_view"
                 android:layout_width="match_parent"
-                android:layout_height="65dp"
+                android:layout_height="75dp"
                 android:layout_below="@+id/startButton"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/cardViewMargin"
