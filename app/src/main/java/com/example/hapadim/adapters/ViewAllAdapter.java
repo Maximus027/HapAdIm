@@ -59,7 +59,7 @@ public class ViewAllAdapter extends RecyclerView.Adapter<ViewAllAdapter.Holder> 
 
     @Override
     public int getItemCount() {
-        return listAll.size();
+        return listAll.size() - 3;
     }
 
 
