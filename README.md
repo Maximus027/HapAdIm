@@ -7,11 +7,8 @@ their daily life. It makes walking and exercising a lot more fun by gamifying it
 
 
 <img width="216" alt="1" src="https://cloud.githubusercontent.com/assets/10224543/26027316/00fe9e9e-37da-11e7-9c5f-7e571bb89103.png">
-
 <img width="216" alt="111" src="https://cloud.githubusercontent.com/assets/10224543/26277737/06d8e61c-3d5c-11e7-8833-b21cf4bdad68.png">
-
 <img width="216" alt="222" src="https://cloud.githubusercontent.com/assets/10224543/26277740/17468680-3d5c-11e7-8485-9c843ec29109.png">
-
 <img width="216" alt="333" src="https://cloud.githubusercontent.com/assets/10224543/26277741/21a724fe-3d5c-11e7-9b4e-80b1fde46468.png">
 
 
