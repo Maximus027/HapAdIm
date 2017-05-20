@@ -28,7 +28,7 @@ their daily life. It makes walking and exercising a lot more fun by gamifying it
 
 * End of the challenge user owns all the badges and  VR experience becomes avilable.
 
-<img width="230" alt="7" src="https://cloud.githubusercontent.com/assets/10224543/26027684/3244577c-37e0-11e7-9511-f3cba6ad1f84.png">           <img width="230" alt="8" src="https://cloud.githubusercontent.com/assets/10224543/26027741/1cfbd196-37e1-11e7-97e5-6586f348a21a.png">
+<img width="250" alt="7" src="https://cloud.githubusercontent.com/assets/10224543/26027684/3244577c-37e0-11e7-9511-f3cba6ad1f84.png">           <img width="216" alt="8" src="https://cloud.githubusercontent.com/assets/10224543/26027741/1cfbd196-37e1-11e7-97e5-6586f348a21a.png">
 
 
 
