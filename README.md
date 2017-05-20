@@ -6,7 +6,7 @@ their daily life. It makes walking and exercising a lot more fun by gamifying it
 * First, user infromed by quick tutorial screens
 
 
-<img width="220" alt="1" src="https://cloud.githubusercontent.com/assets/10224543/26027316/00fe9e9e-37da-11e7-9c5f-7e571bb89103.png"><img width="216" alt="222" src="https://cloud.githubusercontent.com/assets/10224543/26277740/17468680-3d5c-11e7-8485-9c843ec29109.png"><img width="216" alt="333" src="https://cloud.githubusercontent.com/assets/10224543/26277741/21a724fe-3d5c-11e7-9b4e-80b1fde46468.png"><img width="216" alt="111" src="https://cloud.githubusercontent.com/assets/10224543/26277737/06d8e61c-3d5c-11e7-8833-b21cf4bdad68.png">
+<img width="216" alt="1" src="https://cloud.githubusercontent.com/assets/10224543/26027316/00fe9e9e-37da-11e7-9c5f-7e571bb89103.png"><img width="216" alt="222" src="https://cloud.githubusercontent.com/assets/10224543/26277740/17468680-3d5c-11e7-8485-9c843ec29109.png"><img width="216" alt="333" src="https://cloud.githubusercontent.com/assets/10224543/26277741/21a724fe-3d5c-11e7-9b4e-80b1fde46468.png"><img width="216" alt="111" src="https://cloud.githubusercontent.com/assets/10224543/26277737/06d8e61c-3d5c-11e7-8833-b21cf4bdad68.png">
 
 
 * Then move on to the category screen, where user can chose challenge category( Mountains, Monuments or Long distances).
@@ -28,7 +28,7 @@ their daily life. It makes walking and exercising a lot more fun by gamifying it
 
 * End of the challenge user owns all the badges and  VR experience becomes avilable.
 
-<img width="216" alt="7" src="https://cloud.githubusercontent.com/assets/10224543/26027684/3244577c-37e0-11e7-9511-f3cba6ad1f84.png">           <img width="216" alt="8" src="https://cloud.githubusercontent.com/assets/10224543/26027741/1cfbd196-37e1-11e7-97e5-6586f348a21a.png">
+<img width="230" alt="7" src="https://cloud.githubusercontent.com/assets/10224543/26027684/3244577c-37e0-11e7-9511-f3cba6ad1f84.png">           <img width="230" alt="8" src="https://cloud.githubusercontent.com/assets/10224543/26027741/1cfbd196-37e1-11e7-97e5-6586f348a21a.png">
 
 
 
