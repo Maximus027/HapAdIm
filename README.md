@@ -1,6 +1,5 @@
-#### HapAdIm
 HapAdim is a mobile application which encourages users to walk and exercise more, by setting concrete goals and challenges in 
-their daily life. It makes walking and exercising a lot more fun by gamifying it by using VR technology.
+their daily life. It makes walking and exercising a lot more fun by gamifying it using VR technology.
  
 
 * Quick tutorial screens
