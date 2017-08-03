@@ -88,6 +88,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
                 .getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         stepsLeft = (TextView) findViewById(R.id.steps_left);
         stepsTaken = (TextView) findViewById(R.id.steps_taken);
+        healthTips = (TextView) findViewById(R.id.healthtips);
         setRandomTips();
 
 
@@ -98,8 +99,6 @@ public class InProgressActivity extends Activity implements SensorEventListener 
         stepsLeft.setText(String.valueOf(totalSteps - initialDemoCounter));
         stepsTaken.setText(String.valueOf(initialDemoCounter));
 
-        healthTips = (TextView) findViewById(R.id.healthtips);
-
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         threesixty = (Button) findViewById(R.id.VR_Btn);
         panoImage = BitmapFactory.decodeResource(getApplicationContext().getResources(),
@@ -109,9 +108,9 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
     private void setRandomTips() {
         tips = new ArrayList<>();
-        tips.add(0, "Let's take the steps instead of the elevator ");
-        tips.add(1, "Did you know that walking releases nature's pain reliving hormone called endoprhins ");
-        tips.add(2, "Why not come off the bus or train a stop early and get some extra steps !");
+        tips.add(0, "Let's take the steps instead of the elevator. ");
+        tips.add(1, "Did you know that walking releases nature's pain relieving hormone called endorphins? ");
+        tips.add(2, "Why not come off the bus or train a stop early and get some extra steps! ");
         healthTips.setText(tips.get(2));
     }
 

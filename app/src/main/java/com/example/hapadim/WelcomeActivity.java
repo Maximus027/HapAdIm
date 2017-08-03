@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Created by NesadaKoca on 2/28/2017.
+ * The is the onboarding screen for first-time users.
  */
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -37,14 +37,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         prefManager = new PrefManager(this);
-
-// Checking for first time launch - before calling launchHomeScreen();
-//        if (!prefManager.isFirstTimeLaunch()) {
-//            launchHomeScreen();
-//            finish();
-//        }
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
