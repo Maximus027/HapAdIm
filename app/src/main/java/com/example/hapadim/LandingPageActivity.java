@@ -47,7 +47,7 @@ public class LandingPageActivity extends AppCompatActivity {
         JsonEndPoint.getInstance().populateLocations(this);
 
         setContentView(R.layout.landingpage);
-        setUpNotification();
+//        setUpNotification();
 
         mountainsRV = (RecyclerView) findViewById(R.id.rv_mountains);
         monumentsRV = (RecyclerView) findViewById(R.id.rv_monuments);

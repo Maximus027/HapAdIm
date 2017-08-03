@@ -73,7 +73,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     private int totalSteps;
     private int initialDemoCounter = 334;
     private Place place;
-    private BadgesEarnedAdapter adapter;
+//    private BadgesEarnedAdapter adapter;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -88,17 +88,15 @@ public class InProgressActivity extends Activity implements SensorEventListener 
                 .getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         stepsLeft = (TextView) findViewById(R.id.steps_left);
         stepsTaken = (TextView) findViewById(R.id.steps_taken);
+        healthTips = (TextView) findViewById(R.id.healthtips);
         setRandomTips();
 
 
         place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
         totalSteps = place.getStepNumber();
 
-
         stepsLeft.setText(String.valueOf(totalSteps - initialDemoCounter));
         stepsTaken.setText(String.valueOf(initialDemoCounter));
-
-        healthTips = (TextView) findViewById(R.id.healthtips);
 
         vrPanoramaView = (VrPanoramaView) findViewById(R.id.pano_view);
         threesixty = (Button) findViewById(R.id.VR_Btn);
@@ -109,9 +107,9 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
     private void setRandomTips() {
         tips = new ArrayList<>();
-        tips.add(0, "Let's take the steps instead of the elevator ");
-        tips.add(1, "Did you know that walking releases nature's pain reliving hormone called endoprhins ");
-        tips.add(2, "Why not come off the bus or train a stop early and get some extra steps !");
+        tips.add(0, "Let's take the steps instead of the elevator. ");
+        tips.add(1, "Did you know that walking releases nature's pain relieving hormone called endorphins? ");
+        tips.add(2, "Why not come off the bus or train a stop early and get some extra steps! ");
         healthTips.setText(tips.get(2));
     }
 
