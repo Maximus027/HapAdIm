@@ -73,7 +73,7 @@ public class InProgressActivity extends Activity implements SensorEventListener 
     private int totalSteps;
     private int initialDemoCounter = 334;
     private Place place;
-    private BadgesEarnedAdapter adapter;
+//    private BadgesEarnedAdapter adapter;
 
     @Override
     protected void onCreate(Bundle bundle) {
@@ -94,7 +94,6 @@ public class InProgressActivity extends Activity implements SensorEventListener 
 
         place = Parcels.unwrap(getIntent().getParcelableExtra(Constants.IN_PROGRESS_PLACE_BUNDLE_KEY));
         totalSteps = place.getStepNumber();
-
 
         stepsLeft.setText(String.valueOf(totalSteps - initialDemoCounter));
         stepsTaken.setText(String.valueOf(initialDemoCounter));
